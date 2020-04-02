@@ -220,15 +220,14 @@ function() {
 				var result = JSON.parse(p);
 				if (result.code == 0) {
 					Log.i("Message have sent(group=" + target + ")");
+					return result.messageId;
 				} else {
 					Log.e(p);
+					return 0;
 				}
 			} catch(e) {
-				this.sendGroupMessage(target, [{
-					type: "Plain",
-					text: "执行已完成，但消息发送失败:\n" + e.toString()
-				}], quoteId);
 				Log.e("Target=" + target + ", MessageChain=" + _toSource(messageChain) + "\n" + e);
+				return 0;
 			}
 		},
 		sendFriendMessage: function(target, messageChain) {
@@ -243,11 +242,14 @@ function() {
 				var result = JSON.parse(p);
 				if (result.code == 0) {
 					Log.i("Message have sent(group=" + target + ")");
+					return result.messageId;
 				} else {
 					Log.e(p);
+					return 0;
 				}
 			} catch(e) {
 				Log.e(e);
+				return 0;
 			}
 		}
 	}
