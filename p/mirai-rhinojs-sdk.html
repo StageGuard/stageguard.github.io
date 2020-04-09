@@ -120,6 +120,10 @@ function activateLightMode(){
 <td align="left">setQQNumber(<code>Number</code> qqNum)</td>
 </tr>
 <tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><span style='color:#aaaaaa;'>auth(<code>String</code> server, <code>String</code> authKey)</span></td>
+</tr>
+<tr>
 <td align="center"><code>Mirai.Session</code></td>
 <td align="left">connect()</td>
 </tr>
@@ -140,6 +144,7 @@ function activateLightMode(){
 <blockquote>
 <p>注：只有在connect()之前设定才有效，connect()之后设定并不会更改已建立连接的Session的属性。</p>
 </blockquote>
+<h3 id="●-VOID-auth-String-server-String-authKey"><a href="#●-VOID-auth-String-server-String-authKey" class="headerlink" title="● VOID auth(String server, String authKey)"></a>● <span style='color:#aaaaaa;'>VOID</span> <span style='color:#aaaaaa;'>auth(<code>String</code> server, <code>String</code> authKey)</span></h3><p>向http api发送认证请求。</p>
 <h3 id="Mirai-Session-connect"><a href="#Mirai-Session-connect" class="headerlink" title="Mirai.Session connect()"></a><code>Mirai.Session</code> connect()</h3><p>连接服务器并建立一个会话窗口。<br>若未指定服务器地址和验证密钥，将抛出<code>Server host or authenticate key isnt set.</code>异常。<br>若验证密钥错误，将抛出<code>Authenticate key is invaild.</code>异常。</p>
 <h2 id="Mirai-Session"><a href="#Mirai-Session" class="headerlink" title="Mirai.Session"></a>Mirai.Session</h2><p>Mirai.Session是与http api服务器通讯的接口，提供消息的监听与发送功能。</p>
 <h3 id="构造函数与方法预览-1"><a href="#构造函数与方法预览-1" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
@@ -225,6 +230,10 @@ function activateLightMode(){
 <td align="center"><code>Mirai.MessageChain</code></td>
 <td align="left">getCachedMessage(<code>Number</code> mseeageId)</td>
 </tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">reAuth()</td>
+</tr>
 </tbody></table>
 <blockquote>
 <p>注：灰色方法虽为公共方法，但只在MiraiBot_HTTP.js内部使用，请不要调用此类方法。</p>
@@ -261,6 +270,7 @@ function activateLightMode(){
 <h3 id="●-Number-sendGroupMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId"><a href="#●-Number-sendGroupMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId" class="headerlink" title="● Number sendGroupMessage(Number target, Mirai.MessageChain messageChain[, Number quoteId])"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> sendGroupMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</h3><p>向QQ群号为<code>target</code>的群发送消息，参数<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
 <h3 id="●-VOID-recall-Number-target"><a href="#●-VOID-recall-Number-target" class="headerlink" title="● VOID recall(Number target)"></a>● <span style='color:#aaaaaa;'>VOID</span> recall(<code>Number</code> target)</h3><p>撤回一条消息，<code>target</code>指定了要撤回的消息的ID。</p>
 <h3 id="●-Mirai-MessageChain-getCachedMessage-Number-messageId"><a href="#●-Mirai-MessageChain-getCachedMessage-Number-messageId" class="headerlink" title="● Mirai.MessageChain getCachedMessage(Number messageId)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageChain</code></span> getCachedMessage(<code>Number</code> messageId)</h3><p>通过消息id从消息缓存中返回一条消息的消息链，可以是群组消息或好友消息，但不能是事件。<br>若缓存中无此消息id对应的消息链，则返回一个新的无任何消息的消息链。</p>
+<h3 id="●-VOID-reAuth"><a href="#●-VOID-reAuth" class="headerlink" title="● VOID reAuth()"></a>● <span style='color:#aaaaaa;'>VOID</span> reAuth()</h3><p>重新向http api服务器发送认证，并为这个session设定新的session key。</p>
 <h2 id="Mirai-MessageChain"><a href="#Mirai-MessageChain" class="headerlink" title="Mirai.MessageChain"></a>Mirai.MessageChain</h2><p>Mirai.MessageChain提供消息链构造方法。<br>(QQ的一个消息可能是由各种消息构成的，如”文字+图片”。Mirai对此的处理方式是：将这些复合消息转化成各种类型消息构成的消息链。)</p>
 <h3 id="构造函数与方法预览-2"><a href="#构造函数与方法预览-2" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
 <thead>
