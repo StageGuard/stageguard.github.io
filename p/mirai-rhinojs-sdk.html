@@ -216,11 +216,15 @@ function activateLightMode(){
 </tr>
 <tr>
 <td align="center"><code>Number</code></td>
-<td align="left">sendFriendMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain)</td>
+<td align="left">sendFriendMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</td>
 </tr>
 <tr>
 <td align="center"><code>Number</code></td>
 <td align="left">sendGroupMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">sendTempMessage(<code>Number</code> target, <code>Number</code> from, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</td>
 </tr>
 <tr>
 <td align="center"><code>Number</code></td>
@@ -229,6 +233,38 @@ function activateLightMode(){
 <tr>
 <td align="center"><code>Mirai.MessageChain</code></td>
 <td align="left">getCachedMessage(<code>Number</code> mseeageId)</td>
+</tr>
+<tr>
+<td align="center"><code>Array</code></td>
+<td align="left">getFriendList()</td>
+</tr>
+<tr>
+<td align="center"><code>Array</code></td>
+<td align="left">getGroupList()</td>
+</tr>
+<tr>
+<td align="center"><code>Array</code></td>
+<td align="left">getGroupMemberList(<code>Number</code> group)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">mute(<code>Number</code> group, <code>Number</code> target, <code>Number</code> time)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmute(<code>Number</code> group, <code>Number</code> target)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">muteAll(<code>Number</code> group)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmuteAll(<code>Number</code> group)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">kick(<code>Number</code> group, <code>Number</code> target)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
@@ -266,10 +302,25 @@ function activateLightMode(){
 </blockquote>
 <h3 id="●-VOID-stopListen"><a href="#●-VOID-stopListen" class="headerlink" title="● VOID stopListen()"></a>● <span style='color:#aaaaaa;'>VOID</span> stopListen()</h3><p>停止消息循环监听线程。</p>
 <h3 id="●-VOID-release"><a href="#●-VOID-release" class="headerlink" title="● VOID release()"></a>● <span style='color:#aaaaaa;'>VOID</span> release()</h3><p>向服务端发送销毁session信号并立即释放当前session。</p>
-<h3 id="●-Number-sendFriendMessage-Number-target-Mirai-MessageChain-messageChain"><a href="#●-Number-sendFriendMessage-Number-target-Mirai-MessageChain-messageChain" class="headerlink" title="● Number sendFriendMessage(Number target, Mirai.MessageChain messageChain)"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> sendFriendMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain)</h3><p>向QQ号为<code>target</code>的<span style='color:#ff0000;'>好友</span>发送消息。<br>若发送成功则返回消息ID，否则返回0。</p>
+<h3 id="●-Number-sendFriendMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId"><a href="#●-Number-sendFriendMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId" class="headerlink" title="● Number sendFriendMessage(Number target, Mirai.MessageChain messageChain[, Number quoteId])"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> sendFriendMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</h3><p>向QQ号为<code>target</code>的<span style='color:#ff0000;'>好友</span>发送消息，参数<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
 <h3 id="●-Number-sendGroupMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId"><a href="#●-Number-sendGroupMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId" class="headerlink" title="● Number sendGroupMessage(Number target, Mirai.MessageChain messageChain[, Number quoteId])"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> sendGroupMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</h3><p>向QQ群号为<code>target</code>的群发送消息，参数<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
+<h3 id="●-Number-sendTempMessage-Number-target-Number-from-Mirai-MessageChain-messageChain-Number-quoteId"><a href="#●-Number-sendTempMessage-Number-target-Number-from-Mirai-MessageChain-messageChain-Number-quoteId" class="headerlink" title="● Number sendTempMessage(Number target, Number from, Mirai.MessageChain messageChain[, Number quoteId])"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> sendTempMessage(<code>Number</code> target, <code>Number</code> from, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</h3><p>向QQ号为<code>target</code>的群好友发送临时消息，<code>from</code>表示该用户来自的群的群号，参数<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
 <h3 id="●-VOID-recall-Number-target"><a href="#●-VOID-recall-Number-target" class="headerlink" title="● VOID recall(Number target)"></a>● <span style='color:#aaaaaa;'>VOID</span> recall(<code>Number</code> target)</h3><p>撤回一条消息，<code>target</code>指定了要撤回的消息的ID。</p>
 <h3 id="●-Mirai-MessageChain-getCachedMessage-Number-messageId"><a href="#●-Mirai-MessageChain-getCachedMessage-Number-messageId" class="headerlink" title="● Mirai.MessageChain getCachedMessage(Number messageId)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageChain</code></span> getCachedMessage(<code>Number</code> messageId)</h3><p>通过消息id从消息缓存中返回一条消息的消息链，可以是群组消息或好友消息，但不能是事件。<br>若缓存中无此消息id对应的消息链，则返回一个新的无任何消息的消息链。</p>
+<h3 id="●-Array-getFriendList"><a href="#●-Array-getFriendList" class="headerlink" title="● Array getFriendList()"></a>● <span style='color:#aaaaaa;'><code>Array</code></span> getFriendList()</h3><p>获取当前登录的qq号的好友列表数组，它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">123456789</span>, <span class="comment">//QQ号</span></span><br><span class="line">    <span class="string">"nickname"</span>:<span class="string">""</span>, <span class="comment">//昵称</span></span><br><span class="line">    <span class="string">"remark"</span>:<span class="string">""</span> <span class="comment">//备注</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">987654321</span>,</span><br><span class="line">    <span class="string">"nickname"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"remark"</span>:<span class="string">""</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>若出现了任何错误，会返回一个空数组。</p>
+<h3 id="●-Array-getGroupList"><a href="#●-Array-getGroupList" class="headerlink" title="● Array getGroupList()"></a>● <span style='color:#aaaaaa;'><code>Array</code></span> getGroupList()</h3><p>获取当前登录的qq号的群组列表数组，它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">123456789</span>, <span class="comment">//群号</span></span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"群名1"</span>, <span class="comment">//群名称</span></span><br><span class="line">    <span class="string">"permission"</span>: <span class="string">"MEMBER"</span> <span class="comment">//bot在这个群的权限</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">987654321</span>,</span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"群名2"</span>,</span><br><span class="line">    <span class="string">"permission"</span>: <span class="string">"MEMBER"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>若出现了任何错误，会返回一个空数组。</p>
+<h3 id="●-Array-getGroupMemberList-Number-group"><a href="#●-Array-getGroupMemberList-Number-group" class="headerlink" title="● Array getGroupMemberList(Number group)"></a>● <span style='color:#aaaaaa;'><code>Array</code></span> getGroupMemberList(<code>Number</code> group)</h3><p>获取一个群的群员列表数组，<code>group</code>指定了要查询的qq群群号。它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">1234567890</span>, <span class="comment">//群友qq号</span></span><br><span class="line">    <span class="string">"memberName"</span>:<span class="string">""</span>, <span class="comment">//群友群名片</span></span><br><span class="line">    <span class="string">"permission"</span>:<span class="string">"MEMBER"</span> <span class="comment">//群友权限对应Mirai.GroupInfo.Permission.MEMBER/ADMIN/OWNER</span></span><br><span class="line">    <span class="comment">/*"group":&#123;</span></span><br><span class="line"><span class="comment">        "id":12345,</span></span><br><span class="line"><span class="comment">        "name":"群名1",</span></span><br><span class="line"><span class="comment">        "permission": "MEMBER"</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">9876543210</span>,</span><br><span class="line">    <span class="string">"memberName"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"permission"</span>:<span class="string">"OWNER"</span></span><br><span class="line">    <span class="comment">/*"group":&#123;</span></span><br><span class="line"><span class="comment">        "id":54321,</span></span><br><span class="line"><span class="comment">        "name":"群名2",</span></span><br><span class="line"><span class="comment">        "permission": "MEMBER"</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>若出现了任何错误，会返回一个空数组。</p>
+<h3 id="●-VOID-mute-Number-group-Number-target-Number-time"><a href="#●-VOID-mute-Number-group-Number-target-Number-time" class="headerlink" title="● VOID mute(Number group, Number target, Number time)"></a>● <span style='color:#aaaaaa;'>VOID</span> mute(<code>Number</code> group, <code>Number</code> target, <code>Number</code> time)</h3><p>禁言一个群员，<code>group</code>指定要操作的群，<code>target</code>指定要禁言的成员，<code>time</code>指定禁言的时间(秒)。<br>需要bot有对应权限！</p>
+<h3 id="●-VOID-unmute-Number-group-Number-target"><a href="#●-VOID-unmute-Number-group-Number-target" class="headerlink" title="● VOID unmute(Number group, Number target)"></a>● <span style='color:#aaaaaa;'>VOID</span> unmute(<code>Number</code> group, <code>Number</code> target)</h3><p>解除禁言一个群员，<code>group</code>指定要操作的群，<code>target</code>指定要解除禁言的成员。<br>需要bot有对应权限！</p>
+<h3 id="●-VOID-muteAll-Number-group"><a href="#●-VOID-muteAll-Number-group" class="headerlink" title="● VOID muteAll(Number group)"></a>● <span style='color:#aaaaaa;'>VOID</span> muteAll(<code>Number</code> group)</h3><p>全体禁言一个群组，<code>group</code>指定要操作的群。<br>需要bot有对应权限！</p>
+<h3 id="●-VOID-unmuteAll-Number-group"><a href="#●-VOID-unmuteAll-Number-group" class="headerlink" title="● VOID unmuteAll(Number group)"></a>● <span style='color:#aaaaaa;'>VOID</span> unmuteAll(<code>Number</code> group)</h3><p>解除全体禁言一个群组，<code>group</code>指定要操作的群。<br>需要bot有对应权限！</p>
+<h3 id="●-VOID-kick-Number-group-Number-target"><a href="#●-VOID-kick-Number-group-Number-target" class="headerlink" title="● VOID kick(Number group, Number target)"></a>● <span style='color:#aaaaaa;'>VOID</span> kick(<code>Number</code> group, <code>Number</code> target)</h3><p>踢出群组的某个群员，<code>group</code>指定要操作的群，<code>target</code>指定要踢出的群员。<br>需要bot有对应权限！</p>
 <h3 id="●-VOID-reAuth"><a href="#●-VOID-reAuth" class="headerlink" title="● VOID reAuth()"></a>● <span style='color:#aaaaaa;'>VOID</span> reAuth()</h3><p>重新向http api服务器发送认证，并为这个session设定新的session key。</p>
 <h2 id="Mirai-MessageChain"><a href="#Mirai-MessageChain" class="headerlink" title="Mirai.MessageChain"></a>Mirai.MessageChain</h2><p>Mirai.MessageChain提供消息链构造方法。<br>(QQ的一个消息可能是由各种消息构成的，如”文字+图片”。Mirai对此的处理方式是：将这些复合消息转化成各种类型消息构成的消息链。)</p>
 <h3 id="构造函数与方法预览-2"><a href="#构造函数与方法预览-2" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
