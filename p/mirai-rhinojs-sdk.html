@@ -75,28 +75,30 @@ function activateLightMode(){
   isHome: false
 }</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="StageGuard" type="application/atom+xml">
 </head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div class="not-index-bg" id="nav" style="background-image: url(/img/index.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">StageGuard</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div><div id="page_site-info"><h1 id="site_title">Mirai RhinoJS SDK文档</h1></div></div><main class="layout_page" id="content-inner"><div id="page"><div id="article-container"><h1 id="Mirai-RhinoJS-SDK文档"><a href="#Mirai-RhinoJS-SDK文档" class="headerlink" title="Mirai RhinoJS SDK文档"></a>Mirai RhinoJS SDK文档</h1><p><span style='color:#ff0000;'>所有类和类型方法皆为测试阶段，未来可能会有更改。</br>若按照文档的方法调用出现问题，或文档有错字或术语性错误，请在 <a href="https://github.com/StageGuard/mirai-rhinojs-sdk" target="_blank" rel="noopener">StageGuard/mirai-rhinojs-sdk</a> 开issue反馈。</br>ISSUE的标题前必须加上<code>[SDK文档]</code>或者<code>[SDK Documentation]</code>，否则不予受理/更改。</br>有关文档更新，请查看<a href="https://github.com/StageGuard/mirai-rhinojs-sdk/blob/master/DOCCHANGELOG.md" target="_blank" rel="noopener">文档更新日志</a></span></p>
+<blockquote>
+<p>由于<code>v1.6.0</code>版本的breaking changes，文档大幅度改动。</br>现在只提供对外使用的接口，内部实现的方法没有必要了解。</p>
+</blockquote>
+<p>不同版本的MiraiQQBot.js在方法上略有不同，在方法前会用<span style='color:#97ff2e;font-size:10px;'>[http]</span>和<span style='color:#ff855d;font-size:10px;'>[core]</span>标记来表示http版本和core版本独有方法。</p>
 <hr>
 <h2 id="类型预览"><a href="#类型预览" class="headerlink" title="类型预览"></a>类型预览</h2><ul>
 <li><a href="#Mirai">Mirai</a> - Mirai RhinoJS主类<ul>
-<li><a href="#Mirai.Session">Session</a> - 会话消息窗口</li>
-<li><a href="#Mirai.MessageChain">MessageChain</a> - 消息链</li>
-<li><a href="#Mirai.MessageListener">MessageListener</a> - 消息监听器</li>
-<li><a href="#Mirai.GroupSenderInfo">GroupSenderInfo</a> - 群信息发送者</li>
-<li><a href="#Mirai.GroupInfo">GroupInfo</a> - 群组信息</li>
-<li><a href="#Mirai.FriendSenderInfo">FriendSenderInfo</a> - 好友信息发送者</li>
-<li><a href="#Mirai.MessageType">MessageType</a> - 消息类型</li>
-<li><a href="#Mirai.MessageTypeConst">MessageTypeConst</a> - 消息类型常量</li>
-<li><a href="#Mirai.MessageType">EventType</a> - 事件类型</li>
-<li><a href="#Mirai.MessageTypeConst">EventTypeConst</a> - 事件类型常量</li>
+<li><a href="#Mirai-Bot">Bot</a> - Bot对象</li>
+<li><a href="#Mirai-MessageChain">MessageChain</a> - 消息链</li>
+<li><a href="#Mirai-MessageSender">MessageSender</a> - 消息发送者(群或好友)</li>
+<li><a href="#Mirai-GroupInfo">GroupInfo</a> - 群组信息</li>
+<li><a href="#Mirai-MessageType">MessageType</a> - 消息类型</li>
+<li><a href="#Mirai-MessageTypeConst">MessageTypeConst</a> - 消息类型常量</li>
+<li><a href="#Mirai-EventType-Const">EventType</a> - 事件类型</li>
+<li><a href="#Mirai-EventType-Const">EventTypeConst</a> - 事件类型常量</li>
+<li><a href="#Mirai-utils-http">utils.http</a> - 网络操作类</li>
+<li><a href="#Mirai-utils-http">utils.file</a> - 文件操作类</li>
+<li><a href="#Mirai-Log">Log</a> - 日志输出</li>
 </ul>
 </li>
-<li><a href="#FileIO">FileIO</a> - 文件操作类</li>
-<li><a href="#NetworkUtils">NetworkUtils</a> - 网络操作类</li>
-<li><a href="#LinuxShell">LinuxShell</a> - 提供执行Linux命令行代码</li>
 </ul>
 <hr>
-<h2 id="Mirai"><a href="#Mirai" class="headerlink" title="Mirai"></a>Mirai</h2><p>Mirai类是基类，提供简便的mirai-api-http封装方法。</p>
-<h3 id="构造函数与方法预览"><a href="#构造函数与方法预览" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
+<h2 id="Mirai"><a href="#Mirai" class="headerlink" title="Mirai"></a>Mirai</h2><p>Mirai类是基类。</p>
+<h3 id="方法预览"><a href="#方法预览" class="headerlink" title="方法预览"></a>方法预览</h3><table>
 <thead>
 <tr>
 <th align="center">返回类型</th>
@@ -104,50 +106,51 @@ function activateLightMode(){
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><span style='color:#aaaaaa;'>&#60;constructor&#62;</span></td>
-<td align="left">Mirai</td>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> init(<code>Object</code> globalObject)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">setAuthKey(<code>String</code> authKey)</td>
+<td align="left"><code>static</code> registerClasses2Object(<code>Object</code> object)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">setSeverhost(<code>String</code> server)</td>
+<td align="left"><code>static</code> <span style='color:#97ff2e;font-size:10px;'>[http]</span>setAuthKey(<code>String</code> authKey)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">setQQNumber(<code>Number</code> qqNum)</td>
+<td align="left"><code>static</code> <span style='color:#97ff2e;font-size:10px;'>[http]</span>setSever(<code>String</code> server)</td>
 </tr>
 <tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left"><span style='color:#aaaaaa;'>auth(<code>String</code> server, <code>String</code> authKey)</span></td>
+<td align="center"><code>Mirai.Bot</code></td>
+<td align="left"><code>static</code> getBot(<code>Number</code> qq)</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.Session</code></td>
-<td align="left">connect()</td>
+<td align="center"><code>Mirai.Bot</code></td>
+<td align="left"><code>static</code> createNewBot(<code>Number</code> qq, <code>String</code> password)</td>
 </tr>
 </tbody></table>
 <blockquote>
 <p><span style='color:#aaaaaa;'>VOID</span>表示无返回值。</p>
 </blockquote>
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><h3 id="60-constructor-62-Mirai-String-server-String-authKey-String-qqNumber"><a href="#60-constructor-62-Mirai-String-server-String-authKey-String-qqNumber" class="headerlink" title="&#60;constructor&#62; Mirai(String server, String authKey, String qqNumber)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai(<code>String</code> server, <code>String</code> authKey, <code>String</code> qqNumber)</h3><p>创建一个新的Mirai对象并准备与http api服务器连接。<br>服务器地址，验证密钥和操作QQ号分别由<code>server</code>，<code>authKey</code>和<code>qqNumber</code>指定。</p>
-<h3 id="详细方法"><a href="#详细方法" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="●-VOID-setAuthKey-String-authKey"><a href="#●-VOID-setAuthKey-String-authKey" class="headerlink" title="● VOID setAuthKey(String authKey)"></a>● <span style='color:#aaaaaa;'>VOID</span> setAuthKey(<code>String</code> authKey)</h3><p>设置Mirai对象连接http api服务器时发送的密钥。</p>
+<h3 id="详细方法"><a href="#详细方法" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-VOID-static-init-Object-globalObject"><a href="#➢-VOID-static-init-Object-globalObject" class="headerlink" title="➢ VOID static init(Object globalObject)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> init(<code>Object</code> globalObject)</h3><p>初始化Mirai库，做平台判断和依赖下载等工作。</p>
 <blockquote>
-<p>注：只有在connect()之前设定才有效，connect()之后设定并不会更改已建立连接的Session的属性。</p>
+<p>注：wrapper.js中已初始化，无需再次初始化。</p>
 </blockquote>
-<h3 id="●-VOID-setSeverhost-String-server"><a href="#●-VOID-setSeverhost-String-server" class="headerlink" title="● VOID setSeverhost(String server)"></a>● <span style='color:#aaaaaa;'>VOID</span> setSeverhost(<code>String</code> server)</h3><p>设置Mirai对象连接http api服务器地址。</p>
+<h3 id="➢-VOID-static-registerClasses2Object-Object-object"><a href="#➢-VOID-static-registerClasses2Object-Object-object" class="headerlink" title="➢ VOID static registerClasses2Object(Object object)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> registerClasses2Object(<code>Object</code> object)</h3><p>注册<code>MessageType</code>，<code>MessageTypeConst</code>，<code>EventTypeConst</code>，<code>Permission</code>和<code>Log</code>到<code>object</code>中，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M;</span><br><span class="line">Mirai.registerClasses2Object(M = &#123;&#125;);</span><br><span class="line"><span class="comment">//可以使用M.PLAIN代替Mirai.MessageTypeConst.PLAIN</span></span><br><span class="line">Mirai.registerClasses2Object(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">//可以使用PLAIN代替Mirai.MessageTypeConst.PLAIN</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="➢-http-VOID-static-setAuthKey-String-authKey"><a href="#➢-http-VOID-static-setAuthKey-String-authKey" class="headerlink" title="➢ [http] VOID static setAuthKey(String authKey)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#97ff2e;font-size:10px;'>[http]</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> setAuthKey(<code>String</code> authKey)</h3><p>设置连接http api服务器的验证密钥。</p>
+<h3 id="➢-http-VOID-static-setServer-String-server"><a href="#➢-http-VOID-static-setServer-String-server" class="headerlink" title="➢ [http] VOID static setServer(String server)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#97ff2e;font-size:10px;'>[http]</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> setServer(<code>String</code> server)</h3><p>设置连接http api服务器地址。</p>
+<h3 id="Mirai-Bot-static-getBot-Number-qq"><a href="#Mirai-Bot-static-getBot-Number-qq" class="headerlink" title="Mirai.Bot static getBot(Number qq);"></a><code>Mirai.Bot</code> <code>static</code> getBot(<code>Number</code> qq);</h3><p>获取并返回bot对象，若无则返回<code>null</code>。</p>
+<h3 id="Mirai-Bot-static-createNewBot-Number-qq-String-password"><a href="#Mirai-Bot-static-createNewBot-Number-qq-String-password" class="headerlink" title="Mirai.Bot static createNewBot(Number qq, String password);"></a><code>Mirai.Bot</code> <code>static</code> createNewBot(<code>Number</code> qq, <code>String</code> password);</h3><p>创建一个新的bot，将其添加到BotManager并返回bot对象。参数<code>qq</code>和<code>password</code>指定了bot的qq号和密码。</p>
 <blockquote>
-<p>注：只有在connect()之前设定才有效，connect()之后设定并不会更改已建立连接的Session的属性。</p>
+<p><span style='color:#97ff2e;font-size:10px;'>[http]</span>在http版本中不需要传入<code>password</code>。</p>
 </blockquote>
-<h3 id="●-VOID-setQQNumber-String-qqNumber"><a href="#●-VOID-setQQNumber-String-qqNumber" class="headerlink" title="● VOID setQQNumber(String qqNumber)"></a>● <span style='color:#aaaaaa;'>VOID</span> setQQNumber(<code>String</code> qqNumber)</h3><p>设置Mirai对象连接http api服务器后操作的QQ号。</p>
-<blockquote>
-<p>注：只有在connect()之前设定才有效，connect()之后设定并不会更改已建立连接的Session的属性。</p>
-</blockquote>
-<h3 id="●-VOID-auth-String-server-String-authKey"><a href="#●-VOID-auth-String-server-String-authKey" class="headerlink" title="● VOID auth(String server, String authKey)"></a>● <span style='color:#aaaaaa;'>VOID</span> <span style='color:#aaaaaa;'>auth(<code>String</code> server, <code>String</code> authKey)</span></h3><p>向http api发送认证请求。</p>
-<h3 id="Mirai-Session-connect"><a href="#Mirai-Session-connect" class="headerlink" title="Mirai.Session connect()"></a><code>Mirai.Session</code> connect()</h3><p>连接服务器并建立一个会话窗口。<br>若未指定服务器地址和验证密钥，将抛出<code>Server host or authenticate key isnt set.</code>异常。<br>若验证密钥错误，将抛出<code>Authenticate key is invaild.</code>异常。</p>
-<h2 id="Mirai-Session"><a href="#Mirai-Session" class="headerlink" title="Mirai.Session"></a>Mirai.Session</h2><p>Mirai.Session是与http api服务器通讯的接口，提供消息的监听与发送功能。</p>
-<h3 id="构造函数与方法预览-1"><a href="#构造函数与方法预览-1" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
+<p>若未指定服务器地址和验证密钥，将抛出<code>Server host or authenticate key isnt set.</code>异常。<br>若验证密钥错误，将抛出<code>Authenticate key is invaild.</code>异常。</p>
+<hr>
+<h2 id="Mirai-Bot"><a href="#Mirai-Bot" class="headerlink" title="Mirai.Bot"></a>Mirai.Bot</h2><p>Bot是bot对象，提供消息处理功能。</p>
+<h3 id="方法预览-1"><a href="#方法预览-1" class="headerlink" title="方法预览"></a>方法预览</h3><table>
 <thead>
 <tr>
 <th align="center">返回类型</th>
@@ -155,84 +158,40 @@ function activateLightMode(){
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><span style='color:#aaaaaa;'>&#60;constructor&#62;</span></td>
-<td align="left"><span style='color:#aaaaaa;'>Mirai.Session(<code>String</code> sessionId)</span></td>
+<td align="center">PlaceHolder</td>
+<td align="left">PlaceHolder</td>
 </tr>
 <tr>
 <td align="center"><code>String</code></td>
-<td align="left">getSessionId()</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left"><span style='color:#aaaaaa;'>setSessionId(<code>String</code> sessionId)</span></td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left"><span style='color:#aaaaaa;'>setAttributes(<code>JSON</code> attr)</span></td>
+<td align="left"><span style='color:#97ff2e;font-size:10px;'>[http]</span>getSessionKey()</td>
 </tr>
 <tr>
 <td align="center"><code>Number</code></td>
-<td align="left">getQQNumber()</td>
+<td align="left">subscribe(<code>Object</code> subscriber)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">setQQNumber(<code>Number</code> qqNumber)</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">setMessageListener(<code>Mirai.MessageListener</code> listener)</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">setVerifyThreadLoopInterval(<code>Number</code> interval)</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">setListenThreadLoopInterval(<code>Number</code> interval)</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">setHookSize(<code>Number</code> size)</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">startVerifyThread()</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">stopVerifyThread()</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">startListen()</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">stopListen()</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">release()</td>
+<td align="left">destroy()</td>
 </tr>
 <tr>
 <td align="center"><code>Number</code></td>
-<td align="left">sendFriendMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</td>
+<td align="left">send(<span style='color:#a88bff;'>GroupOrSender</span> target, <span style='color:#a88bff;'>MessageObject</span>)</td>
 </tr>
 <tr>
 <td align="center"><code>Number</code></td>
-<td align="left">sendGroupMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</td>
+<td align="left">sendFriendMessage(<span style='color:#a88bff;'>Sender</span> target, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</td>
 </tr>
 <tr>
 <td align="center"><code>Number</code></td>
-<td align="left">sendTempMessage(<code>Number</code> target, <code>Number</code> from, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</td>
+<td align="left">sendGroupMessage(<span style='color:#a88bff;'>Group</span> target, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">sendTempMessage(<span style='color:#a88bff;'>Sender</span> target, <span style='color:#a88bff;'>Group</span> from, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</td>
 </tr>
 <tr>
 <td align="center"><code>Number</code></td>
 <td align="left">recall(<code>Number</code> target)</td>
-</tr>
-<tr>
-<td align="center"><code>Mirai.MessageChain</code></td>
-<td align="left">getCachedMessage(<code>Number</code> mseeageId)</td>
 </tr>
 <tr>
 <td align="center"><code>Array</code></td>
@@ -244,31 +203,31 @@ function activateLightMode(){
 </tr>
 <tr>
 <td align="center"><code>Array</code></td>
-<td align="left">getGroupMemberList(<code>Number</code> group)</td>
+<td align="left">getGroupMemberList(<span style='color:#a88bff;'>Group</span> group)</td>
+</tr>
+<tr>
+<td align="center"><code>Boolean</code></td>
+<td align="left">haveFriend(<span style='color:#a88bff;'>Sender</span> target)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">mute(<code>Number</code> group, <code>Number</code> target, <code>Number</code> time)</td>
+<td align="left">mute(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span>[, <code>Number</code> time])</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">unmute(<code>Number</code> group, <code>Number</code> target)</td>
+<td align="left">unmute(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span> target)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">muteAll(<code>Number</code> group)</td>
+<td align="left">muteAll(<span style='color:#a88bff;'>Group</span> group)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">unmuteAll(<code>Number</code> group)</td>
+<td align="left">unmuteAll(<span style='color:#a88bff;'>Group</span> group)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">kick(<code>Number</code> group, <code>Number</code> target)</td>
-</tr>
-<tr>
-<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
-<td align="left">reAuth()</td>
+<td align="left">kick(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span> target)</td>
 </tr>
 <tr>
 <td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
@@ -280,60 +239,61 @@ function activateLightMode(){
 </tr>
 </tbody></table>
 <blockquote>
-<p>注：灰色方法虽为公共方法，但只在MiraiBot_HTTP.js内部使用，请不要调用此类方法。</p>
+<p><span style='color:#a88bff;'>紫色参数</span>表示聚合类型，将会在方法详细中介绍。</p>
 </blockquote>
-<h3 id="构造函数-1"><a href="#构造函数-1" class="headerlink" title="构造函数"></a>构造函数</h3><h3 id="60-constructor-62-Mirai-Session-String-sessionId"><a href="#60-constructor-62-Mirai-Session-String-sessionId" class="headerlink" title="&#60;constructor&#62; Mirai.Session(String sessionId)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> <span style='color:#aaaaaa;'>Mirai.Session(<code>String</code> sessionId)</span></h3><p><span style='color:#aaaaaa;'>创建一个Session</span></p>
-<h3 id="详细方法-1"><a href="#详细方法-1" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="●-String-getSessionId"><a href="#●-String-getSessionId" class="headerlink" title="● String getSessionId()"></a>● <span style='color:#aaaaaa;'><code>String</code></span> getSessionId()</h3><p>返回当前Session的id(由http api分配)。</p>
-<h3 id="●-VOID-setSessionId-String-sessionId"><a href="#●-VOID-setSessionId-String-sessionId" class="headerlink" title="● VOID setSessionId(String sessionId)"></a>● <span style='color:#aaaaaa;'>VOID</span> <span style='color:#aaaaaa;'>setSessionId(<code>String</code> sessionId)</span></h3><p><span style='color:#aaaaaa;'>指定当前Session的ID。</span></p>
-<h3 id="●-VOID-setAttributes-JSON-attr"><a href="#●-VOID-setAttributes-JSON-attr" class="headerlink" title="● VOID setAttributes(JSON attr)"></a>● <span style='color:#aaaaaa;'>VOID</span> <span style='color:#aaaaaa;'>setAttributes(<code>JSON</code> attr)</span></h3><p><span style='color:#aaaaaa;'>设置当前Session属性。</span></p>
-<h3 id="●-String-getQQNumber"><a href="#●-String-getQQNumber" class="headerlink" title="● String getQQNumber()"></a>● <span style='color:#aaaaaa;'><code>String</code></span> getQQNumber()</h3><p>返回当前Session操作的QQ号。</p>
+<h3 id="详细方法-1"><a href="#详细方法-1" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-http-String-getSessionKey"><a href="#➢-http-String-getSessionKey" class="headerlink" title="➢ [http]String getSessionKey()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#97ff2e;font-size:10px;'>[http]</span><span style='color:#aaaaaa;'><code>String</code></span> getSessionKey()</h3><p>返回当前bot的sessionKey(由http api分配)。</p>
+<h3 id="➢-VOID-subscribe-Object-subscriber"><a href="#➢-VOID-subscribe-Object-subscriber" class="headerlink" title="➢ VOID subscribe(Object subscriber)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> subscribe(<code>Object</code> subscriber)</h3><p>订阅当前bot接受到的消息。<br><code>subscriber</code>是一个<code>JSON</code>对象，它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bot.subscribe(&#123;</span><br><span class="line">  <span class="comment">//订阅好友消息</span></span><br><span class="line">  friend: <span class="function">(<span class="params">sender, message</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  <span class="comment">//订阅群组消息</span></span><br><span class="line">  group: <span class="function">(<span class="params">group, sender, message</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  <span class="comment">//订阅临时消息(从群组来的群友)</span></span><br><span class="line">  temp: <span class="function">(<span class="params">group, sender, message</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  <span class="comment">//订阅各类其他事件(如新群友进群，撤回消息等)</span></span><br><span class="line">  event: <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  <span class="comment">//捕捉消息接收时的异常</span></span><br><span class="line">  error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在参数中，<code>sender</code>的数据类型为<code>MessageSender</code>，<code>group</code>的数据类型为<code>GroupInfo</code>，<code>message</code>的类型为<code>MessageChain</code>，<code>error</code>的数据类型为<code>Error</code>或<code>String</code>。<br>订阅什么类型消息是可选的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只订阅群组消息</span></span><br><span class="line">bot.subscribe(&#123;</span><br><span class="line">  group: <span class="function">(<span class="params">group, sender, message</span>) =&gt;</span> &#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//不订阅临时消息</span></span><br><span class="line">bot.subscribe(&#123;</span><br><span class="line">  friend: <span class="function">(<span class="params">sender, message</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  group: <span class="function">(<span class="params">group, sender, message</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  <span class="comment">//temp: (group, sender, message) =&gt; &#123;&#125;,  </span></span><br><span class="line">  event: <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>若再次调用<code>subscribe()</code>，则会覆盖之前的订阅对象。</p>
+<h3 id="➢-VOID-destroy"><a href="#➢-VOID-destroy" class="headerlink" title="➢ VOID destroy()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> destroy()</h3><p>将这个bot从BotManager中移除并销毁当前bot对象。</p>
+<h3 id="➢-Number-send-GroupOrSender-target-MessageObject"><a href="#➢-Number-send-GroupOrSender-target-MessageObject" class="headerlink" title="➢ Number send(GroupOrSender target, MessageObject)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> send(<span style='color:#a88bff;'>GroupOrSender</span> target, <span style='color:#a88bff;'>MessageObject</span>)</h3><p>发送一条消息，<span style='color:#a88bff;'>GroupOrSender</span>表示<code>GroupInfo</code>或<code>MessageSender</code>，若为<code>GroupInfo</code>则表示发送群消息，<code>MessageSender</code>则表示发送好友消息，若无这个好友，但在同一个群，会尝试发送临时消息。<br>若发送成功则返回消息ID，否则返回0。</p>
+<p><span style='color:#a88bff;'>MessageObject</span>是聚合类消息对象，它可以为以下格式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单消息对象</span></span><br><span class="line">Plain(<span class="string">"hello"</span>)</span><br><span class="line"><span class="comment">//纯文本，处理时转化成文本消息</span></span><br><span class="line"><span class="string">"hello"</span></span><br><span class="line"><span class="comment">//多消息对象(多参)</span></span><br><span class="line">At(xxx), Plain(<span class="string">"at你了！"</span>)</span><br><span class="line"><span class="comment">//多参中纯文本也会转化成文本消息</span></span><br><span class="line">At(xxx), <span class="string">"at你了！"</span></span><br><span class="line"><span class="comment">//多消息对象(操作符)</span></span><br><span class="line">At(xxx) + Plain(<span class="string">"at你了！"</span>)</span><br><span class="line"><span class="comment">//操作符中纯文本不能转化成文本消息</span></span><br><span class="line"><span class="comment">///以下写法将出错</span></span><br><span class="line">At(xxx) + <span class="string">"at你了！"</span></span><br></pre></td></tr></table></figure>
+<p>不是很懂？以下例子帮助你理解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">send(xxx, At(xxx), Plain(&quot;at你！&quot;));</span><br><span class="line">send(xxx, Plain(&quot;hello&quot;));</span><br><span class="line">send(xxx, &quot;hello&quot;);</span><br><span class="line">send(xxx, At(xxx), Plain(&quot;at你了！&quot;));</span><br><span class="line">send(xxx, At(xxx), &quot;at你了！&quot;);</span><br><span class="line">send(xxx, At(xxx) + Plain(&quot;at你了！&quot;));</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>若已开始执行session循环验证线程或消息循环监听线程，则会自动更新配置并重启线程。</p>
+<p>以下所有<span style='color:#a88bff;'>MessageObject</span>的意义都与这里相同。</p>
 </blockquote>
-<h3 id="●-VOID-setMessageListener-Mirai-MessageListener-listener"><a href="#●-VOID-setMessageListener-Mirai-MessageListener-listener" class="headerlink" title="● VOID setMessageListener(Mirai.MessageListener listener)"></a>● <span style='color:#aaaaaa;'>VOID</span> setMessageListener(<code>Mirai.MessageListener</code> listener)</h3><p>设置消息监听器。</p>
+<h3 id="➢-Number-sendFriendMessage-Sender-target-MessageObject-Number-quoteId"><a href="#➢-Number-sendFriendMessage-Sender-target-MessageObject-Number-quoteId" class="headerlink" title="➢ Number sendFriendMessage(Sender target, [MessageObject][, Number quoteId])"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> sendFriendMessage(<span style='color:#a88bff;'>Sender</span> target, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</h3><p>发送好友消息，<span style='color:#a88bff;'>Sender</span>表示 <code>Number</code>类型的用户qq号 或 <code>MessageSender</code>类型的消息发送者对象，<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
+<p>注意这里的<span style='color:#a88bff;'>MessageObject</span>，它是被<code>[]</code>套起来的，换句话说这里传入的<span style='color:#a88bff;'>MessageObject</span>是单成员数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sendFriendMessage(xxx, [Plain(<span class="string">"hello"</span>)], quoteId);</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>若已开始执行session循环验证线程或消息循环监听线程，则会自动更新配置并重启线程。</p>
+<p>以下所有<span style='color:#a88bff;'>Sender</span>的意义都与这里相同。</p>
 </blockquote>
-<h3 id="●-VOID-setVerifyThreadLoopInterval-Number-interval"><a href="#●-VOID-setVerifyThreadLoopInterval-Number-interval" class="headerlink" title="● VOID setVerifyThreadLoopInterval(Number interval)"></a>● <span style='color:#aaaaaa;'>VOID</span> setVerifyThreadLoopInterval(<code>Number</code> interval)</h3><p>设置session验证循环线程执行间隔(毫秒)。<br>默认是<code>1500000</code>毫秒(25分钟)。<br>一个Session在30分钟后未验证则http服务端自动销毁，所以请不要把此间隔设定在30分钟以上。</p>
+<h3 id="➢-Number-sendGroupMessage-Group-target-MessageObject-Number-quoteId"><a href="#➢-Number-sendGroupMessage-Group-target-MessageObject-Number-quoteId" class="headerlink" title="➢ Number sendGroupMessage(Group target, [MessageObject][, Number quoteId])"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> sendGroupMessage(<span style='color:#a88bff;'>Group</span> target, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</h3><p>发送群组消息，<span style='color:#a88bff;'>Group</span>表示 <code>Number</code>类型的群号 或 <code>GroupInfo</code>类型的群组对象，<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
+<p>这里也需要注意<span style='color:#a88bff;'>MessageObject</span>。</p>
 <blockquote>
-<p>若已开始执行session循环验证线程或消息循环监听线程，则会自动更新配置并重启线程。</p>
+<p>以下所有<span style='color:#a88bff;'>Group</span>的意义都与这里相同。</p>
 </blockquote>
-<h3 id="●-VOID-setListenThreadLoopInterval-Nubmer-interval"><a href="#●-VOID-setListenThreadLoopInterval-Nubmer-interval" class="headerlink" title="● VOID setListenThreadLoopInterval(Nubmer interval)"></a>● <span style='color:#aaaaaa;'>VOID</span> setListenThreadLoopInterval(<code>Nubmer</code> interval)</h3><p>设置消息监听循环监听线程执行间隔(毫秒)。<br>默认是<code>200</code>毫秒(0.2秒)。<br>间隔时间越短，获取消息越及时，但是会占用更多内存。</br>间隔时间过长可能会漏接消息。</p>
-<blockquote>
-<p>若已开始执行session循环验证线程或消息循环监听线程，则会自动更新配置并重启线程。</p>
-</blockquote>
-<h3 id="●-VOID-startVerifyThread"><a href="#●-VOID-startVerifyThread" class="headerlink" title="● VOID startVerifyThread()"></a>● <span style='color:#aaaaaa;'>VOID</span> startVerifyThread()</h3><p>开始执行session循环验证线程。</p>
-<h3 id="●-VOID-stopVerifyThread"><a href="#●-VOID-stopVerifyThread" class="headerlink" title="● VOID stopVerifyThread()"></a>● <span style='color:#aaaaaa;'>VOID</span> stopVerifyThread()</h3><p>停止session循环验证线程。</p>
-<h3 id="●-VOID-startListen"><a href="#●-VOID-startListen" class="headerlink" title="● VOID startListen()"></a>● <span style='color:#aaaaaa;'>VOID</span> startListen()</h3><p>开始执行消息循环监听线程。</p>
-<blockquote>
-<p>若未为该session设置消息监听器，则抛出<code>Cannot start to listen: No listener set.</code>异常。</p>
-</blockquote>
-<h3 id="●-VOID-stopListen"><a href="#●-VOID-stopListen" class="headerlink" title="● VOID stopListen()"></a>● <span style='color:#aaaaaa;'>VOID</span> stopListen()</h3><p>停止消息循环监听线程。</p>
-<h3 id="●-VOID-release"><a href="#●-VOID-release" class="headerlink" title="● VOID release()"></a>● <span style='color:#aaaaaa;'>VOID</span> release()</h3><p>向服务端发送销毁session信号并立即释放当前session。</p>
-<h3 id="●-Number-sendFriendMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId"><a href="#●-Number-sendFriendMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId" class="headerlink" title="● Number sendFriendMessage(Number target, Mirai.MessageChain messageChain[, Number quoteId])"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> sendFriendMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</h3><p>向QQ号为<code>target</code>的<span style='color:#ff0000;'>好友</span>发送消息，参数<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
-<h3 id="●-Number-sendGroupMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId"><a href="#●-Number-sendGroupMessage-Number-target-Mirai-MessageChain-messageChain-Number-quoteId" class="headerlink" title="● Number sendGroupMessage(Number target, Mirai.MessageChain messageChain[, Number quoteId])"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> sendGroupMessage(<code>Number</code> target, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</h3><p>向QQ群号为<code>target</code>的群发送消息，参数<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
-<h3 id="●-Number-sendTempMessage-Number-target-Number-from-Mirai-MessageChain-messageChain-Number-quoteId"><a href="#●-Number-sendTempMessage-Number-target-Number-from-Mirai-MessageChain-messageChain-Number-quoteId" class="headerlink" title="● Number sendTempMessage(Number target, Number from, Mirai.MessageChain messageChain[, Number quoteId])"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> sendTempMessage(<code>Number</code> target, <code>Number</code> from, <code>Mirai.MessageChain</code> messageChain[, <code>Number</code> quoteId])</h3><p>向QQ号为<code>target</code>的群好友发送临时消息，<code>from</code>表示该用户来自的群的群号，参数<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
-<h3 id="●-VOID-recall-Number-target"><a href="#●-VOID-recall-Number-target" class="headerlink" title="● VOID recall(Number target)"></a>● <span style='color:#aaaaaa;'>VOID</span> recall(<code>Number</code> target)</h3><p>撤回一条消息，<code>target</code>指定了要撤回的消息的ID。</p>
-<h3 id="●-Mirai-MessageChain-getCachedMessage-Number-messageId"><a href="#●-Mirai-MessageChain-getCachedMessage-Number-messageId" class="headerlink" title="● Mirai.MessageChain getCachedMessage(Number messageId)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageChain</code></span> getCachedMessage(<code>Number</code> messageId)</h3><p>通过消息id从消息缓存中返回一条消息的消息链，可以是群组消息或好友消息，但不能是事件。<br>若缓存中无此消息id对应的消息链，则返回一个新的无任何消息的消息链。</p>
-<h3 id="●-Array-getFriendList"><a href="#●-Array-getFriendList" class="headerlink" title="● Array getFriendList()"></a>● <span style='color:#aaaaaa;'><code>Array</code></span> getFriendList()</h3><p>获取当前登录的qq号的好友列表数组，它的格式是这样的：</p>
+<h3 id="➢-Number-sendTempMessage-Sender-target-Group-from-MessageObject-Number-quoteId"><a href="#➢-Number-sendTempMessage-Sender-target-Group-from-MessageObject-Number-quoteId" class="headerlink" title="➢ Number sendTempMessage(Sender target, Group from, [MessageObject][, Number quoteId])"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> sendTempMessage(<span style='color:#a88bff;'>Sender</span> target, <span style='color:#a88bff;'>Group</span> from, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</h3><p>发送临时消息，<code>target</code>表示要发送对象，<code>from</code>表示群组来源，<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
+<p>同样需要注意<span style='color:#a88bff;'>MessageObject</span>。</p>
+<h3 id="➢-Number-recall-Number-target"><a href="#➢-Number-recall-Number-target" class="headerlink" title="➢ Number recall(Number target)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> recall(<code>Number</code> target)</h3><p>撤回一条消息，<code>target</code>指定了要撤回的消息的ID。</p>
+<h3 id="➢-Array-getFriendList"><a href="#➢-Array-getFriendList" class="headerlink" title="➢ Array getFriendList()"></a><span style='color:#ff972e;'>➢</span> <code>Array</code> getFriendList()</h3><p>获取当前bot的好友列表，它的格式是这样的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">123456789</span>, <span class="comment">//QQ号</span></span><br><span class="line">    <span class="string">"nickname"</span>:<span class="string">""</span>, <span class="comment">//昵称</span></span><br><span class="line">    <span class="string">"remark"</span>:<span class="string">""</span> <span class="comment">//备注</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">987654321</span>,</span><br><span class="line">    <span class="string">"nickname"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"remark"</span>:<span class="string">""</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>若出现了任何错误，会返回一个空数组。</p>
-<h3 id="●-Array-getGroupList"><a href="#●-Array-getGroupList" class="headerlink" title="● Array getGroupList()"></a>● <span style='color:#aaaaaa;'><code>Array</code></span> getGroupList()</h3><p>获取当前登录的qq号的群组列表数组，它的格式是这样的：</p>
+<h3 id="➢-Array-getGroupList"><a href="#➢-Array-getGroupList" class="headerlink" title="➢ Array getGroupList()"></a><span style='color:#ff972e;'>➢</span> <code>Array</code> getGroupList()</h3><p>获取当前bot的群组列表，它的格式是这样的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">123456789</span>, <span class="comment">//群号</span></span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"群名1"</span>, <span class="comment">//群名称</span></span><br><span class="line">    <span class="string">"permission"</span>: <span class="string">"MEMBER"</span> <span class="comment">//bot在这个群的权限</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">987654321</span>,</span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"群名2"</span>,</span><br><span class="line">    <span class="string">"permission"</span>: <span class="string">"MEMBER"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>若出现了任何错误，会返回一个空数组。</p>
-<h3 id="●-Array-getGroupMemberList-Number-group"><a href="#●-Array-getGroupMemberList-Number-group" class="headerlink" title="● Array getGroupMemberList(Number group)"></a>● <span style='color:#aaaaaa;'><code>Array</code></span> getGroupMemberList(<code>Number</code> group)</h3><p>获取一个群的群员列表数组，<code>group</code>指定了要查询的qq群群号。它的格式是这样的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">1234567890</span>, <span class="comment">//群友qq号</span></span><br><span class="line">    <span class="string">"memberName"</span>:<span class="string">""</span>, <span class="comment">//群友群名片</span></span><br><span class="line">    <span class="string">"permission"</span>:<span class="string">"MEMBER"</span> <span class="comment">//群友权限对应Mirai.GroupInfo.Permission.MEMBER/ADMIN/OWNER</span></span><br><span class="line">    <span class="comment">/*"group":&#123;</span></span><br><span class="line"><span class="comment">        "id":12345,</span></span><br><span class="line"><span class="comment">        "name":"群名1",</span></span><br><span class="line"><span class="comment">        "permission": "MEMBER"</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">9876543210</span>,</span><br><span class="line">    <span class="string">"memberName"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"permission"</span>:<span class="string">"OWNER"</span></span><br><span class="line">    <span class="comment">/*"group":&#123;</span></span><br><span class="line"><span class="comment">        "id":54321,</span></span><br><span class="line"><span class="comment">        "name":"群名2",</span></span><br><span class="line"><span class="comment">        "permission": "MEMBER"</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="➢-Array-getGroupMemberList-Group-group"><a href="#➢-Array-getGroupMemberList-Group-group" class="headerlink" title="➢ Array getGroupMemberList(Group group)"></a><span style='color:#ff972e;'>➢</span> <code>Array</code> getGroupMemberList(<span style='color:#a88bff;'>Group</span> group)</h3><p>获取一个群的群员列表数组，<code>group</code>指定了要查询的群组。它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">1234567890</span>, <span class="comment">//群友qq号</span></span><br><span class="line">    <span class="string">"memberName"</span>:<span class="string">""</span>, <span class="comment">//群友群名片</span></span><br><span class="line">    <span class="string">"permission"</span>:<span class="string">"MEMBER"</span> <span class="comment">//群友权限对应Permission.MEMBER/ADMIN/OWNER</span></span><br><span class="line">    <span class="comment">/*"group":&#123;</span></span><br><span class="line"><span class="comment">        "id":12345,</span></span><br><span class="line"><span class="comment">        "name":"群名1",</span></span><br><span class="line"><span class="comment">        "permission": "MEMBER"</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">9876543210</span>,</span><br><span class="line">    <span class="string">"memberName"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"permission"</span>:<span class="string">"OWNER"</span></span><br><span class="line">    <span class="comment">/*"group":&#123;</span></span><br><span class="line"><span class="comment">        "id":54321,</span></span><br><span class="line"><span class="comment">        "name":"群名2",</span></span><br><span class="line"><span class="comment">        "permission": "MEMBER"</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>若出现了任何错误，会返回一个空数组。</p>
-<h3 id="●-VOID-mute-Number-group-Number-target-Number-time"><a href="#●-VOID-mute-Number-group-Number-target-Number-time" class="headerlink" title="● VOID mute(Number group, Number target, Number time)"></a>● <span style='color:#aaaaaa;'>VOID</span> mute(<code>Number</code> group, <code>Number</code> target, <code>Number</code> time)</h3><p>禁言一个群员，<code>group</code>指定要操作的群，<code>target</code>指定要禁言的成员，<code>time</code>指定禁言的时间(秒)。<br>注：需要bot有对应权限！</p>
-<h3 id="●-VOID-unmute-Number-group-Number-target"><a href="#●-VOID-unmute-Number-group-Number-target" class="headerlink" title="● VOID unmute(Number group, Number target)"></a>● <span style='color:#aaaaaa;'>VOID</span> unmute(<code>Number</code> group, <code>Number</code> target)</h3><p>解除禁言一个群员，<code>group</code>指定要操作的群，<code>target</code>指定要解除禁言的成员。<br>注：需要bot有对应权限！</p>
-<h3 id="●-VOID-muteAll-Number-group"><a href="#●-VOID-muteAll-Number-group" class="headerlink" title="● VOID muteAll(Number group)"></a>● <span style='color:#aaaaaa;'>VOID</span> muteAll(<code>Number</code> group)</h3><p>全体禁言一个群组，<code>group</code>指定要操作的群。<br>注：需要bot有对应权限！</p>
-<h3 id="●-VOID-unmuteAll-Number-group"><a href="#●-VOID-unmuteAll-Number-group" class="headerlink" title="● VOID unmuteAll(Number group)"></a>● <span style='color:#aaaaaa;'>VOID</span> unmuteAll(<code>Number</code> group)</h3><p>解除全体禁言一个群组，<code>group</code>指定要操作的群。<br>注：需要bot有对应权限！</p>
-<h3 id="●-VOID-kick-Number-group-Number-target"><a href="#●-VOID-kick-Number-group-Number-target" class="headerlink" title="● VOID kick(Number group, Number target)"></a>● <span style='color:#aaaaaa;'>VOID</span> kick(<code>Number</code> group, <code>Number</code> target)</h3><p>踢出群组的某个群员，<code>group</code>指定要操作的群，<code>target</code>指定要踢出的群员。<br>注：需要bot有对应权限！</p>
-<h3 id="●-VOID-reAuth"><a href="#●-VOID-reAuth" class="headerlink" title="● VOID reAuth()"></a>● <span style='color:#aaaaaa;'>VOID</span> reAuth()</h3><p>重新向http api服务器发送认证，并为这个session设定新的session key。</p>
-<h3 id="●-VOID-handleFriendRequest-JSON-iArg-Number-isAccept-String-msg"><a href="#●-VOID-handleFriendRequest-JSON-iArg-Number-isAccept-String-msg" class="headerlink" title="● VOID handleFriendRequest(JSON iArg, Number isAccept, String msg)"></a>● <span style='color:#aaaaaa;'>VOID</span> handleFriendRequest(<code>JSON</code> iArg, <code>Number</code> isAccept, <code>String</code> msg)</h3><p>处理一个好友请求，<code>iArg</code>必须为新好友事件的<code>event.toIArg()</code>方法返回的JSON。<br><code>isAccept</code>表示要执行的操作，<code>0</code>为同意好友请求; <code>1</code>为拒绝好友请求; <code>2</code>为拒绝添加好友并添加黑名单，不再接收该用户的好友申请。<br><code>msg</code>是可选的，表示拒绝同意好友请求的理由。</p>
-<h3 id="●-VOID-handleMemberJoinRequest-JSON-iArg-Number-isAccept-String-msg"><a href="#●-VOID-handleMemberJoinRequest-JSON-iArg-Number-isAccept-String-msg" class="headerlink" title="● VOID handleMemberJoinRequest(JSON iArg, Number isAccept, String msg)"></a>● <span style='color:#aaaaaa;'>VOID</span> handleMemberJoinRequest(<code>JSON</code> iArg, <code>Number</code> isAccept, <code>String</code> msg)</h3><p>处理一个好友请求，<code>iArg</code>必须为新成员入群事件的<code>event.toIArg()</code>方法返回的JSON。<br><code>isAccept</code>表示要执行的操作，<code>0</code>为同意入群请求; <code>1</code>为拒绝入群请求; <code>2</code>为忽略入群请求; <code>3</code>为拒绝入群并添加黑名单，不再接收该用户的入群申请; <code>4</code>为忽略入群并添加黑名单，不再接收该用户的入群申请。<br><code>msg</code>是可选的，表示拒绝入群请求的理由。<br>注：需要bot有对应权限！</p>
-<h2 id="Mirai-MessageChain"><a href="#Mirai-MessageChain" class="headerlink" title="Mirai.MessageChain"></a>Mirai.MessageChain</h2><p>Mirai.MessageChain提供消息链构造方法。<br>(QQ的一个消息可能是由各种消息构成的，如”文字+图片”。Mirai对此的处理方式是：将这些复合消息转化成各种类型消息构成的消息链。)</p>
-<h3 id="构造函数与方法预览-2"><a href="#构造函数与方法预览-2" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
+<h3 id="➢-Boolean-haveFriend-Sender-target"><a href="#➢-Boolean-haveFriend-Sender-target" class="headerlink" title="➢ Boolean haveFriend(Sender target)"></a><span style='color:#ff972e;'>➢</span> <code>Boolean</code> haveFriend(<span style='color:#a88bff;'>Sender</span> target)</h3><p>判断bot是否有这个好友，<code>target</code>指定了查询的对象。</p>
+<h3 id="➢-VOID-mute-Group-group-Sender-Number-time"><a href="#➢-VOID-mute-Group-group-Sender-Number-time" class="headerlink" title="➢ VOID mute(Group group, Sender[, Number time])"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> mute(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span>[, <code>Number</code> time])</h3><p>禁言一个群员，<code>group</code>指定要操作的群，<code>target</code>指定要禁言的成员，<code>time</code>指定禁言的时间(秒)。<br>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-unmute-Group-group-Sender-target"><a href="#➢-VOID-unmute-Group-group-Sender-target" class="headerlink" title="➢ VOID unmute(Group group, Sender target)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmute(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span> target)</h3><p>解除禁言一个群员，<code>group</code>指定要操作的群，<code>target</code>指定要解除禁言的成员。</p>
+<p>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-muteAll-Group-group"><a href="#➢-VOID-muteAll-Group-group" class="headerlink" title="➢ VOID muteAll(Group group)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> muteAll(<span style='color:#a88bff;'>Group</span> group)</h3><p>全体禁言一个群组，<code>group</code>指定要操作的群。</p>
+<p>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-unmuteAll-Group-group"><a href="#➢-VOID-unmuteAll-Group-group" class="headerlink" title="➢ VOID unmuteAll(Group group)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmuteAll(<span style='color:#a88bff;'>Group</span> group)</h3><p>解除全体禁言一个群组，<code>group</code>指定要操作的群。</p>
+<p>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-kick-Group-group-Sender-target"><a href="#➢-VOID-kick-Group-group-Sender-target" class="headerlink" title="➢ VOID kick(Group group, Sender target)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> kick(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span> target)</h3><p>踢出群组的某个群员，<code>group</code>指定要操作的群，<code>target</code>指定要踢出的群员。</p>
+<p>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-handleFriendRequest-JSON-iArg-Number-isAccept-String-msg"><a href="#➢-VOID-handleFriendRequest-JSON-iArg-Number-isAccept-String-msg" class="headerlink" title="➢ VOID handleFriendRequest(JSON iArg, Number isAccept, String msg)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> handleFriendRequest(<code>JSON</code> iArg, <code>Number</code> isAccept, <code>String</code> msg)</h3><p>处理一个好友请求，<code>iArg</code>必须为新好友事件的<code>event.toIArg()</code>方法返回的JSON。<br><code>isAccept</code>表示要执行的操作，<code>0</code>为同意好友请求; <code>1</code>为拒绝好友请求; <code>2</code>为拒绝添加好友并添加黑名单，不再接收该用户的好友申请。<br><code>msg</code>是可选的，表示拒绝同意好友请求的理由。</p>
+<h3 id="➢-VOID-handleMemberJoinRequest-JSON-iArg-Number-isAccept-String-msg"><a href="#➢-VOID-handleMemberJoinRequest-JSON-iArg-Number-isAccept-String-msg" class="headerlink" title="➢ VOID handleMemberJoinRequest(JSON iArg, Number isAccept, String msg)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> handleMemberJoinRequest(<code>JSON</code> iArg, <code>Number</code> isAccept, <code>String</code> msg)</h3><p>处理一个好友请求，<code>iArg</code>必须为新成员入群事件的<code>event.toIArg()</code>方法返回的JSON。<br><code>isAccept</code>表示要执行的操作，<code>0</code>为同意入群请求; <code>1</code>为拒绝入群请求; <code>2</code>为忽略入群请求; <code>3</code>为拒绝入群并添加黑名单，不再接收该用户的入群申请; <code>4</code>为忽略入群并添加黑名单，不再接收该用户的入群申请。<br><code>msg</code>是可选的，表示拒绝入群请求的理由。<br>注：需要bot有对应权限！</p>
+<hr>
+<h2 id="Mirai-MessageChain"><a href="#Mirai-MessageChain" class="headerlink" title="Mirai.MessageChain"></a>Mirai.MessageChain</h2><p>MessageChain提供消息链构造方法。<br>(QQ的一个消息可能是由各种消息构成的，如”文字+图片”。Mirai对此的处理方式是：将这些复合消息转化成各种类型消息构成的消息链。)</p>
+<h3 id="方法预览-2"><a href="#方法预览-2" class="headerlink" title="方法预览"></a>方法预览</h3><table>
 <thead>
 <tr>
 <th align="center">返回类型</th>
@@ -341,85 +301,51 @@ function activateLightMode(){
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><span style='color:#aaaaaa;'>&#60;constructor&#62;</span></td>
-<td align="left"><span style='color:#aaaaaa;'>Mirai.MessageChain(<code>Array</code> messageChain)</span></td>
+<td align="center">PlaceHolder</td>
+<td align="left">PlaceHolder</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageChain</code></td>
-<td align="left"><code>static</code> <span style='color:#aaaaaa;'>_build(<code>Array</code> messageChain)</span></td>
+<td align="center"><span style='color:#aaaaaa;'><code>Number</code></span></td>
+<td align="left">length()</span></td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageChain</code></td>
-<td align="left">build(<code>Mirai.MessageType.?</code>/<code>Mirai.MessageChain</code> arguments…)</td>
+<td align="center"><code>MessageType.?</code></td>
+<td align="left">get(<code>MessageTypeConst.?</code> type)</td>
 </tr>
 <tr>
-<td align="center"><code>Number</code></td>
-<td align="left">length()</td>
+<td align="center"><code>Boolean</code></td>
+<td align="left">contain(<code>String</code>/<code>RegExp</code> text)</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.?</code></td>
-<td align="left">getMessage(<code>Mirai.MessageTypeConst.?</code> type)</td>
+<td align="center"><code>MessageChain</code></td>
+<td align="left"><span style='color:#aaaaaa;'>discord(<code>MessageTypeConst.?</code> type)</span></td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageChain</code></td>
-<td align="left"><span style='color:#aaaaaa;'>discordMessage(<code>Mirai.MessageTypeConst.?</code> type)</span></td>
+<td align="center"><code>MessageChain</code></td>
+<td align="left"><span style='color:#aaaaaa;'>add(<span style='color:#a88bff;'>MessageObject</span> messages)</span></td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageChain</code></td>
-<td align="left"><span style='color:#aaaaaa;'>addMessage(<code>Mirai.MessageType.?</code>/<code>Mirai.MessageChain</code> arguments…)</span></td>
-</tr>
-<tr>
-<td align="center"><code>Mirai.MessageChain</code></td>
-<td align="left"><span style='color:#aaaaaa;'>addMessageF(<code>Mirai.MessageType.?</code>/<code>Mirai.MessageChain</code> arguments…)</span></td>
-</tr>
-<tr>
-<td align="center"><code>Array</code></td>
-<td align="left"><span style='color:#aaaaaa;'>toChainArray()</span></td>
-</tr>
-<tr>
-<td align="center"><code>Array</code></td>
-<td align="left"><span style='color:#aaaaaa;'>toSource()</span></td>
+<td align="center"><code>MessageChain</code></td>
+<td align="left"><span style='color:#aaaaaa;'>addF(<span style='color:#a88bff;'>MessageObject</span> messages)</span></td>
 </tr>
 <tr>
 <td align="center"><code>String</code></td>
 <td align="left">toString()</td>
 </tr>
 </tbody></table>
-<h3 id="构造函数-2"><a href="#构造函数-2" class="headerlink" title="构造函数"></a>构造函数</h3><h3 id="60-constructor-62-Mirai-MessageChain-Array-messageChain"><a href="#60-constructor-62-Mirai-MessageChain-Array-messageChain" class="headerlink" title="&#60;constructor&#62; Mirai.MessageChain(Array messageChain)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> <span style='color:#aaaaaa;'>Mirai.MessageChain(<code>Array</code> messageChain)</span></h3><p><span style='color:#aaaaaa;'>创建一个消息链。</span></p>
-<h3 id="详细方法-2"><a href="#详细方法-2" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="●-Mirai-MessageChain-static-build-JSON-messageChain"><a href="#●-Mirai-MessageChain-static-build-JSON-messageChain" class="headerlink" title="● Mirai.MessageChain static _build(JSON messageChain)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageChain</code></span> <code>static</code> <span style='color:#aaaaaa;'>_build(<code>JSON</code> messageChain)</span></h3><p><span style='color:#aaaaaa;'>从JSON数据直接构造消息链。</span></p>
-<h3 id="●-Mirai-MessageChain-static-build-Mirai-MessageType-Mirai-MessageChain-arguments…"><a href="#●-Mirai-MessageChain-static-build-Mirai-MessageType-Mirai-MessageChain-arguments…" class="headerlink" title="● Mirai.MessageChain static build(Mirai.MessageType.?/Mirai.MessageChain arguments…)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageChain</code></span> <code>static</code> build(<code>Mirai.MessageType.?</code>/<code>Mirai.MessageChain</code> arguments…)</h3><p>构建一个消息链。</p>
+<h3 id="详细方法-2"><a href="#详细方法-2" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-Number-length"><a href="#➢-Number-length" class="headerlink" title="➢ Number length()"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> length()</h3><p>返回消息链中消息对象的数目。</p>
+<h3 id="➢-MessageType-get-MessageTypeConst-type"><a href="#➢-MessageType-get-MessageTypeConst-type" class="headerlink" title="➢ MessageType.? get(MessageTypeConst.? type)"></a><span style='color:#ff972e;'>➢</span> <code>MessageType.?</code> get(<code>MessageTypeConst.?</code> type)</h3><p>返回消息链中第一个类型为<code>type</code>的消息。<br>若该链中不存在<code>type</code>类型的消息，则返回一个新的参数均为<code>null</code>的<code>type</code>类型的消息。</p>
+<h3 id="➢-Boolean-contain-String-RegExp-text"><a href="#➢-Boolean-contain-String-RegExp-text" class="headerlink" title="➢ Boolean contain(String/RegExp text)"></a><span style='color:#ff972e;'>➢</span> <code>Boolean</code> contain(<code>String</code>/<code>RegExp</code> text)</h3><p>判断消息链中的文本消息是否包含<code>text</code>文字或正则表达式。</p>
+<h3 id="➢-MessageChain-discord-MessageTypeConst-type"><a href="#➢-MessageChain-discord-MessageTypeConst-type" class="headerlink" title="➢ MessageChain discord(MessageTypeConst.? type)"></a><span style='color:#ff972e;'>➢</span> <code>MessageChain</code> discord(<code>MessageTypeConst.?</code> type)</h3><p>删除(丢弃)消息链中所有类型为<code>type</code>的消息，并返回自己(方便链式调用)。<br>若消息链无<code>type</code>类型的消息，则什么也不会做。</p>
+<h3 id="➢-MessageChain-add-MessageObject-messages"><a href="#➢-MessageChain-add-MessageObject-messages" class="headerlink" title="➢ MessageChain add(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>MessageChain</code> add(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>在消息链末端追加消息对象或消息链，并返回自己(方便链式调用)。</p>
+<h3 id="➢-MessageChain-addF-MessageObject-messages"><a href="#➢-MessageChain-addF-MessageObject-messages" class="headerlink" title="➢ MessageChain addF(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>MessageChain</code> addF(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>在消息链首端追加消息对象或消息链，并返回自己(方便链式调用)。</p>
+<h3 id="➢-String-toString"><a href="#➢-String-toString" class="headerlink" title="➢ String toString()"></a><span style='color:#ff972e;'>➢</span> <code>String</code> toString()</h3><p>返回消息链原始JSON信息字符串。</p>
+<hr>
+<h2 id="Mirai-MessageSender"><a href="#Mirai-MessageSender" class="headerlink" title="Mirai.MessageSender"></a>Mirai.MessageSender</h2><p>MessageSender消息发送者对象。</p>
 <blockquote>
-<p><code>static</code>代表该方法为静态方法，无需实例化该类就能使用。<br><code>arguments...</code>代表可以传入无限量<code>Mirai.MessageType</code>消息对象或<code>Mirai.MessageChain</code>消息链。</p>
+<p>MessageSender只从<code>Bot.subscribe</code>返回，实例化<code>MessageSender</code>是没有任何意义的。</p>
 </blockquote>
-<p>如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> chain = Mirai.MessageChain.build(</span><br><span class="line">	<span class="keyword">new</span> Mirai.MessageType.Poke(Mirai.MessageTypeConst.PokeType.SIXSIXSIX),</span><br><span class="line">	<span class="keyword">new</span> Mirai.MessageType.Plain(<span class="string">"文本消息"</span>),</span><br><span class="line">	<span class="keyword">new</span> Mirai.MessageType.AtAll(),</span><br><span class="line">	Mirai.MessageChain.build(</span><br><span class="line">		<span class="keyword">new</span> Mirai.MessageType.Plain(<span class="string">"文本消息2"</span>),</span><br><span class="line">		<span class="keyword">new</span> Mirai.MessageType.At(<span class="number">1355416608</span>)</span><br><span class="line">	)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>理论上可以构建，能否全部显示出来则受限于QQ，如上述消息就只能显示戳一戳，而不能显示文本和@全体成员。</p>
-</blockquote>
-<h3 id="●-Number-length"><a href="#●-Number-length" class="headerlink" title="● Number length()"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> length()</span></h3><p>返回消息链中消息对象的数目。</p>
-<h3 id="●-Mirai-MessageType-getMessage-Mirai-MessageTypeConst-type"><a href="#●-Mirai-MessageType-getMessage-Mirai-MessageTypeConst-type" class="headerlink" title="● Mirai.MessageType.? getMessage(Mirai.MessageTypeConst.? type)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageType.?</code></span> getMessage(<code>Mirai.MessageTypeConst.?</code> type)</h3><p>返回消息链中第一个类型为<code>type</code>的消息。<br>若该链中不存在<code>type</code>类型的消息，则返回一个新的参数均为<code>null</code>的<code>type</code>类型的消息。</p>
-<h3 id="●-Mirai-MessageChain-discordMessage-Mirai-MessageTypeConst-type"><a href="#●-Mirai-MessageChain-discordMessage-Mirai-MessageTypeConst-type" class="headerlink" title="● Mirai.MessageChain discordMessage(Mirai.MessageTypeConst.? type)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageChain</code></span> discordMessage(<code>Mirai.MessageTypeConst.?</code> type)</h3><p>删除(丢弃)消息链中所有类型为<code>type</code>的消息，并返回自己(方便链式调用)。<br>若消息链无<code>type</code>类型的消息，则什么也不会做。</p>
-<h3 id="●-Mirai-MessageChain-addMessage-Mirai-MessageType-Mirai-MessageChain-arguments…"><a href="#●-Mirai-MessageChain-addMessage-Mirai-MessageType-Mirai-MessageChain-arguments…" class="headerlink" title="● Mirai.MessageChain addMessage(Mirai.MessageType.?/Mirai.MessageChain arguments…)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageChain</code></span> addMessage(<code>Mirai.MessageType.?</code>/<code>Mirai.MessageChain</code> arguments…)</h3><p>在消息链末端追加消息对象或消息链，并返回自己(方便链式调用)。</p>
-<h3 id="●-Mirai-MessageChain-addMessageF-Mirai-MessageType-Mirai-MessageChain-arguments…"><a href="#●-Mirai-MessageChain-addMessageF-Mirai-MessageType-Mirai-MessageChain-arguments…" class="headerlink" title="● Mirai.MessageChain addMessageF(Mirai.MessageType.?/Mirai.MessageChain arguments…)"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageChain</code></span> addMessageF(<code>Mirai.MessageType.?</code>/<code>Mirai.MessageChain</code> arguments…)</h3><p>在消息链首端追加消息对象或消息链，并返回自己(方便链式调用)。</p>
-<h3 id="●-Array-toChainArray"><a href="#●-Array-toChainArray" class="headerlink" title="● Array toChainArray()"></a>● <span style='color:#aaaaaa;'><code>Array</code></span> <span style='color:#aaaaaa;'>toChainArray()</span></h3><p><span style='color:#aaaaaa;'>返回原始消息链数组。</span></p>
-<h3 id="●-Array-toSource"><a href="#●-Array-toSource" class="headerlink" title="● Array toSource()"></a>● <span style='color:#aaaaaa;'><code>Array</code></span> <span style='color:#aaaaaa;'>toSource()</span></h3><p><span style='color:#aaaaaa;'>返回适用于Post格式的消息链信息。</span></p>
-<h3 id="●-String-toString"><a href="#●-String-toString" class="headerlink" title="● String toString()"></a>● <span style='color:#aaaaaa;'><code>String</code></span> toString()</h3><p>返回消息链原始JSON信息。</p>
-<h2 id="Mirai-MessageListener"><a href="#Mirai-MessageListener" class="headerlink" title="Mirai.MessageListener"></a>Mirai.MessageListener</h2><p>Mirai.MessageListener提供消息监听器的构造。</p>
-<h3 id="构造函数-3"><a href="#构造函数-3" class="headerlink" title="构造函数"></a>构造函数</h3><h3 id="60-constructor-62-Mirai-MessageListener-JSON-listenerBlock"><a href="#60-constructor-62-Mirai-MessageListener-JSON-listenerBlock" class="headerlink" title="&#60;constructor&#62; Mirai.MessageListener(JSON listenerBlock)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageListener(<code>JSON</code> listenerBlock)</h3><p>创建新的消息监听器实例。<br><code>listenerBlock</code>必须包括以下元素：</p>
-<ul>
-<li><code>hookGroupMessage</code>: function(<code>Mirai.GroupSenderInfo</code> sender, <code>Mirai.MessageChain</code> messageChain)<br>用于hook群组消息。</li>
-<li><code>hookFriendMessage</code>: function(<code>Mirai.FriendSenderInfo</code> sender, <code>Mirai.MessageChain</code> messageChain)<br>用于hook好友消息。</li>
-<li><code>hookOtherMessage</code>: function(<code>Mirai.EventType.?</code> event)<br>用于hook各种事件。</li>
-<li><code>hookError</code>: function(Error error)<br>用于hook错误消息。</li>
-</ul>
-<p>可以按照以下模板构建：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> listener = <span class="keyword">new</span> Mirai.MessageListener(&#123;</span><br><span class="line">	<span class="comment">//抓取群组消息</span></span><br><span class="line">	hookGroupMessage: <span class="function"><span class="keyword">function</span>(<span class="params">sender, message</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//抓取好友消息</span></span><br><span class="line">	hookFriendMessage: <span class="function"><span class="keyword">function</span>(<span class="params">sender, message</span>) </span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//抓取其他消息</span></span><br><span class="line">	hookEvent: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//错误消息</span></span><br><span class="line">	hookError: <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Mirai-GroupSenderInfo"><a href="#Mirai-GroupSenderInfo" class="headerlink" title="Mirai.GroupSenderInfo"></a>Mirai.GroupSenderInfo</h2><p>Mirai.GroupSenderInfo为hook群组消息时返回的消息发送者的一些信息。</p>
-<blockquote>
-<p>Mirai.GroupSenderInfo只从<code>Mirai.MessageListener</code>返回，实例化<code>Mirai.GroupSenderInfo</code>是没有任何意义的。</p>
-</blockquote>
-<h3 id="构造函数与方法预览-3"><a href="#构造函数与方法预览-3" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
+<h3 id="构造函数与方法预览"><a href="#构造函数与方法预览" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
 <thead>
 <tr>
 <th align="center">返回类型</th>
@@ -427,10 +353,6 @@ function activateLightMode(){
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><span style='color:#aaaaaa;'>&#60;constructor&#62;</span></td>
-<td align="left"><span style='color:#aaaaaa;'>Mirai.GroupSenderInfo(<code>Number</code> id, <code>String</code> name, <code>Mirai.MessageTypeConst.GroupPermission</code> permission, <code>JSON</code> group)</span></td>
-</tr>
-<tr>
 <td align="center"><code>Number</code></td>
 <td align="left">getId()</td>
 </tr>
@@ -439,29 +361,59 @@ function activateLightMode(){
 <td align="left">getName()</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageTypeConst.GroupPermission</code></td>
+<td align="center"><code>Permission</code></td>
 <td align="left">getPermission()</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.GroupInfo</code></td>
-<td align="left">getGroup()</td>
+<td align="center"><code>Number</code></td>
+<td align="left">getSourceId()</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">send(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">reply(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">at(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">mute(<code>Number</code> time)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmute()</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">kick(<code>String</code> msg)</td>
 </tr>
 <tr>
 <td align="center"><code>String</code></td>
 <td align="left">toString()</td>
 </tr>
 </tbody></table>
-<h3 id="构造函数-4"><a href="#构造函数-4" class="headerlink" title="构造函数"></a>构造函数</h3><h3 id="60-constructor-62-Mirai-GroupSenderInfo-Number-id-String-name-Mirai-MessageTypeConst-GroupPermission-permission-JSON-group"><a href="#60-constructor-62-Mirai-GroupSenderInfo-Number-id-String-name-Mirai-MessageTypeConst-GroupPermission-permission-JSON-group" class="headerlink" title="&#60;constructor&#62; Mirai.GroupSenderInfo(Number id, String name, Mirai.MessageTypeConst.GroupPermission permission, JSON group)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> <span style='color:#aaaaaa;'>Mirai.GroupSenderInfo(<code>Number</code> id, <code>String</code> name, <code>Mirai.MessageTypeConst.GroupPermission</code> permission, <code>JSON</code> group)</span></h3><p><span style='color:#aaaaaa;'>实例化一个群组消息发送者。</span></p>
-<h3 id="详细方法-3"><a href="#详细方法-3" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="●-Number-getId"><a href="#●-Number-getId" class="headerlink" title="● Number getId()"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> getId()</h3><p>返回该用户QQ号。</p>
-<h3 id="●-String-getName"><a href="#●-String-getName" class="headerlink" title="● String getName()"></a>● <span style='color:#aaaaaa;'><code>String</code></span> getName()</h3><p>返回该用户在此群的群名片。</p>
-<h3 id="●-Mirai-MessageTypeConst-GroupPermission-getPermission"><a href="#●-Mirai-MessageTypeConst-GroupPermission-getPermission" class="headerlink" title="● Mirai.MessageTypeConst.GroupPermission getPermission()"></a>● <span style='color:#aaaaaa;'><code>Mirai.MessageTypeConst.GroupPermission</code></span> getPermission()</h3><p>返回该用户在此群的权限。</p>
-<h3 id="●-Mirai-GroupInfo-getGroup"><a href="#●-Mirai-GroupInfo-getGroup" class="headerlink" title="● Mirai.GroupInfo getGroup()"></a>● <span style='color:#aaaaaa;'><code>Mirai.GroupInfo</code></span> getGroup()</h3><p>返回该用户所在的群的信息。</p>
-<h3 id="●-String-toString-1"><a href="#●-String-toString-1" class="headerlink" title="● String toString()"></a>● <span style='color:#aaaaaa;'><code>String</code></span> toString()</h3><p>返回该用户原始JSON信息。</p>
-<h2 id="Mirai-GroupInfo"><a href="#Mirai-GroupInfo" class="headerlink" title="Mirai.GroupInfo"></a>Mirai.GroupInfo</h2><p>Mirai.GroupInfo为Mirai.GroupSenderInfo.getGroup()返回的群组信息。</p>
+<h3 id="详细方法-3"><a href="#详细方法-3" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-Number-getId"><a href="#➢-Number-getId" class="headerlink" title="➢ Number getId()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>Number</code></span> getId()</h3><p>返回该用户QQ号。</p>
+<h3 id="➢-String-getName"><a href="#➢-String-getName" class="headerlink" title="➢ String getName()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>String</code></span> getName()</h3><p>返回该用户名称。</p>
+<h3 id="➢-Permission-getPermission"><a href="#➢-Permission-getPermission" class="headerlink" title="➢ Permission getPermission()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>Permission</code></span> getPermission()</h3><p>返回在群群的权限，若为subscribe()的friend返回的MessageSender，则为<code>null</code></p>
+<h3 id="➢-Number-getSourceId"><a href="#➢-Number-getSourceId" class="headerlink" title="➢ Number getSourceId()"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> getSourceId()</h3><p>MessageSender都是通过订阅的消息构造的，该方法返回这条消息的ID用于引用或撤回消息。</p>
+<h3 id="➢-Number-send-MessageObject-messages"><a href="#➢-Number-send-MessageObject-messages" class="headerlink" title="➢ Number send(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> send(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>给这个用户发送私人消息并返回消息ID，若无好友则发送临时消息。</p>
+<h3 id="➢-Number-reply-MessageObject-messages"><a href="#➢-Number-reply-MessageObject-messages" class="headerlink" title="➢ Number reply(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> reply(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>回复这个用户的消息并返回消息ID。</p>
+<h3 id="➢-Number-at-MessageObject-messages"><a href="#➢-Number-at-MessageObject-messages" class="headerlink" title="➢ Number at(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> at(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>at这个用户并发送消息并返回消息ID。</p>
+<h3 id="➢-VOID-mute-Number-time"><a href="#➢-VOID-mute-Number-time" class="headerlink" title="➢ VOID mute(Number time)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> mute(<code>Number</code> time)</h3><p>禁言这个用户，<code>time</code>指定了要禁言的时间(秒)，若为subscribe()的friend返回的MessageSender，则什么也不做。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-unmute"><a href="#➢-VOID-unmute" class="headerlink" title="➢ VOID unmute()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmute()</h3><p>解禁这个用户，若为subscribe()的friend返回的MessageSender，则什么也不做。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-kick-String-msg"><a href="#➢-VOID-kick-String-msg" class="headerlink" title="➢ VOID kick(String msg)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> kick(<code>String</code> msg)</h3><p>将这个用户踢出群组，<code>msg</code>为踢出原因，若为subscribe()的friend返回的MessageSender，则什么也不做。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-String-toString-1"><a href="#➢-String-toString-1" class="headerlink" title="➢ String toString()"></a><span style='color:#ff972e;'>➢</span> <code>String</code> toString()</h3><p>返回该用户信息。</p>
+<hr>
+<h2 id="Mirai-GroupInfo"><a href="#Mirai-GroupInfo" class="headerlink" title="Mirai.GroupInfo"></a>Mirai.GroupInfo</h2><p>GroupInfo为群组对象。</p>
 <blockquote>
-<p>Mirai.GroupInfo只从<code>Mirai.GroupSenderInfo.getGroup()</code>返回，实例化<code>Mirai.GroupInfo</code>是没有任何意义的。</p>
+<p>GroupInfo只从<code>Bot.subscribe</code>返回，实例化<code>GroupInfo</code>是没有任何意义的。</p>
 </blockquote>
-<h3 id="构造函数与方法预览-4"><a href="#构造函数与方法预览-4" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
+<h3 id="构造函数与方法预览-1"><a href="#构造函数与方法预览-1" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
 <thead>
 <tr>
 <th align="center">返回类型</th>
@@ -469,10 +421,6 @@ function activateLightMode(){
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><span style='color:#aaaaaa;'>&#60;constructor&#62;</span></td>
-<td align="left"><span style='color:#aaaaaa;'>Mirai.GroupInfo(<code>JSON</code> group)</span></td>
-</tr>
-<tr>
 <td align="center"><code>Number</code></td>
 <td align="left">getId()</td>
 </tr>
@@ -481,21 +429,61 @@ function activateLightMode(){
 <td align="left">getName()</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.GroupInfo.GroupPermission</code></td>
+<td align="center"><code>Permission</code></td>
 <td align="left">getPermission()</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">send(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">reply(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">at(<span style='color:#a88bff;'>Sender</span> target, <span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">mute(<span style='color:#a88bff;'>Sender</span> target, <code>Number</code> time)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmute(<span style='color:#a88bff;'>Sender</span> target)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">muteAll()</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmuteAll()</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">kick(<span style='color:#a88bff;'>Sender</span>, <code>String</code> msg)</td>
 </tr>
 <tr>
 <td align="center"><code>String</code></td>
 <td align="left">toString()</td>
 </tr>
 </tbody></table>
-<h3 id="构造函数-5"><a href="#构造函数-5" class="headerlink" title="构造函数"></a>构造函数</h3><h3 id="60-constructor-62-Mirai-GroupInfo-JSON-group"><a href="#60-constructor-62-Mirai-GroupInfo-JSON-group" class="headerlink" title="&#60;constructor&#62; Mirai.GroupInfo(JSON group)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> <span style='color:#aaaaaa;'>Mirai.GroupInfo(<code>JSON</code> group)</span></h3><p><span style='color:#aaaaaa;'>实例化一个群组消息。</span></p>
-<h3 id="详细方法-4"><a href="#详细方法-4" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="●-Number-getId-1"><a href="#●-Number-getId-1" class="headerlink" title="● Number getId()"></a>● <span style='color:#aaaaaa;'><code>Number</code></span> getId()</h3><p>返回该QQ群的群号。</p>
-<h3 id="●-String-getName-1"><a href="#●-String-getName-1" class="headerlink" title="● String getName()"></a>● <span style='color:#aaaaaa;'><code>String</code></span> getName()</h3><p>返回该QQ群的名称。</p>
-<h3 id="●-Mirai-GroupInfo-GroupPermission-gePermission"><a href="#●-Mirai-GroupInfo-GroupPermission-gePermission" class="headerlink" title="● Mirai.GroupInfo.GroupPermission gePermission()"></a>● <span style='color:#aaaaaa;'><code>Mirai.GroupInfo.GroupPermission</code></span> gePermission()</h3><p>返回成员在该群的权限(一般为bot)。</p>
-<h3 id="●-String-toString-2"><a href="#●-String-toString-2" class="headerlink" title="● String toString()"></a>● <span style='color:#aaaaaa;'><code>String</code></span> toString()</h3><p>返回该群原始JSON信息。</p>
+<h3 id="详细方法-4"><a href="#详细方法-4" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-Number-getId-1"><a href="#➢-Number-getId-1" class="headerlink" title="➢ Number getId()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>Number</code></span> getId()</h3><p>返回该QQ群的群号。</p>
+<h3 id="➢-String-getName-1"><a href="#➢-String-getName-1" class="headerlink" title="➢ String getName()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>String</code></span> getName()</h3><p>返回该QQ群的名称。</p>
+<h3 id="➢-Permission-getPermission-1"><a href="#➢-Permission-getPermission-1" class="headerlink" title="➢ Permission getPermission()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>Permission</code></span> getPermission()</h3><p>返回成员在该群的权限(一般为bot)。</p>
+<h3 id="➢-Number-send-MessageObject-messages-1"><a href="#➢-Number-send-MessageObject-messages-1" class="headerlink" title="➢ Number send(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> send(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>给这个群组发送消息并返回消息ID。</p>
+<h3 id="➢-Number-reply-MessageObject-messages-1"><a href="#➢-Number-reply-MessageObject-messages-1" class="headerlink" title="➢ Number reply(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> reply(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>GroupInfo都是通过订阅的消息构造的，该方法回复这条消息的发送者并返回消息ID。</p>
+<h3 id="➢-Number-at-Sender-target-MessageObject-messages"><a href="#➢-Number-at-Sender-target-MessageObject-messages" class="headerlink" title="➢ Number at(Sender target, MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> at(<span style='color:#a88bff;'>Sender</span> target, <span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>at用户并发送消息并返回消息ID。</p>
+<h3 id="➢-VOID-mute-Sender-target-Number-time"><a href="#➢-VOID-mute-Sender-target-Number-time" class="headerlink" title="➢ VOID mute(Sender target, Number time)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> mute(<span style='color:#a88bff;'>Sender</span> target, <code>Number</code> time)</h3><p>禁言这个用户，<code>target</code>指定了要禁言的群成员，<code>time</code>指定了要禁言的时间(秒)。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-unmute-Sender-target"><a href="#➢-VOID-unmute-Sender-target" class="headerlink" title="➢ VOID unmute(Sender target)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmute(<span style='color:#a88bff;'>Sender</span> target)</h3><p>解禁这个用户，<code>target</code>指定了要解禁的群成员。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-muteAll"><a href="#➢-VOID-muteAll" class="headerlink" title="➢ VOID muteAll()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> muteAll()</h3><p>全体禁言。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-unmuteAll"><a href="#➢-VOID-unmuteAll" class="headerlink" title="➢ VOID unmuteAll()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmuteAll()</h3><p>解除全体禁言。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-kick-Sender-target-String-msg"><a href="#➢-VOID-kick-Sender-target-String-msg" class="headerlink" title="➢ VOID kick(Sender target, String msg)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> kick(<span style='color:#a88bff;'>Sender</span> target, <code>String</code> msg)</h3><p>将这个用户踢出群组，<code>target</code>为踢出的群友，<code>msg</code>为踢出原因，若为subscribe()的friend返回的GroupInfo，则什么也不做。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-String-toString-2"><a href="#➢-String-toString-2" class="headerlink" title="➢ String toString()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>String</code></span> toString()</h3><p>返回该群信息。</p>
 <h2 id="Mirai-GroupInfo-Permission"><a href="#Mirai-GroupInfo-Permission" class="headerlink" title="Mirai.GroupInfo.Permission"></a>Mirai.GroupInfo.Permission</h2><p>该常量集用于表示群组成员权限</p>
-<h3 id="Permission-OWNER-群主"><a href="#Permission-OWNER-群主" class="headerlink" title="Permission.OWNER 群主"></a><code>Permission.OWNER</code> 群主</h3><h3 id="Permission-ADMIN-管理员"><a href="#Permission-ADMIN-管理员" class="headerlink" title="Permission.ADMIN 管理员"></a><code>Permission.ADMIN</code> 管理员</h3><h3 id="Permission-MEMBER-普通成员"><a href="#Permission-MEMBER-普通成员" class="headerlink" title="Permission.MEMBER 普通成员"></a><code>Permission.MEMBER</code> 普通成员</h3><h2 id="Mirai-MessageType"><a href="#Mirai-MessageType" class="headerlink" title="Mirai.MessageType"></a>Mirai.MessageType</h2><p>Mirai.MessageType提供各种消息类型的构造方法。</p>
+<h3 id="Permission-OWNER-群主"><a href="#Permission-OWNER-群主" class="headerlink" title="Permission.OWNER 群主"></a><code>Permission.OWNER</code> 群主</h3><h3 id="Permission-ADMIN-管理员"><a href="#Permission-ADMIN-管理员" class="headerlink" title="Permission.ADMIN 管理员"></a><code>Permission.ADMIN</code> 管理员</h3><h3 id="Permission-MEMBER-普通成员"><a href="#Permission-MEMBER-普通成员" class="headerlink" title="Permission.MEMBER 普通成员"></a><code>Permission.MEMBER</code> 普通成员</h3><hr>
+<h2 id="Mirai-MessageType"><a href="#Mirai-MessageType" class="headerlink" title="Mirai.MessageType"></a>Mirai.MessageType</h2><p>MessageType提供各种消息类型的方法，提供给sdk使用者的都是静态方法。</p>
 <h3 id="所有子类"><a href="#所有子类" class="headerlink" title="所有子类"></a>所有子类</h3><table>
 <thead>
 <tr>
@@ -504,114 +492,121 @@ function activateLightMode(){
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><code>Mirai.MessageType.Source</code></td>
+<td align="center"><code>Source</code></td>
 <td align="left">源消息连首</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.Quote</code></td>
+<td align="center"><code>Quote</code></td>
 <td align="left">引用(回复)</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.Plain</code></td>
+<td align="center"><code>Plain</code></td>
 <td align="left">文字</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.Image</code></td>
+<td align="center"><code>Image</code></td>
 <td align="left">图片</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.FlashImage</code></td>
+<td align="center"><code>FlashImage</code></td>
 <td align="left">闪照</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.Face</code></td>
+<td align="center"><code>Face</code></td>
 <td align="left">QQ表情</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.At</code></td>
+<td align="center"><code>At</code></td>
 <td align="left">@某人</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.AtAll</code></td>
+<td align="center"><code>AtAll</code></td>
 <td align="left">@全体成员</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.Xml</code></td>
+<td align="center"><code>Xml</code></td>
 <td align="left">XML消息</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.Json</code></td>
+<td align="center"><code>Json2</code></td>
 <td align="left">JSON消息</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.App</code></td>
+<td align="center"><code>App</code></td>
 <td align="left">APP消息</td>
 </tr>
 <tr>
-<td align="center"><code>Mirai.MessageType.Poke</code></td>
+<td align="center"><code>Poke</code></td>
 <td align="left">戳一戳</td>
 </tr>
 </tbody></table>
-<h3 id="消息类型构造方法"><a href="#消息类型构造方法" class="headerlink" title="消息类型构造方法"></a>消息类型构造方法</h3><h3 id="60-constructor-62-Mirai-MessageType-Source-Number-id-Number-time"><a href="#60-constructor-62-Mirai-MessageType-Source-Number-id-Number-time" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.Source(Number id, Number time)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> <span style='color:#aaaaaa;'>Mirai.MessageType.Source(<code>Number</code> id, <code>Number</code> time)</span></h3><p>源消息链首，<code>id</code>为消息ID，<code>time</code>为UNIX时间。</p>
+<h3 id="详细方法-5"><a href="#详细方法-5" class="headerlink" title="详细方法"></a>详细方法</h3><blockquote>
+<p>不需要实例化消息类型</p>
+</blockquote>
+<h3 id="Source-Number-id-Number-time"><a href="#Source-Number-id-Number-time" class="headerlink" title="Source(Number id, Number time)"></a>Source(<code>Number</code> id, <code>Number</code> time)</h3><p>源消息链首，<code>id</code>为消息ID，<code>time</code>为UNIX时间。</p>
 <blockquote>
 <p>构建Source类型消息毫无意义，因为Source只作为群组消息ID的标记，而发送消息不需要消息ID(除了引用)。</p>
 </blockquote>
-<h3 id="60-constructor-62-Mirai-MessageType-Quote-Number-id-Number-senderId-Number-groupId-Mirai-MessageChain-origin"><a href="#60-constructor-62-Mirai-MessageType-Quote-Number-id-Number-senderId-Number-groupId-Mirai-MessageChain-origin" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.Quote(Number id, Number senderId, Number groupId, Mirai.MessageChain origin)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> <span style='color:#aaaaaa;'>Mirai.MessageType.Quote(<code>Number</code> id, <code>Number</code> senderId, <code>Number</code> groupId, <code>Mirai.MessageChain</code> origin)</span></h3><p>引用消息，<code>id</code>为消息ID，<code>senderId</code>为引用原文发送者QQ号，<code>groupId</code>为该消息QQ群的群号，<code>origin</code>为引用原文消息链。</p>
+<h3 id="Quote-Number-id-Number-senderId-Number-groupId-Mirai-MessageChain-origin"><a href="#Quote-Number-id-Number-senderId-Number-groupId-Mirai-MessageChain-origin" class="headerlink" title="Quote(Number id, Number senderId, Number groupId, Mirai.MessageChain origin)"></a>Quote(<code>Number</code> id, <code>Number</code> senderId, <code>Number</code> groupId, <code>Mirai.MessageChain</code> origin)</h3><p>引用消息，<code>id</code>为消息ID，<code>senderId</code>为引用原文发送者QQ号，<code>groupId</code>为该消息QQ群的群号，<code>origin</code>为引用原文消息链。</p>
 <blockquote>
-<p>构建Quote类型消息毫无意义，因为发送引用消息的方法是在Mirai.Session.sendGroupMessage的第三个参数传入要引用的消息ID。</p>
+<p>构建Quote类型消息毫无意义，因为发送引用消息的方法是在Bot.sendGroupMessage的第三个参数传入要引用的消息ID或GroupInfo.reply或MessageSender.reply。</p>
 </blockquote>
-<h3 id="60-constructor-62-Mirai-MessageType-Plain-String-text"><a href="#60-constructor-62-Mirai-MessageType-Plain-String-text" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.Plain(String text)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.Plain(<code>String</code> text)</span></h3><p>文字消息，<code>text</code>为文本内容。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-Image-String-imageId-String-url-String-path"><a href="#60-constructor-62-Mirai-MessageType-Image-String-imageId-String-url-String-path" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.Image(String imageId, String url, String path)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.Image(<code>String</code> imageId, <code>String</code> url, <code>String</code> path)</span></h3><p>图片消息，<code>imageId</code>为图片的UUID，<code>url</code>为图片的链接，<code>path</code>为图片本地链接。<br>三者可以任选一个参数，当同时有多个参数时，http api会按照<code>imageId</code>&gt;<code>url</code>&gt;<code>path</code>的优先级发送图片。<br>接收到的图片永远不可能会有<code>path</code>。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-FlashImage-String-imageId-String-url-String-path"><a href="#60-constructor-62-Mirai-MessageType-FlashImage-String-imageId-String-url-String-path" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.FlashImage(String imageId, String url, String path)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.FlashImage(<code>String</code> imageId, <code>String</code> url, <code>String</code> path)</span></h3><p>闪照消息，用法和<code>Mirai.MessageType.Image</code>完全相同。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-Face-Number-faceId-String-name"><a href="#60-constructor-62-Mirai-MessageType-Face-Number-faceId-String-name" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.Face(Number faceId, String name)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.Face(<code>Number</code> faceId, <code>String</code> name)</span></h3><p>QQ表情，<code>faceId</code>为表情编号(优先级高于后面的name)，<code>name</code>为表情名称。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-At-Number-target-String-displayText"><a href="#60-constructor-62-Mirai-MessageType-At-Number-target-String-displayText" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.At(Number target, String displayText)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.At(<code>Number</code> target, <code>String</code> displayText)</span></h3><p>@某人，<code>taeget</code>为被@的人的QQ号，<code>displayText</code>为@发送时显示的@文字。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-AtAll"><a href="#60-constructor-62-Mirai-MessageType-AtAll" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.AtAll()"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.AtAll()</span></h3><p>@全体成员。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-Xml-String-xml"><a href="#60-constructor-62-Mirai-MessageType-Xml-String-xml" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.Xml(String xml)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.Xml(<code>String</code> xml)</span></h3><p>XML消息，<code>xml</code>为XML消息内容。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-Json-String-json"><a href="#60-constructor-62-Mirai-MessageType-Json-String-json" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.Json(String json)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.Json(<code>String</code> json)</span></h3><p>JSON消息，<code>json</code>为JSON消息内容。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-App-String-app"><a href="#60-constructor-62-Mirai-MessageType-App-String-app" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.App(String app)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.App(<code>String</code> app)</span></h3><p>APP消息，<code>app</code>为APP消息内容。</p>
-<h3 id="60-constructor-62-Mirai-MessageType-Poke-Mirai-MessageTypeConst-PokeType-name"><a href="#60-constructor-62-Mirai-MessageType-Poke-Mirai-MessageTypeConst-PokeType-name" class="headerlink" title="&#60;constructor&#62; Mirai.MessageType.Poke(Mirai.MessageTypeConst.PokeType.? name)"></a><span style='color:#aaaaaa;'>&#60;constructor&#62;</span> Mirai.MessageType.Poke(<code>Mirai.MessageTypeConst.PokeType.?</code> name)</span></h3><p>Poke(戳一戳)消息，<code>name</code>为Poke消息内容。<br></br><br>所有消息类型的获取只需要对应参数前面加<code>get</code>并将参数首字母大写。<br>像这样：</p>
+<h3 id="Plain-String-text"><a href="#Plain-String-text" class="headerlink" title="Plain(String text)"></a>Plain(<code>String</code> text)</h3><p>文字消息，<code>text</code>为文本内容。</p>
+<h3 id="Image-String-imageId-String-url-String-path"><a href="#Image-String-imageId-String-url-String-path" class="headerlink" title="Image(String imageId, String url, String path)"></a>Image(<code>String</code> imageId, <code>String</code> url, <code>String</code> path)</h3><p>图片消息，<code>imageId</code>为图片的UUID，<code>url</code>为图片的链接，<code>path</code>为图片本地链接。<br>三者可以任选一个参数，当同时有多个参数时，http api会按照<code>imageId</code>&gt;<code>url</code>&gt;<code>path</code>的优先级发送图片。<br>接收到的图片永远不可能会有<code>path</code>。</p>
+<h3 id="FlashImage-String-imageId-String-url-String-path"><a href="#FlashImage-String-imageId-String-url-String-path" class="headerlink" title="FlashImage(String imageId, String url, String path)"></a>FlashImage(<code>String</code> imageId, <code>String</code> url, <code>String</code> path)</h3><p>闪照消息，用法和<code>Image</code>完全相同。</p>
+<h3 id="Face-Number-faceId-String-name"><a href="#Face-Number-faceId-String-name" class="headerlink" title="Face(Number faceId, String name)"></a>Face(<code>Number</code> faceId, <code>String</code> name)</h3><p>QQ表情，<code>faceId</code>为表情编号(优先级高于后面的name)，<code>name</code>为表情名称。</p>
+<h3 id="At-Number-target-String-displayText"><a href="#At-Number-target-String-displayText" class="headerlink" title="At(Number target, String displayText)"></a>At(<code>Number</code> target, <code>String</code> displayText)</h3><p>@某人，<code>taeget</code>为被@的人的QQ号，<code>displayText</code>为@发送时显示的@文字。</p>
+<h3 id="AtAll"><a href="#AtAll" class="headerlink" title="AtAll()"></a>AtAll()</h3><p>@全体成员。</p>
+<h3 id="Xml-String-xml"><a href="#Xml-String-xml" class="headerlink" title="Xml(String xml)"></a>Xml(<code>String</code> xml)</h3><p>XML消息，<code>xml</code>为XML消息内容。</p>
+<h3 id="Json2-String-json"><a href="#Json2-String-json" class="headerlink" title="Json2(String json)"></a>Json2(<code>String</code> json)</h3><p>JSON消息，<code>json</code>为JSON消息内容。</p>
+<h3 id="App-String-app"><a href="#App-String-app" class="headerlink" title="App(String app)"></a>App(<code>String</code> app)</h3><p>APP消息，<code>app</code>为APP消息内容。</p>
+<h3 id="Poke-PokeType-name"><a href="#Poke-PokeType-name" class="headerlink" title="Poke(PokeType.? name)"></a>Poke(<code>PokeType.?</code> name)</h3><p>Poke(戳一戳)消息，<code>name</code>为Poke消息内容。</p>
+</br>
+所有消息类型的获取只需要对应参数前面加`get`并将参数首字母大写。
+像这样：
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mirai.MessageType.Image.getImageId();</span><br><span class="line">Mirai.MessageType.App.getApp();</span><br><span class="line">Mirai.MessageType.At.getTarget();</span><br></pre></td></tr></table></figure>
-<p>所有消息类型都有<code>toString()</code>方法，该方法返回原始JSON消息对象数据。 </p>
-<h2 id="Mirai-MessageTypeConst"><a href="#Mirai-MessageTypeConst" class="headerlink" title="Mirai.MessageTypeConst"></a>Mirai.MessageTypeConst</h2><p>Mirai.MessageTypeConst保存一些静态常量。</p>
-<h3 id="MessageTypeConst-SOURCE-源消息链首"><a href="#MessageTypeConst-SOURCE-源消息链首" class="headerlink" title="MessageTypeConst.SOURCE 源消息链首"></a><code>MessageTypeConst.SOURCE</code> 源消息链首</h3><h3 id="MessageTypeConst-QUOTE-引用消息"><a href="#MessageTypeConst-QUOTE-引用消息" class="headerlink" title="MessageTypeConst.QUOTE 引用消息"></a><code>MessageTypeConst.QUOTE</code> 引用消息</h3><h3 id="MessageTypeConst-PLAIN-文字消息"><a href="#MessageTypeConst-PLAIN-文字消息" class="headerlink" title="MessageTypeConst.PLAIN 文字消息"></a><code>MessageTypeConst.PLAIN</code> 文字消息</h3><h3 id="MessageTypeConst-IMAGE-图片消息"><a href="#MessageTypeConst-IMAGE-图片消息" class="headerlink" title="MessageTypeConst.IMAGE 图片消息"></a><code>MessageTypeConst.IMAGE</code> 图片消息</h3><h3 id="MessageTypeConst-FLASHIMAGE-闪照消息"><a href="#MessageTypeConst-FLASHIMAGE-闪照消息" class="headerlink" title="MessageTypeConst.FLASHIMAGE 闪照消息"></a><code>MessageTypeConst.FLASHIMAGE</code> 闪照消息</h3><h3 id="MessageTypeConst-FACE-QQ表情"><a href="#MessageTypeConst-FACE-QQ表情" class="headerlink" title="MessageTypeConst.FACE QQ表情"></a><code>MessageTypeConst.FACE</code> QQ表情</h3><h3 id="MessageTypeConst-AT-某人"><a href="#MessageTypeConst-AT-某人" class="headerlink" title="MessageTypeConst.AT @某人"></a><code>MessageTypeConst.AT</code> @某人</h3><h3 id="MessageTypeConst-ATALL-全体成员"><a href="#MessageTypeConst-ATALL-全体成员" class="headerlink" title="MessageTypeConst.ATALL @全体成员"></a><code>MessageTypeConst.ATALL</code> @全体成员</h3><h3 id="MessageTypeConst-XML-XML消息"><a href="#MessageTypeConst-XML-XML消息" class="headerlink" title="MessageTypeConst.XML XML消息"></a><code>MessageTypeConst.XML</code> XML消息</h3><h3 id="MessageTypeConst-JSON-JSON消息"><a href="#MessageTypeConst-JSON-JSON消息" class="headerlink" title="MessageTypeConst.JSON JSON消息"></a><code>MessageTypeConst.JSON</code> JSON消息</h3><h3 id="MessageTypeConst-APP-APP消息"><a href="#MessageTypeConst-APP-APP消息" class="headerlink" title="MessageTypeConst.APP APP消息"></a><code>MessageTypeConst.APP</code> APP消息</h3><h3 id="MessageTypeConst-POKE-戳一戳消息"><a href="#MessageTypeConst-POKE-戳一戳消息" class="headerlink" title="MessageTypeConst.POKE 戳一戳消息"></a><code>MessageTypeConst.POKE</code> 戳一戳消息</h3><h3 id="MessageTypeConst-PokeType"><a href="#MessageTypeConst-PokeType" class="headerlink" title="MessageTypeConst.PokeType"></a>MessageTypeConst.PokeType</h3><h3 id="PokeType-POKE-戳一戳"><a href="#PokeType-POKE-戳一戳" class="headerlink" title="PokeType.POKE 戳一戳"></a><code>PokeType.POKE</code> 戳一戳</h3><h3 id="PokeType-SHOWLOVE-比心"><a href="#PokeType-SHOWLOVE-比心" class="headerlink" title="PokeType.SHOWLOVE 比心"></a><code>PokeType.SHOWLOVE</code> 比心</h3><h3 id="PokeType-LIKE-点赞"><a href="#PokeType-LIKE-点赞" class="headerlink" title="PokeType.LIKE 点赞"></a><code>PokeType.LIKE</code> 点赞</h3><h3 id="PokeType-HEARTBROKEN-心碎"><a href="#PokeType-HEARTBROKEN-心碎" class="headerlink" title="PokeType.HEARTBROKEN 心碎"></a><code>PokeType.HEARTBROKEN</code> 心碎</h3><h3 id="PokeType-SIXSIXSIX-666"><a href="#PokeType-SIXSIXSIX-666" class="headerlink" title="PokeType.SIXSIXSIX 666"></a><code>PokeType.SIXSIXSIX</code> 666</h3><h3 id="PokeType-FANGDAZHAO-放大招"><a href="#PokeType-FANGDAZHAO-放大招" class="headerlink" title="PokeType.FANGDAZHAO 放大招"></a><code>PokeType.FANGDAZHAO</code> 放大招</h3><hr>
-<h2 id="Mirai-EventType-Const"><a href="#Mirai-EventType-Const" class="headerlink" title="Mirai.EventType(Const)"></a>Mirai.EventType(Const)</h2><p>Mirai.EventType为<code>Mirai.MessageListener.hookEvent</code>中的参数中的<code>event</code>的类型基类</p>
+所有消息类型都有`toString()`方法，该方法返回原始JSON消息对象数据。 
+
+<h2 id="Mirai-MessageTypeConst"><a href="#Mirai-MessageTypeConst" class="headerlink" title="Mirai.MessageTypeConst"></a>Mirai.MessageTypeConst</h2><p>MessageTypeConst保存一些静态常量。</p>
+<h3 id="SOURCE-源消息链首"><a href="#SOURCE-源消息链首" class="headerlink" title="SOURCE 源消息链首"></a><code>SOURCE</code> 源消息链首</h3><h3 id="QUOTE-引用消息"><a href="#QUOTE-引用消息" class="headerlink" title="QUOTE 引用消息"></a><code>QUOTE</code> 引用消息</h3><h3 id="PLAIN-文字消息"><a href="#PLAIN-文字消息" class="headerlink" title="PLAIN 文字消息"></a><code>PLAIN</code> 文字消息</h3><h3 id="IMAGE-图片消息"><a href="#IMAGE-图片消息" class="headerlink" title="IMAGE 图片消息"></a><code>IMAGE</code> 图片消息</h3><h3 id="FLASHIMAGE-闪照消息"><a href="#FLASHIMAGE-闪照消息" class="headerlink" title="FLASHIMAGE 闪照消息"></a><code>FLASHIMAGE</code> 闪照消息</h3><h3 id="FACE-QQ表情"><a href="#FACE-QQ表情" class="headerlink" title="FACE QQ表情"></a><code>FACE</code> QQ表情</h3><h3 id="AT-某人"><a href="#AT-某人" class="headerlink" title="AT @某人"></a><code>AT</code> @某人</h3><h3 id="ATALL-全体成员"><a href="#ATALL-全体成员" class="headerlink" title="ATALL @全体成员"></a><code>ATALL</code> @全体成员</h3><h3 id="XML-XML消息"><a href="#XML-XML消息" class="headerlink" title="XML XML消息"></a><code>XML</code> XML消息</h3><h3 id="JSON2-JSON消息"><a href="#JSON2-JSON消息" class="headerlink" title="JSON2 JSON消息"></a><code>JSON2</code> JSON消息</h3><h3 id="APP-APP消息"><a href="#APP-APP消息" class="headerlink" title="APP APP消息"></a><code>APP</code> APP消息</h3><h3 id="POKE-戳一戳消息"><a href="#POKE-戳一戳消息" class="headerlink" title="POKE 戳一戳消息"></a><code>POKE</code> 戳一戳消息</h3><h3 id="PokeType"><a href="#PokeType" class="headerlink" title="PokeType"></a>PokeType</h3><h3 id="PokeType-POKE-戳一戳"><a href="#PokeType-POKE-戳一戳" class="headerlink" title="PokeType.POKE 戳一戳"></a><code>PokeType.POKE</code> 戳一戳</h3><h3 id="PokeType-SHOWLOVE-比心"><a href="#PokeType-SHOWLOVE-比心" class="headerlink" title="PokeType.SHOWLOVE 比心"></a><code>PokeType.SHOWLOVE</code> 比心</h3><h3 id="PokeType-LIKE-点赞"><a href="#PokeType-LIKE-点赞" class="headerlink" title="PokeType.LIKE 点赞"></a><code>PokeType.LIKE</code> 点赞</h3><h3 id="PokeType-HEARTBROKEN-心碎"><a href="#PokeType-HEARTBROKEN-心碎" class="headerlink" title="PokeType.HEARTBROKEN 心碎"></a><code>PokeType.HEARTBROKEN</code> 心碎</h3><h3 id="PokeType-SIXSIXSIX-666"><a href="#PokeType-SIXSIXSIX-666" class="headerlink" title="PokeType.SIXSIXSIX 666"></a><code>PokeType.SIXSIXSIX</code> 666</h3><h3 id="PokeType-FANGDAZHAO-放大招"><a href="#PokeType-FANGDAZHAO-放大招" class="headerlink" title="PokeType.FANGDAZHAO 放大招"></a><code>PokeType.FANGDAZHAO</code> 放大招</h3><hr>
+<h2 id="Mirai-EventType-Const"><a href="#Mirai-EventType-Const" class="headerlink" title="Mirai.EventType(Const)"></a>Mirai.EventType(Const)</h2><p>EventType为<code>Bot.subscribe</code>中的其他事件event的参数中的<code>event</code>的类型基类</p>
 <blockquote>
-<p>注：<code>Mirai.EventType.?</code>只作为返回参数，构造它们是没有任何意义的。</p>
+<p>注：<code>EventType.?</code>只作为返回参数，构造它们是没有任何意义的。</p>
 </blockquote>
-<h3 id="所有事件类型"><a href="#所有事件类型" class="headerlink" title="所有事件类型"></a>所有事件类型</h3><p>在<code>hookEvent(event)</code>中，我们可以通过判断<code>event.type</code>来确定hook到的event类型。<br>下面是所有事件类型常量(<code>Mirai.EventTypeConst.?</code>):<br>它们后面对应着event中有的属性</p>
-<h3 id="●BOT-ONLINE-bot上线"><a href="#●BOT-ONLINE-bot上线" class="headerlink" title="●BOT_ONLINE: bot上线"></a>●<code>BOT_ONLINE</code>: bot上线</h3><p><code>Number</code> id: bot的qq号</p>
-<h3 id="●BOT-OFFLINE-bot下线"><a href="#●BOT-OFFLINE-bot下线" class="headerlink" title="●BOT_OFFLINE: bot下线"></a>●<code>BOT_OFFLINE</code>: bot下线</h3><p><code>Number</code> id: bot的qq号</p>
-<h3 id="●BOT-OFFLINE-FORCE-bot被挤下线"><a href="#●BOT-OFFLINE-FORCE-bot被挤下线" class="headerlink" title="●BOT_OFFLINE_FORCE: bot被挤下线"></a>●<code>BOT_OFFLINE_FORCE</code>: bot被挤下线</h3><p><code>Number</code> id: bot的qq号</p>
-<h3 id="●BOT-OFFLINE-DROPPED-bot异常下线"><a href="#●BOT-OFFLINE-DROPPED-bot异常下线" class="headerlink" title="●BOT_OFFLINE_DROPPED: bot异常下线"></a>●<code>BOT_OFFLINE_DROPPED</code>: bot异常下线</h3><p><code>Number</code> id: bot的qq号</p>
-<h3 id="●BOT-RELOGIN-bot重新登录"><a href="#●BOT-RELOGIN-bot重新登录" class="headerlink" title="●BOT_RELOGIN: bot重新登录"></a>●<code>BOT_RELOGIN</code>: bot重新登录</h3><p><code>Number</code> id: bot的qq号</p>
-<h3 id="●GROUP-RECALL-群组撤回消息"><a href="#●GROUP-RECALL-群组撤回消息" class="headerlink" title="●GROUP_RECALL: 群组撤回消息"></a>●<code>GROUP_RECALL</code>: 群组撤回消息</h3><p><code>Number</code> senderId: 撤回者QQ号<br><code>Number</code> messageId: 撤回的消息的id<br><code>Number</code> time: 撤回时间<br><code>Mirai.GroupInfo</code> group: 事件发生所在的群组<br><code>Mirai.GroupSenderInfo</code> operator: 撤回者信息</p>
-<h3 id="●FRIEND-RECALL-好友撤回消息"><a href="#●FRIEND-RECALL-好友撤回消息" class="headerlink" title="●FRIEND_RECALL: 好友撤回消息"></a>●<code>FRIEND_RECALL</code>: 好友撤回消息</h3><p><code>Number</code> senderId: 撤回者QQ号<br><code>Number</code> messageId: 撤回的消息的id<br><code>Number</code> time: 撤回时间</p>
-<h3 id="●BOT-GROUP-PERMISSION-CHANGE-bot在群的权限被改变"><a href="#●BOT-GROUP-PERMISSION-CHANGE-bot在群的权限被改变" class="headerlink" title="●BOT_GROUP_PERMISSION_CHANGE: bot在群的权限被改变"></a>●<code>BOT_GROUP_PERMISSION_CHANGE</code>: bot在群的权限被改变</h3><p><code>Mirai.GroupInfo.Permission</code> before: 改前权限<br><code>Mirai.GroupInfo.Permission</code> after: 改后权限<br><code>Mirai.GroupInfo</code> group: 事件发生所在群组</p>
-<h3 id="●BOT-MUTE-bot被禁言"><a href="#●BOT-MUTE-bot被禁言" class="headerlink" title="●BOT_MUTE: bot被禁言"></a>●<code>BOT_MUTE</code>: bot被禁言</h3><p><code>Number</code> duration: 禁言时长<br><code>Mirai.GroupSenderInfo</code> operator: 禁言者<br>(群组信息可以在<code>event.getOperator().getGroup()</code>找到)</p>
-<h3 id="●BOT-UNMUTE-bot被解除禁言"><a href="#●BOT-UNMUTE-bot被解除禁言" class="headerlink" title="●BOT_UNMUTE: bot被解除禁言"></a>●<code>BOT_UNMUTE</code>: bot被解除禁言</h3><p><code>Mirai.GroupSenderInfo</code> operator: 禁言者<br>(群组信息可以在<code>event.getOperator().getGroup()</code>找到)</p>
-<h3 id="●BOT-JOIN-GROUP-bot新加入群组"><a href="#●BOT-JOIN-GROUP-bot新加入群组" class="headerlink" title="●BOT_JOIN_GROUP: bot新加入群组"></a>●<code>BOT_JOIN_GROUP</code>: bot新加入群组</h3><p><code>Mirai.GroupInfo</code> group: 加入的群组</p>
-<h3 id="●GROUP-NAME-CHANGE-群名称改变"><a href="#●GROUP-NAME-CHANGE-群名称改变" class="headerlink" title="●GROUP_NAME_CHANGE: 群名称改变"></a>●<code>GROUP_NAME_CHANGE</code>: 群名称改变</h3><p><code>String</code> before: 改之前名称<br><code>String</code> after: 改之后名称<br><code>Mirai.GroupInfo</code> group: 事件发生所在群组</p>
-<h3 id="●GROUP-ENTRANCE-ANN-CHANGE-入群公告改变"><a href="#●GROUP-ENTRANCE-ANN-CHANGE-入群公告改变" class="headerlink" title="●GROUP_ENTRANCE_ANN_CHANGE: 入群公告改变"></a>●<code>GROUP_ENTRANCE_ANN_CHANGE</code>: 入群公告改变</h3><p><code>String</code> before: 改之前入群公告<br><code>String</code> after: 改之后入群公告<br><code>Mirai.GroupInfo</code> group: 事件发生所在群组<br><code>Mirai.GroupSenderInfo</code> operator: 操作者</p>
-<h3 id="●GROUP-MUTE-ALL-群全体禁言事件"><a href="#●GROUP-MUTE-ALL-群全体禁言事件" class="headerlink" title="●GROUP_MUTE_ALL: 群全体禁言事件"></a>●<code>GROUP_MUTE_ALL</code>: 群全体禁言事件</h3><p><code>Boolean</code> before: 之前是否禁言<br><code>Boolean</code> after: 之后是否禁言<br><code>Mirai.GroupInfo</code> group: 事件发生所在群组<br><code>Mirai.GroupSenderInfo</code> operator: 操作者</p>
-<h3 id="●GROUP-ALLOW-ANONYMOUS-CHAT-匿名聊天"><a href="#●GROUP-ALLOW-ANONYMOUS-CHAT-匿名聊天" class="headerlink" title="●GROUP_ALLOW_ANONYMOUS_CHAT: 匿名聊天"></a>●<code>GROUP_ALLOW_ANONYMOUS_CHAT</code>: 匿名聊天</h3><p>未写</p>
-<h3 id="●GROUP-ALLOW-CONFESS-TALK-坦白说"><a href="#●GROUP-ALLOW-CONFESS-TALK-坦白说" class="headerlink" title="●GROUP_ALLOW_CONFESS_TALK: 坦白说"></a>●<code>GROUP_ALLOW_CONFESS_TALK</code>: 坦白说</h3><p>未写</p>
-<h3 id="●GROUP-ALLOW-MEMBER-INVITE-允许成员邀请其他人入群"><a href="#●GROUP-ALLOW-MEMBER-INVITE-允许成员邀请其他人入群" class="headerlink" title="●GROUP_ALLOW_MEMBER_INVITE: 允许成员邀请其他人入群"></a>●<code>GROUP_ALLOW_MEMBER_INVITE</code>: 允许成员邀请其他人入群</h3><p>未写</p>
-<h3 id="●GROUP-MEMBER-JOIN-新人入群"><a href="#●GROUP-MEMBER-JOIN-新人入群" class="headerlink" title="●GROUP_MEMBER_JOIN: 新人入群"></a>●<code>GROUP_MEMBER_JOIN</code>: 新人入群</h3><p><code>Mirai.GroupSenderInfo</code> member: 入群人信息<br>(群组信息可以在<code>event.getMember().getGroup()</code>找到)</p>
-<h3 id="●GROUP-MEMBER-KICK-群员被t"><a href="#●GROUP-MEMBER-KICK-群员被t" class="headerlink" title="●GROUP_MEMBER_KICK: 群员被t"></a>●<code>GROUP_MEMBER_KICK</code>: 群员被t</h3><p><code>Mirai.GroupSenderInfo</code> target: 被t人信息<br><code>Mirai.GroupSenderInfo</code> operator: 操作者<br>(群组信息可以在<code>event.getOperator/Target().getGroup()</code>找到)</p>
-<h3 id="●GROUP-MEMBER-QUIT-群员退群"><a href="#●GROUP-MEMBER-QUIT-群员退群" class="headerlink" title="●GROUP_MEMBER_QUIT: 群员退群"></a>●<code>GROUP_MEMBER_QUIT</code>: 群员退群</h3><p><code>Mirai.GroupSenderInfo</code> member: 退群人信息<br>(群组信息可以在<code>event.getMember().getGroup()</code>找到)</p>
-<h3 id="●GROUP-MEMBER-NAME-CHANGE-群成员昵称改变"><a href="#●GROUP-MEMBER-NAME-CHANGE-群成员昵称改变" class="headerlink" title="●GROUP_MEMBER_NAME_CHANGE: 群成员昵称改变"></a>●<code>GROUP_MEMBER_NAME_CHANGE</code>: 群成员昵称改变</h3><p><code>String</code> before: 改之前昵称<br><code>String</code> after: 改之后昵称<br><code>Mirai.GroupSenderInfo</code> target: 被改昵称的人<br><code>Mirai.GroupSenderInfo</code> operator: 操作者(自己或者管理员)<br>(群组信息可以在<code>event.getOperator/Target().getGroup()</code>找到)</p>
-<h3 id="●GROUP-MEMBER-FAME-CHANHE-群特殊头衔改变"><a href="#●GROUP-MEMBER-FAME-CHANHE-群特殊头衔改变" class="headerlink" title="●GROUP_MEMBER_FAME_CHANHE: 群特殊头衔改变"></a>●<code>GROUP_MEMBER_FAME_CHANHE</code>: 群特殊头衔改变</h3><p><code>String</code> before: 改之前头衔(空或有)<br><code>String</code> after: 改之后头衔<br><code>Mirai.GroupSenderInfo</code> target: 被改特殊头衔的人<br>(群组信息可以在<code>event.getTarget().getGroup()</code>找到)</p>
-<h3 id="●GROUP-MEMBER-PERMISSION-CHANGE-群成员权限改变-不能是bot"><a href="#●GROUP-MEMBER-PERMISSION-CHANGE-群成员权限改变-不能是bot" class="headerlink" title="●GROUP_MEMBER_PERMISSION_CHANGE: 群成员权限改变(不能是bot)"></a>●<code>GROUP_MEMBER_PERMISSION_CHANGE</code>: 群成员权限改变(不能是bot)</h3><p><code>Mirai.GroupInfo.Permission</code> before: 改之前权限<br><code>Mirai.GroupInfo.Permission</code> after: 改之后权限<br><code>Mirai.GroupSenderInfo</code> target: 被改权限的人</p>
-<h3 id="●GROUP-MEMBER-MUTE-群员被禁言"><a href="#●GROUP-MEMBER-MUTE-群员被禁言" class="headerlink" title="●GROUP_MEMBER_MUTE: 群员被禁言"></a>●<code>GROUP_MEMBER_MUTE</code>: 群员被禁言</h3><p><code>Number</code> duration: 禁言时长<br><code>Mirai.GroupSenderInfo</code> target: 被禁言的人<br><code>Mirai.GroupSenderInfo</code> operator: 操作者(自己或者管理员)</p>
-<h3 id="●GROUP-MEMBER-UNMUTE-群员被解除禁言"><a href="#●GROUP-MEMBER-UNMUTE-群员被解除禁言" class="headerlink" title="●GROUP_MEMBER_UNMUTE: 群员被解除禁言"></a>●<code>GROUP_MEMBER_UNMUTE</code>: 群员被解除禁言</h3><p><code>Mirai.GroupSenderInfo</code> target: 被解除禁言的人<br><code>Mirai.GroupSenderInfo</code> operator: 操作者(自己或者管理员)</p>
-<h3 id="●NEW-FRIEND-REQUEST-新好友请求事件"><a href="#●NEW-FRIEND-REQUEST-新好友请求事件" class="headerlink" title="●NEW_FRIEND_REQUEST: 新好友请求事件"></a>●<code>NEW_FRIEND_REQUEST</code>: 新好友请求事件</h3><p><code>Number</code> eventId: 事件ID，用于标识事件<br><code>Number</code> fromId: 新好友QQ号<br><code>Number</code> groupId: 新好友来自的群(<code>0</code>为不是通过群加的好友)<br><code>String</code> nickname: 新好友昵称<br>特殊方法: <code>event.toIArg()</code>用于获取要传入<code>Seesion.handleFriendRequest</code>的一个参数。<br>(下面有例子)</p>
-<h3 id="●NEW-MEMBER-JOIN-REQUEST-新成员入群请求事件"><a href="#●NEW-MEMBER-JOIN-REQUEST-新成员入群请求事件" class="headerlink" title="●NEW_MEMBER_JOIN_REQUEST: 新成员入群请求事件"></a>●<code>NEW_MEMBER_JOIN_REQUEST</code>: 新成员入群请求事件</h3><p><code>Number</code> eventId: 事件ID，用于标识事件<br><code>Number</code> fromId: 加群人QQ号<br><code>Number</code> groupId: 加群群号<br><code>String</code> groupName: 加群群名称<br><code>String</code> nickname: 加群人昵称<br>特殊方法: <code>event.toIArg()</code>用于获取要传入<code>Seesion.handleMemberJoinRequest</code>的一个参数。</p>
+<h3 id="所有事件类型"><a href="#所有事件类型" class="headerlink" title="所有事件类型"></a>所有事件类型</h3><p>在<code>Bot.subscribe</code>中的<code>event</code>中，我们可以通过判断<code>event.type</code>来确定接受到的事件类型。<br>下面是所有事件类型常量(<code>EventTypeConst.?</code>):<br>它们后面对应着event中有的属性</p>
+<h3 id="➢BOT-ONLINE-bot上线"><a href="#➢BOT-ONLINE-bot上线" class="headerlink" title="➢BOT_ONLINE: bot上线"></a><span style='color:#ff972e;'>➢</span><code>BOT_ONLINE</code>: bot上线</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢BOT-OFFLINE-bot下线"><a href="#➢BOT-OFFLINE-bot下线" class="headerlink" title="➢BOT_OFFLINE: bot下线"></a><span style='color:#ff972e;'>➢</span><code>BOT_OFFLINE</code>: bot下线</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢BOT-OFFLINE-FORCE-bot被挤下线"><a href="#➢BOT-OFFLINE-FORCE-bot被挤下线" class="headerlink" title="➢BOT_OFFLINE_FORCE: bot被挤下线"></a><span style='color:#ff972e;'>➢</span><code>BOT_OFFLINE_FORCE</code>: bot被挤下线</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢BOT-OFFLINE-DROPPED-bot异常下线"><a href="#➢BOT-OFFLINE-DROPPED-bot异常下线" class="headerlink" title="➢BOT_OFFLINE_DROPPED: bot异常下线"></a><span style='color:#ff972e;'>➢</span><code>BOT_OFFLINE_DROPPED</code>: bot异常下线</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢BOT-RELOGIN-bot重新登录"><a href="#➢BOT-RELOGIN-bot重新登录" class="headerlink" title="➢BOT_RELOGIN: bot重新登录"></a><span style='color:#ff972e;'>➢</span><code>BOT_RELOGIN</code>: bot重新登录</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢GROUP-RECALL-群组撤回消息"><a href="#➢GROUP-RECALL-群组撤回消息" class="headerlink" title="➢GROUP_RECALL: 群组撤回消息"></a><span style='color:#ff972e;'>➢</span><code>GROUP_RECALL</code>: 群组撤回消息</h3><p><code>Number</code> senderId: 撤回者QQ号<br><code>Number</code> messageId: 撤回的消息的id<br><code>Number</code> time: 撤回时间<br><code>GroupInfo</code> group: 事件发生所在的群组<br><code>MessageSender</code> operator: 撤回者信息</p>
+<h3 id="➢FRIEND-RECALL-好友撤回消息"><a href="#➢FRIEND-RECALL-好友撤回消息" class="headerlink" title="➢FRIEND_RECALL: 好友撤回消息"></a><span style='color:#ff972e;'>➢</span><code>FRIEND_RECALL</code>: 好友撤回消息</h3><p><code>Number</code> senderId: 撤回者QQ号<br><code>Number</code> messageId: 撤回的消息的id<br><code>Number</code> time: 撤回时间</p>
+<h3 id="➢BOT-GROUP-PERMISSION-CHANGE-bot在群的权限被改变"><a href="#➢BOT-GROUP-PERMISSION-CHANGE-bot在群的权限被改变" class="headerlink" title="➢BOT_GROUP_PERMISSION_CHANGE: bot在群的权限被改变"></a><span style='color:#ff972e;'>➢</span><code>BOT_GROUP_PERMISSION_CHANGE</code>: bot在群的权限被改变</h3><p><code>Permission</code> before: 改前权限<br><code>Permission</code> after: 改后权限<br><code>GroupInfo</code> group: 事件发生所在群组</p>
+<h3 id="➢BOT-MUTE-bot被禁言"><a href="#➢BOT-MUTE-bot被禁言" class="headerlink" title="➢BOT_MUTE: bot被禁言"></a><span style='color:#ff972e;'>➢</span><code>BOT_MUTE</code>: bot被禁言</h3><p><code>Number</code> duration: 禁言时长<br><code>MessageSender</code> operator: 禁言者<br>(群组信息可以在<code>event.getOperator().group</code>找到)</p>
+<h3 id="➢BOT-UNMUTE-bot被解除禁言"><a href="#➢BOT-UNMUTE-bot被解除禁言" class="headerlink" title="➢BOT_UNMUTE: bot被解除禁言"></a><span style='color:#ff972e;'>➢</span><code>BOT_UNMUTE</code>: bot被解除禁言</h3><p><code>MessageSender</code> operator: 禁言者<br>(群组信息可以在<code>event.getOperator().group</code>找到)</p>
+<h3 id="➢BOT-JOIN-GROUP-bot新加入群组"><a href="#➢BOT-JOIN-GROUP-bot新加入群组" class="headerlink" title="➢BOT_JOIN_GROUP: bot新加入群组"></a><span style='color:#ff972e;'>➢</span><code>BOT_JOIN_GROUP</code>: bot新加入群组</h3><p><code>GroupInfo</code> group: 加入的群组</p>
+<h3 id="➢GROUP-NAME-CHANGE-群名称改变"><a href="#➢GROUP-NAME-CHANGE-群名称改变" class="headerlink" title="➢GROUP_NAME_CHANGE: 群名称改变"></a><span style='color:#ff972e;'>➢</span><code>GROUP_NAME_CHANGE</code>: 群名称改变</h3><p><code>String</code> before: 改之前名称<br><code>String</code> after: 改之后名称<br><code>GroupInfo</code> group: 事件发生所在群组</p>
+<h3 id="➢GROUP-ENTRANCE-ANN-CHANGE-入群公告改变"><a href="#➢GROUP-ENTRANCE-ANN-CHANGE-入群公告改变" class="headerlink" title="➢GROUP_ENTRANCE_ANN_CHANGE: 入群公告改变"></a><span style='color:#ff972e;'>➢</span><code>GROUP_ENTRANCE_ANN_CHANGE</code>: 入群公告改变</h3><p><code>String</code> before: 改之前入群公告<br><code>String</code> after: 改之后入群公告<br><code>GroupInfo</code> group: 事件发生所在群组<br><code>MessageSender</code> operator: 操作者</p>
+<h3 id="➢GROUP-MUTE-ALL-群全体禁言事件"><a href="#➢GROUP-MUTE-ALL-群全体禁言事件" class="headerlink" title="➢GROUP_MUTE_ALL: 群全体禁言事件"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MUTE_ALL</code>: 群全体禁言事件</h3><p><code>Boolean</code> before: 之前是否禁言<br><code>Boolean</code> after: 之后是否禁言<br><code>GroupInfo</code> group: 事件发生所在群组<br><code>MessageSender</code> operator: 操作者</p>
+<h3 id="➢GROUP-ALLOW-ANONYMOUS-CHAT-匿名聊天"><a href="#➢GROUP-ALLOW-ANONYMOUS-CHAT-匿名聊天" class="headerlink" title="➢GROUP_ALLOW_ANONYMOUS_CHAT: 匿名聊天"></a><span style='color:#ff972e;'>➢</span><code>GROUP_ALLOW_ANONYMOUS_CHAT</code>: 匿名聊天</h3><p>未写</p>
+<h3 id="➢GROUP-ALLOW-CONFESS-TALK-坦白说"><a href="#➢GROUP-ALLOW-CONFESS-TALK-坦白说" class="headerlink" title="➢GROUP_ALLOW_CONFESS_TALK: 坦白说"></a><span style='color:#ff972e;'>➢</span><code>GROUP_ALLOW_CONFESS_TALK</code>: 坦白说</h3><p>未写</p>
+<h3 id="➢GROUP-ALLOW-MEMBER-INVITE-允许成员邀请其他人入群"><a href="#➢GROUP-ALLOW-MEMBER-INVITE-允许成员邀请其他人入群" class="headerlink" title="➢GROUP_ALLOW_MEMBER_INVITE: 允许成员邀请其他人入群"></a><span style='color:#ff972e;'>➢</span><code>GROUP_ALLOW_MEMBER_INVITE</code>: 允许成员邀请其他人入群</h3><p>未写</p>
+<h3 id="➢GROUP-MEMBER-JOIN-新人入群"><a href="#➢GROUP-MEMBER-JOIN-新人入群" class="headerlink" title="➢GROUP_MEMBER_JOIN: 新人入群"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_JOIN</code>: 新人入群</h3><p><code>MessageSender</code> member: 入群人信息<br>(群组信息可以在<code>event.getMember().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-KICK-群员被踢"><a href="#➢GROUP-MEMBER-KICK-群员被踢" class="headerlink" title="➢GROUP_MEMBER_KICK: 群员被踢"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_KICK</code>: 群员被踢</h3><p><code>MessageSender</code> target: 被踢人信息<br><code>MessageSender</code> operator: 操作者<br>(群组信息可以在<code>event.getOperator/Target().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-QUIT-群员退群"><a href="#➢GROUP-MEMBER-QUIT-群员退群" class="headerlink" title="➢GROUP_MEMBER_QUIT: 群员退群"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_QUIT</code>: 群员退群</h3><p><code>MessageSender</code> member: 退群人信息<br>(群组信息可以在<code>event.getMember().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-NAME-CHANGE-群成员昵称改变"><a href="#➢GROUP-MEMBER-NAME-CHANGE-群成员昵称改变" class="headerlink" title="➢GROUP_MEMBER_NAME_CHANGE: 群成员昵称改变"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_NAME_CHANGE</code>: 群成员昵称改变</h3><p><code>String</code> before: 改之前昵称<br><code>String</code> after: 改之后昵称<br><code>MessageSender</code> target: 被改昵称的人<br><code>MessageSender</code> operator: 操作者(自己或者管理员)<br>(群组信息可以在<code>event.getOperator/Target().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-FAME-CHANHE-群特殊头衔改变"><a href="#➢GROUP-MEMBER-FAME-CHANHE-群特殊头衔改变" class="headerlink" title="➢GROUP_MEMBER_FAME_CHANHE: 群特殊头衔改变"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_FAME_CHANHE</code>: 群特殊头衔改变</h3><p><code>String</code> before: 改之前头衔(空或有)<br><code>String</code> after: 改之后头衔<br><code>MessageSender</code> target: 被改特殊头衔的人<br>(群组信息可以在<code>event.getTarget().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-PERMISSION-CHANGE-群成员权限改变-不能是bot"><a href="#➢GROUP-MEMBER-PERMISSION-CHANGE-群成员权限改变-不能是bot" class="headerlink" title="➢GROUP_MEMBER_PERMISSION_CHANGE: 群成员权限改变(不能是bot)"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_PERMISSION_CHANGE</code>: 群成员权限改变(不能是bot)</h3><p><code>Permission</code> before: 改之前权限<br><code>Permission</code> after: 改之后权限<br><code>MessageSender</code> target: 被改权限的人</p>
+<h3 id="➢GROUP-MEMBER-MUTE-群员被禁言"><a href="#➢GROUP-MEMBER-MUTE-群员被禁言" class="headerlink" title="➢GROUP_MEMBER_MUTE: 群员被禁言"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_MUTE</code>: 群员被禁言</h3><p><code>Number</code> duration: 禁言时长<br><code>MessageSender</code> target: 被禁言的人<br><code>MessageSender</code> operator: 操作者(自己或者管理员)</p>
+<h3 id="➢GROUP-MEMBER-UNMUTE-群员被解除禁言"><a href="#➢GROUP-MEMBER-UNMUTE-群员被解除禁言" class="headerlink" title="➢GROUP_MEMBER_UNMUTE: 群员被解除禁言"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_UNMUTE</code>: 群员被解除禁言</h3><p><code>MessageSender</code> target: 被解除禁言的人<br><code>MessageSender</code> operator: 操作者(自己或者管理员)</p>
+<h3 id="➢NEW-FRIEND-REQUEST-新好友请求事件"><a href="#➢NEW-FRIEND-REQUEST-新好友请求事件" class="headerlink" title="➢NEW_FRIEND_REQUEST: 新好友请求事件"></a><span style='color:#ff972e;'>➢</span><code>NEW_FRIEND_REQUEST</code>: 新好友请求事件</h3><p><code>Number</code> eventId: 事件ID，用于标识事件<br><code>Number</code> fromId: 新好友QQ号<br><code>Number</code> groupId: 新好友来自的群(<code>0</code>为不是通过群加的好友)<br><code>String</code> nickname: 新好友昵称<br>特殊方法:<br><code>event.accept()</code> 同意好友请求。<br><code>event.reject()</code> 拒绝好友请求。<br><code>event.block()</code> 拒绝并拉黑，不再接收请求。<br><code>event.toIArg()</code>用于获取要传入<code>Bot.handleFriendRequest</code>的一个参数。<br>(下面有例子)</p>
+<h3 id="➢NEW-MEMBER-JOIN-REQUEST-新成员入群请求事件"><a href="#➢NEW-MEMBER-JOIN-REQUEST-新成员入群请求事件" class="headerlink" title="➢NEW_MEMBER_JOIN_REQUEST: 新成员入群请求事件"></a><span style='color:#ff972e;'>➢</span><code>NEW_MEMBER_JOIN_REQUEST</code>: 新成员入群请求事件</h3><p><code>Number</code> eventId: 事件ID，用于标识事件<br><code>Number</code> fromId: 加群人QQ号<br><code>Number</code> groupId: 加群群号<br><code>String</code> groupName: 加群群名称<br><code>String</code> nickname: 加群人昵称<br>特殊方法:<br><code>event.accept()</code> 同意加群请求。<br><code>event.reject()</code> 拒绝加群请求。<br><code>event.ignore()</code> 忽略加群请求。<br><code>event.ignoreAndBlock()</code> 忽略加群请求并不再接收请求。<br><code>event.rejectAndBlock()</code> 拒绝加群请求并不再接收请求。<br><code>event.toIArg()</code>用于获取要传入<code>Bot.handleMemberJoinRequest</code>的一个参数。</p>
 <p>所有的属性都可以通过调用<code>event.getXxx()</code>(get+属性首字母大写)方法来过得。<br></br>下面通过一个例子展示用法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">hookEvent: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	<span class="comment">//群组改名提示</span></span><br><span class="line">	<span class="keyword">if</span>(event.type == Mirai.EventTypeConst.GROUP_NAME_CHANGE)&#123;</span><br><span class="line">		session.sendGroupMessage(</span><br><span class="line">			event.getGroup().getId(), <span class="comment">//这是群qq号</span></span><br><span class="line">			<span class="keyword">new</span> Mirai.MessageType.Plain(<span class="string">"Administrator changed the group mame \""</span> + event.getBefore() + <span class="string">"\" to \""</span> + event.getAfter() + <span class="string">"\""</span>)</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//自动同意新好友请求</span></span><br><span class="line">	<span class="keyword">if</span>(event.type == Mirai.EventTypeConst.NEW_FRIEND_REQUEST)&#123;</span><br><span class="line">		session.handleFriendRequest(event.toIArg(), <span class="number">0</span>, <span class="string">"同意好友请求"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">event: <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//群组改名提示</span></span><br><span class="line">  <span class="keyword">if</span>(event.type == GROUP_NAME_CHANGE)&#123;</span><br><span class="line">    bot.sendGroupMessage(</span><br><span class="line">      event.group.id, <span class="comment">//这是群qq号</span></span><br><span class="line">      [Plain(<span class="string">"Administrator changed the group mame \""</span> + event.getBefore() + <span class="string">"\" to \""</span> + event.getAfter() + <span class="string">"\""</span>)]</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//自动同意新好友请求</span></span><br><span class="line">  <span class="keyword">if</span>(event.type == NEW_FRIEND_REQUEST)&#123;</span><br><span class="line">    <span class="comment">//以下两个方法是等价的</span></span><br><span class="line">    bot.handleFriendRequest(event.toIArg(), <span class="number">0</span>);</span><br><span class="line">    event.accept();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="FiloIO"><a href="#FiloIO" class="headerlink" title="FiloIO"></a>FiloIO</h2><p>FileIO类提供简单的文件读取和写入方法。</p>
-<h3 id="方法预览"><a href="#方法预览" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<h2 id="Mirai-utils-file"><a href="#Mirai-utils-file" class="headerlink" title="Mirai.utils.file"></a>Mirai.utils.file</h2><p>file类提供简单的文件读取和写入方法。</p>
+<h3 id="方法预览-3"><a href="#方法预览-3" class="headerlink" title="方法预览"></a>方法预览</h3><table>
 <thead>
 <tr>
 <th align="center">返回类型</th>
@@ -643,15 +638,15 @@ function activateLightMode(){
 <td align="left"><code>static</code> appendString(<code>String</code> path, <code>String</code> appendString)</td>
 </tr>
 </tbody></table>
-<h3 id="详细方法-5"><a href="#详细方法-5" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="●-VOID-static-create-String-path"><a href="#●-VOID-static-create-String-path" class="headerlink" title="● VOID static create(String path)"></a>● <span style='color:#aaaaaa;'>VOID</span> <code>static</code> create(<code>String</code> path)</h3><p>在<code>path</code>创建一个文件或目录。</p>
-<h3 id="●-VOID-static-remove-String-path"><a href="#●-VOID-static-remove-String-path" class="headerlink" title="● VOID static remove(String path)"></a>● <span style='color:#aaaaaa;'>VOID</span> <code>static</code> remove(<code>String</code> path)</h3><p>删除在<code>path</code>的一个文件或目录。</p>
-<h3 id="●-static-read-String-path-mode"><a href="#●-static-read-String-path-mode" class="headerlink" title="● ? static read(String path, ? mode)"></a>● <code>?</code> <code>static</code> read(<code>String</code> path, <code>?</code> mode)</h3><p>读取在<code>path</code>的文件。<br>如果<code>mode</code>为<code>FileIO.STRING</code>，则返回文件内容。<br>如果<code>mode</code>为<code>FileIO.STREAM</code>，则返回文件输入流。</p>
-<h3 id="●-VOID-static-writeString-String-path-String-string-Boolean-isCover"><a href="#●-VOID-static-writeString-String-path-String-string-Boolean-isCover" class="headerlink" title="● VOID static writeString(String path, String string, Boolean isCover)"></a>● <span style='color:#aaaaaa;'>VOID</span> <code>static</code> writeString(<code>String</code> path, <code>String</code> string, <code>Boolean</code> isCover)</h3><p>写入字符串到<code>path</code>的文件。<br><code>isCover</code>设定是否在文件已存在的情况下覆盖文件内容。</p>
-<h3 id="●-VOID-static-writeStream-String-path-java-io-InputStream-inputStream-Boolean-isCover-Boolean-isInputStreamClose"><a href="#●-VOID-static-writeStream-String-path-java-io-InputStream-inputStream-Boolean-isCover-Boolean-isInputStreamClose" class="headerlink" title="● VOID static writeStream(String path, java.io.InputStream inputStream, Boolean isCover, Boolean isInputStreamClose)"></a>● <span style='color:#aaaaaa;'>VOID</span> <code>static</code> writeStream(<code>String</code> path, <code>java.io.InputStream</code> inputStream, <code>Boolean</code> isCover, <code>Boolean</code> isInputStreamClose)</h3><p>写入字符串到<code>path</code>的文件。<br><code>isCover</code>设定是否在文件已存在的情况下覆盖文件内容。<br><code>isInputStreamClose</code>设定是否在写入完成后关闭并回收输入流。</p>
-<h3 id="●-VOID-static-appendString-String-path-String-appendString"><a href="#●-VOID-static-appendString-String-path-String-appendString" class="headerlink" title="● VOID static appendString(String path, String appendString)"></a>● <span style='color:#aaaaaa;'>VOID</span> <code>static</code> appendString(<code>String</code> path, <code>String</code> appendString)</h3><p>追加字符串到<code>path</code>的文件。</p>
+<h3 id="详细方法-6"><a href="#详细方法-6" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-VOID-static-create-String-path"><a href="#➢-VOID-static-create-String-path" class="headerlink" title="➢ VOID static create(String path)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> create(<code>String</code> path)</h3><p>在<code>path</code>创建一个文件或目录。</p>
+<h3 id="➢-VOID-static-remove-String-path"><a href="#➢-VOID-static-remove-String-path" class="headerlink" title="➢ VOID static remove(String path)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> remove(<code>String</code> path)</h3><p>删除在<code>path</code>的一个文件或目录。</p>
+<h3 id="➢-static-read-String-path-mode"><a href="#➢-static-read-String-path-mode" class="headerlink" title="➢ ? static read(String path, ? mode)"></a><span style='color:#ff972e;'>➢</span> <code>?</code> <code>static</code> read(<code>String</code> path, <code>?</code> mode)</h3><p>读取在<code>path</code>的文件。<br>如果<code>mode</code>为<code>Mirai.utils.file.STRING</code>，则返回文件内容。<br>如果<code>mode</code>为<code>Mirai.utils.file.STREAM</code>，则返回文件输入流。</p>
+<h3 id="➢-VOID-static-writeString-String-path-String-string-Boolean-isCover"><a href="#➢-VOID-static-writeString-String-path-String-string-Boolean-isCover" class="headerlink" title="➢ VOID static writeString(String path, String string, Boolean isCover)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> writeString(<code>String</code> path, <code>String</code> string, <code>Boolean</code> isCover)</h3><p>写入字符串到<code>path</code>的文件。<br><code>isCover</code>设定是否在文件已存在的情况下覆盖文件内容。</p>
+<h3 id="➢-VOID-static-writeStream-String-path-java-io-InputStream-inputStream-Boolean-isCover-Boolean-isInputStreamClose"><a href="#➢-VOID-static-writeStream-String-path-java-io-InputStream-inputStream-Boolean-isCover-Boolean-isInputStreamClose" class="headerlink" title="➢ VOID static writeStream(String path, java.io.InputStream inputStream, Boolean isCover, Boolean isInputStreamClose)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> writeStream(<code>String</code> path, <code>java.io.InputStream</code> inputStream, <code>Boolean</code> isCover, <code>Boolean</code> isInputStreamClose)</h3><p>写入字符串到<code>path</code>的文件。<br><code>isCover</code>设定是否在文件已存在的情况下覆盖文件内容。<br><code>isInputStreamClose</code>设定是否在写入完成后关闭并回收输入流。</p>
+<h3 id="➢-VOID-static-appendString-String-path-String-appendString"><a href="#➢-VOID-static-appendString-String-path-String-appendString" class="headerlink" title="➢ VOID static appendString(String path, String appendString)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> appendString(<code>String</code> path, <code>String</code> appendString)</h3><p>追加字符串到<code>path</code>的文件。</p>
 <hr>
-<h2 id="NetworkUtils"><a href="#NetworkUtils" class="headerlink" title="NetworkUtils"></a>NetworkUtils</h2><p>NetworkUtils类提供简单HTTP POST/GET方法。<br>Mirai类加载之前必须加载NetworkUtils类，因为Mirai类与http api的通讯就是用的NetworkUtils类。</p>
-<h3 id="方法预览-1"><a href="#方法预览-1" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<h2 id="Mirai-utils-http"><a href="#Mirai-utils-http" class="headerlink" title="Mirai.utils.http"></a>Mirai.utils.http</h2><p>http类提供简单HTTP POST/GET方法。</p>
+<h3 id="方法预览-4"><a href="#方法预览-4" class="headerlink" title="方法预览"></a>方法预览</h3><table>
 <thead>
 <tr>
 <th align="center">返回类型</th>
@@ -659,7 +654,7 @@ function activateLightMode(){
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><code>java.io.InputStream</code></td>
+<td align="center">[<code>Number</code>, <code>java.io.InputStream</code>]</td>
 <td align="left"><code>static</code> getInputStream(<code>String</code> url[, <code>Array</code> headers])</td>
 </tr>
 <tr>
@@ -671,13 +666,38 @@ function activateLightMode(){
 <td align="left"><code>static</code> post(<code>String</code> url, <code>String</code> params[, <code>Array</code> headers])</td>
 </tr>
 </tbody></table>
-<h3 id="详细方法-6"><a href="#详细方法-6" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="●-java-io-InputStream-static-getInputStream-String-url-Array-headers"><a href="#●-java-io-InputStream-static-getInputStream-String-url-Array-headers" class="headerlink" title="● java.io.InputStream static getInputStream(String url[, Array headers])"></a>● <code>java.io.InputStream</code> <code>static</code> getInputStream(<code>String</code> url[, <code>Array</code> headers])</h3><p>读取远程服务器资源并返回输入流，常用于获取图片，音乐等非文字信息。<br><code>headers</code>是可选的，指定了请求头，它应该是这样的格式：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	[<span class="string">"Content-Type"</span>, <span class="string">"blablabla"</span>],</span><br><span class="line">	[<span class="string">"Connection"</span>, <span class="string">"Keep-Alive"</span>],</span><br><span class="line">	[<span class="string">"..."</span>, <span class="string">"..."</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h3 id="●-String-static-get-String-url-Array-headers-Boolean-isLineBreak"><a href="#●-String-static-get-String-url-Array-headers-Boolean-isLineBreak" class="headerlink" title="● String static get(String url[, Array headers, Boolean isLineBreak]) |"></a>● <code>String</code> <code>static</code> get(<code>String</code> url[, <code>Array</code> headers, <code>Boolean</code> isLineBreak]) |</h3><p>读取远程服务器资源并返回字符串。<br><code>isLineBreak</code>指定是否有换行符，若为<code>false</code>则读取后的字符串都在一行。</p>
-<h3 id="●-String-static-post-String-url-String-params-Array-headers"><a href="#●-String-static-post-String-url-String-params-Array-headers" class="headerlink" title="● String static post(String url, String params[, Array headers])"></a>● <code>String</code> <code>static</code> post(<code>String</code> url, <code>String</code> params[, <code>Array</code> headers])</h3><p>向远程服务器发送请求。</p>
+<h3 id="详细方法-7"><a href="#详细方法-7" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-Number-java-io-InputStream-static-getInputStream-String-url-Array-headers"><a href="#➢-Number-java-io-InputStream-static-getInputStream-String-url-Array-headers" class="headerlink" title="➢ [Number, java.io.InputStream] static getInputStream(String url[, Array headers])"></a><span style='color:#ff972e;'>➢</span> [<code>Number</code>, <code>java.io.InputStream</code>] <code>static</code> getInputStream(<code>String</code> url[, <code>Array</code> headers])</h3><p>读取远程服务器资源并返回输入流，常用于获取图片，音乐等非文字信息。<br><code>headers</code>是可选的，指定了请求头，它应该是这样的格式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [<span class="string">"Content-Type"</span>, <span class="string">"blablabla"</span>],</span><br><span class="line">  [<span class="string">"Connection"</span>, <span class="string">"Keep-Alive"</span>],</span><br><span class="line">  [<span class="string">"..."</span>, <span class="string">"..."</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>返回的Array中，第一个元素为输入流大小(文件大小)，第二个元素为输入流。</p>
+<h3 id="➢-String-static-get-String-url-Array-headers-Boolean-isLineBreak"><a href="#➢-String-static-get-String-url-Array-headers-Boolean-isLineBreak" class="headerlink" title="➢ String static get(String url[, Array headers, Boolean isLineBreak]) |"></a><span style='color:#ff972e;'>➢</span> <code>String</code> <code>static</code> get(<code>String</code> url[, <code>Array</code> headers, <code>Boolean</code> isLineBreak]) |</h3><p>读取远程服务器资源并返回字符串。<br><code>isLineBreak</code>指定是否有换行符，若为<code>false</code>则读取后的字符串都在一行。</p>
+<h3 id="➢-String-static-post-String-url-String-params-Array-headers"><a href="#➢-String-static-post-String-url-String-params-Array-headers" class="headerlink" title="➢ String static post(String url, String params[, Array headers])"></a><span style='color:#ff972e;'>➢</span> <code>String</code> <code>static</code> post(<code>String</code> url, <code>String</code> params[, <code>Array</code> headers])</h3><p>向远程服务器发送请求。</p>
 <hr>
-<h2 id="LinuxShell"><a href="#LinuxShell" class="headerlink" title="LinuxShell"></a>LinuxShell</h2><p>LinuxShell类提供执行Linux终端代码的方法。</p>
-<p>(待更新…)</p>
+<h2 id="Mirai-Log"><a href="#Mirai-Log" class="headerlink" title="Mirai.Log"></a>Mirai.Log</h2><p>Log类向控制台输出日志，自动适配标准输出流和AutoJS控制台。</p>
+<h3 id="方法预览-5"><a href="#方法预览-5" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> v(<code>Object</code> object)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> i(<code>Object</code> object)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> w(<code>Object</code> object)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> e(<code>Object</code> object)</td>
+</tr>
+</tbody></table>
+<p>他们分别对应着verbose，info，warning和error消息，这里只是颜色不同而已。</p>
 </div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">StageGuard</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">6</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">11</div></a></div></div><div class="card-info-bookmark is-center"><a class="bookmark button--primary button--animated" id="bookmark-it" href="javascript:;" title="加入书签" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入书签</span></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/StageGuard" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:beamiscool@qq.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="https://twitter.com/realstageguard" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside-recent-item"> <div class="aside-recent-post"><a href="/2020/04/01/run-qqbot-on-termux-android/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/StageGuard/stageguard.github.io/img/run-qqbot-android/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="0202年能在安卓手机上玩QQ机器人吗" alt="0202年能在安卓手机上玩QQ机器人吗"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/04/01/run-qqbot-on-termux-android/" title="0202年能在安卓手机上玩QQ机器人吗">0202年能在安卓手机上玩QQ机器人吗</div><time class="aside-post_meta post-meta__date">2020-04-01</time></div></a></div><div class="aside-recent-post"><a href="/2020/03/03/sky_installation_tutorial/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/StageGuard/stageguard.github.io/img/sky-installation/banner.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="《Sky光·遇》(Android版) 安装教程" alt="《Sky光·遇》(Android版) 安装教程"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/03/03/sky_installation_tutorial/" title="《Sky光·遇》(Android版) 安装教程">《Sky光·遇》(Android版) 安装教程</div><time class="aside-post_meta post-meta__date">2020-03-03</time></div></a></div><div class="aside-recent-post"><a href="/2019/10/27/analyze-163-music-key/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="/img/post.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="解析从网易云音乐下载的歌曲的注释(comment)" alt="解析从网易云音乐下载的歌曲的注释(comment)"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/10/27/analyze-163-music-key/" title="解析从网易云音乐下载的歌曲的注释(comment)">解析从网易云音乐下载的歌曲的注释(comment)</div><time class="aside-post_meta post-meta__date">2019-10-27</time></div></a></div><div class="aside-recent-post"><a href="/2019/08/29/terrariape-multiplayer-via-frp/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/StageGuard/stageguard.github.io/img/trfrppe-img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="不需要root/μpn进行TerrariaPE多人联机" alt="不需要root/μpn进行TerrariaPE多人联机"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/08/29/terrariape-multiplayer-via-frp/" title="不需要root/μpn进行TerrariaPE多人联机">不需要root/μpn进行TerrariaPE多人联机</div><time class="aside-post_meta post-meta__date">2019-08-29</time></div></a></div><div class="aside-recent-post"><a href="/2019/08/15/run-docker-on-qemu-alpine/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/StageGuard/stageguard.github.io/img/run-docker-img/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="Android运行Docker！(Termux + QEMU + linux_alpine, qemu网络映射)" alt="Android运行Docker！(Termux + QEMU + linux_alpine, qemu网络映射)"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/08/15/run-docker-on-qemu-alpine/" title="Android运行Docker！(Termux + QEMU + linux_alpine, qemu网络映射)">Android运行Docker！(Termux + QEMU + linux_alpine, qemu网络映射)</div><time class="aside-post_meta post-meta__date">2019-08-15</time></div></a></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fa fa-tags" aria-hidden="true"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/alpine/" style="font-size: 16px; color: #999">alpine</a> <a href="/tags/docker/" style="font-size: 16px; color: #999">docker</a> <a href="/tags/frp/" style="font-size: 24px; color: #99a9bf">frp</a> <a href="/tags/git/" style="font-size: 16px; color: #999">git</a> <a href="/tags/gogs/" style="font-size: 16px; color: #999">gogs</a> <a href="/tags/netease/" style="font-size: 16px; color: #999">netease</a> <a href="/tags/qemu/" style="font-size: 16px; color: #999">qemu</a> <a href="/tags/qqbot/" style="font-size: 16px; color: #999">qqbot</a> <a href="/tags/sky/" style="font-size: 16px; color: #999">sky</a> <a href="/tags/termux/" style="font-size: 16px; color: #999">termux</a> <a href="/tags/terraria/" style="font-size: 16px; color: #999">terraria</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fa fa-archive" aria-hidden="true"></i><span>归档</span></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/"><span class="archive-list-date">2020年04月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/"><span class="archive-list-date">2020年03月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/"><span class="archive-list-date">2019年10月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/"><span class="archive-list-date">2019年08月</span><span class="archive-list-count">2</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/"><span class="archive-list-date">2019年07月</span><span class="archive-list-count">1</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">6</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" start_date="7/15/2019 00:00:00">     </div></div><div class="webinfo-item"><div class="webinfo-site-wordcount-name">本站总字数 :</div><div class="webinfo-site-wordcount">7.7k</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By StageGuard</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
  <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script><script>if (document.getElementsByClassName('mermaid').length) {
   loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',function () {
