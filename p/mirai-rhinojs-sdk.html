@@ -91,7 +91,8 @@ function activateLightMode(){
 <li><a href="#Mirai-EventType-Const">EventType</a> - 事件类型</li>
 <li><a href="#Mirai-EventType-Const">EventTypeConst</a> - 事件类型常量</li>
 <li><a href="#Mirai-utils-http">utils.http</a> - 网络操作类</li>
-<li><a href="#Mirai-utils-http">utils.file</a> - 文件操作类</li>
+<li><a href="#Mirai-utils-file">utils.file</a> - 文件操作类</li>
+<li><a href="#Mirai-utils-rsync">utils.rsync</a> - Rhino中的异步执行</li>
 <li><a href="#Mirai-Log">Log</a> - 日志输出</li>
 </ul>
 </li>
@@ -329,15 +330,15 @@ function activateLightMode(){
 </tr>
 <tr>
 <td align="center"><code>MessageChain</code></td>
-<td align="left"><span style='color:#aaaaaa;'>discord(<code>MessageTypeConst.?</code> type)</span></td>
+<td align="left">discord(<code>MessageTypeConst.?</code> type)</td>
 </tr>
 <tr>
 <td align="center"><code>MessageChain</code></td>
-<td align="left"><span style='color:#aaaaaa;'>add(<span style='color:#a88bff;'>MessageObject</span> messages)</span></td>
+<td align="left">add(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
 </tr>
 <tr>
 <td align="center"><code>MessageChain</code></td>
-<td align="left"><span style='color:#aaaaaa;'>addF(<span style='color:#a88bff;'>MessageObject</span> messages)</span></td>
+<td align="left">addF(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
 </tr>
 <tr>
 <td align="center"><code>String</code></td>
@@ -683,8 +684,131 @@ function activateLightMode(){
 <h3 id="➢-String-static-get-String-url-Array-headers-Boolean-isLineBreak"><a href="#➢-String-static-get-String-url-Array-headers-Boolean-isLineBreak" class="headerlink" title="➢ String static get(String url[, Array headers, Boolean isLineBreak]) |"></a><span style='color:#ff972e;'>➢</span> <code>String</code> <code>static</code> get(<code>String</code> url[, <code>Array</code> headers, <code>Boolean</code> isLineBreak]) |</h3><p>读取远程服务器资源并返回字符串。<br><code>isLineBreak</code>指定是否有换行符，若为<code>false</code>则读取后的字符串都在一行。</p>
 <h3 id="➢-String-static-post-String-url-String-params-Array-headers"><a href="#➢-String-static-post-String-url-String-params-Array-headers" class="headerlink" title="➢ String static post(String url, String params[, Array headers])"></a><span style='color:#ff972e;'>➢</span> <code>String</code> <code>static</code> post(<code>String</code> url, <code>String</code> params[, <code>Array</code> headers])</h3><p>向远程服务器发送请求。</p>
 <hr>
-<h2 id="Mirai-Log"><a href="#Mirai-Log" class="headerlink" title="Mirai.Log"></a>Mirai.Log</h2><p>Log类向控制台输出日志，自动适配标准输出流和AutoJS控制台。</p>
+<h2 id="Mirai-utils-rsync"><a href="#Mirai-utils-rsync" class="headerlink" title="Mirai.utils.rsync"></a>Mirai.utils.rsync</h2><p>rsync类提供在rhino中异步执行的方法。</p>
 <h3 id="方法预览-5"><a href="#方法预览-5" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PlaceHolder</td>
+<td align="left">PlaceHolder</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> run(<code>Object</code> func)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> loop(<code>Object</code> func, <code>Number</code> times, <code>Number</code>, interval)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> corun(<code>Object</code> func, <code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> flag(<code>String</code> name)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> interval(<code>Number</code> interval)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> co_count(<code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> loop_times(<code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left">run(<code>Object</code> func)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left">loop(<code>Object</code> func, <code>Number</code> times, <code>Number</code>, interval)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left">corun(<code>Object</code> func, <code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>String</code>/<code>rsync</code></td>
+<td align="left">flag(<code>String</code> name)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code>/<code>rsync</code></td>
+<td align="left">interval(<code>Number</code> interval)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code>/<code>rsync</code></td>
+<td align="left">co_count(<code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code>/<code>rsync</code></td>
+<td align="left">loop_times(<code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">sleep(<code>Number</code> duration)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">stop()</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">restart()</td>
+</tr>
+</tbody></table>
+<h3 id="详细方法-8"><a href="#详细方法-8" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-rsync-static-run-Object-func"><a href="#➢-rsync-static-run-Object-func" class="headerlink" title="➢ rsync static run(Object func)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> run(<code>Object</code> func)</h3><p>创建执行单程异步线程，并返回这个异步线程对象。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsync.run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;</span><br><span class="line">  Log.i(<span class="string">"in rsync thread."</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in rsync thread.</span><br></pre></td></tr></table></figure>
+
+<p><code>func</code>中的参数<code>s</code>表示自身rsync对象，可以对当前异步线程进行sleep()或stop()等操作。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rsync.run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;</span><br><span class="line">  Log.i(<span class="string">"in rsync thread."</span>);</span><br><span class="line">  s.stop();</span><br><span class="line">  Log.i(<span class="string">"print me."</span>);<span class="comment">//这条将不会被打印</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in rsync thread.</span><br></pre></td></tr></table></figure>
+
+<p>stop()是可以将sleep()打断的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = rsync.run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;</span><br><span class="line">  Log.i(<span class="string">"in rsync thread."</span>);</span><br><span class="line">  s.sleep(<span class="number">3000</span>);</span><br><span class="line">  Log.i(<span class="string">"print me."</span>);<span class="comment">//这条将不会被打印</span></span><br><span class="line">&#125;);</span><br><span class="line">java.lang.Thread.sleep(<span class="number">1500</span>);</span><br><span class="line">r.stop();</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in rsync thread.</span><br></pre></td></tr></table></figure>
+
+<h3 id="➢-rsync-static-loop-Object-func-Number-times-Number-interval"><a href="#➢-rsync-static-loop-Object-func-Number-times-Number-interval" class="headerlink" title="➢ rsync static loop(Object func, Number times, Number, interval)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> loop(<code>Object</code> func, <code>Number</code> times, <code>Number</code>, interval)</h3><p>创建执行循环异步线程并返回这个异步线程对象。<br><code>times</code>表示循环执行的次数，<code>-1</code>表示无限次(默认就是执行无限次)，直到调用stop()。<br><code>interval</code>表示每次上一次执行完毕到下一次执行的中间间隔(毫秒)。</p>
+<p>它的本质是创建一个rsync对象，将标记循环执行次数的属性<code>loop_times</code>和执行间隔属性<code>interval</code>设置为参数<code>times</code>和<code>interval</code>。</p>
+<h3 id="➢-rsync-static-corun-Object-func-Number-count"><a href="#➢-rsync-static-corun-Object-func-Number-count" class="headerlink" title="➢ rsync static corun(Object func, Number count)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> corun(<code>Object</code> func, <code>Number</code> count)</h3><p>创建同时执行<code>count</code>个单程异步线程并返回这个异步线程对象。<br><code>count</code>表示创建同时执行线程的个数，若设置为为1，个则最终效果和rsync.run()相同。</p>
+<p>它的本质是创建一个rsync对象，将标记同时执行线程个数的属性<code>co_count</code>设置为参数<code>count</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsync.corun(<span class="function">(<span class="params">s, i</span>) =&gt;</span> &#123;</span><br><span class="line">  Log.i(<span class="string">"我是第"</span> + i + <span class="string">"个线程"</span>)。</span><br><span class="line">&#125;, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<p>将同时输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我是第0个线程</span><br><span class="line">我是第1个线程</span><br><span class="line">我是第2个线程</span><br><span class="line">我是第3个线程</span><br><span class="line">我是第4个线程</span><br></pre></td></tr></table></figure>
+
+<h3 id="➢-rsync-static-flag-String-name"><a href="#➢-rsync-static-flag-String-name" class="headerlink" title="➢ rsync static flag(String name)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> flag(<code>String</code> name)</h3><p>创建一个新的异步线程，将线程组名称设置为<code>name</code>并返回这个异步线程对象。</p>
+<h3 id="➢-rsync-static-interval-Number-interval"><a href="#➢-rsync-static-interval-Number-interval" class="headerlink" title="➢ rsync static interval(Number interval)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> interval(<code>Number</code> interval)</h3><p>创建一个新的异步线程，将上一次执行完毕到下一次执行的中间间隔设置为<code>interval</code>并返回这个异步线程对象。<br>当<code>loop_times</code>为1(默认)时异步线程不会执行第二次，所以interval属性不会起作用。</p>
+<h3 id="➢-rsync-static-co-count-Number-count"><a href="#➢-rsync-static-co-count-Number-count" class="headerlink" title="➢ rsync static co_count(Number count)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> co_count(<code>Number</code> count)</h3><p>创建一个新的异步线程，将同时异步执行线程的个数设置为<code>count</code>并返回这个异步线程对象。</p>
+<h3 id="➢-rsync-static-loop-times-Number-times"><a href="#➢-rsync-static-loop-times-Number-times" class="headerlink" title="➢ rsync static loop_times(Number times)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> loop_times(<code>Number</code> times)</h3><p>创建一个新的异步线程，将循环执行次数设置为<code>interval</code>(<code>-1</code>表示执行无限次)并返回这个异步线程对象。</p>
+<h3 id="➢-rsync-run-Object-func"><a href="#➢-rsync-run-Object-func" class="headerlink" title="➢ rsync run(Object func)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> run(<code>Object</code> func)</h3><p>开始执行异步线程。<br>若<code>func</code>为<code>null</code>，则什么也不会执行。<br>若当前rsync对象线程已开始执行，则会抛出异常。</p>
+<h3 id="➢-rsync-loop-Object-func-Number-times-Number-interval"><a href="#➢-rsync-loop-Object-func-Number-times-Number-interval" class="headerlink" title="➢ rsync loop(Object func, Number times, Number, interval)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> loop(<code>Object</code> func, <code>Number</code> times, <code>Number</code>, interval)</h3><p>同上方静态方法，若当前rsync对象线程已开始执行，则会抛出异常。<br>它的本质是将当前rsync对象线程标记循环执行次数的属性<code>loop_times</code>和执行间隔属性<code>interval</code>设置为参数<code>times</code>和<code>interval</code>。</p>
+<h3 id="➢-rsync-corun-Object-func-Number-count"><a href="#➢-rsync-corun-Object-func-Number-count" class="headerlink" title="➢ rsync corun(Object func, Number count)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> corun(<code>Object</code> func, <code>Number</code> count)</h3><p>同上方静态方法，若当前rsync对象线程已开始执行，则会抛出异常。<br>它的本质是将当前rsync对象标记同时执行线程个数的属性<code>co_count</code>设置为参数<code>count</code>。</p>
+<h3 id="➢-String-rsync-flag-String-name"><a href="#➢-String-rsync-flag-String-name" class="headerlink" title="➢ String/rsync flag(String name)"></a><span style='color:#ff972e;'>➢</span> <code>String</code>/<code>rsync</code> flag(<code>String</code> name)</h3><p>将当前rsync对象线程组名称设置为<code>name</code>并返回这个异步线程对象。<br>若当前rsync对象线程已开始执行，则会抛出异常。<br>若参数为空，则会返回当前rsync对象<code>flag</code>值。</p>
+<h3 id="➢-Number-rsync-interval-Number-interval"><a href="#➢-Number-rsync-interval-Number-interval" class="headerlink" title="➢ Number/rsync interval(Number interval)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code>/<code>rsync</code> interval(<code>Number</code> interval)</h3><p>将当前rsync对象上一次执行完毕到下一次执行的中间间隔设置为<code>interval</code>并返回这个异步线程对象。<br>当<code>loop_times</code>为1(默认)时异步线程不会执行第二次，所以interval属性不会起作用。<br>若当前rsync对象线程已开始执行，则会抛出异常。<br>若参数为空，则会返回当前rsync对象<code>interval</code>值。</p>
+<h3 id="➢-Number-rsync-co-count-Number-count"><a href="#➢-Number-rsync-co-count-Number-count" class="headerlink" title="➢ Number/rsync co_count(Number count)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code>/<code>rsync</code> co_count(<code>Number</code> count)</h3><p>将当前rsync对象同时异步执行线程的个数设置为<code>count</code>并返回这个异步线程对象。<br>若当前rsync对象线程已开始执行，则会抛出异常。<br>若参数为空，则会返回当前rsync对象<code>co_count</code>值。</p>
+<h3 id="➢-Number-rsync-loop-times-Number-times"><a href="#➢-Number-rsync-loop-times-Number-times" class="headerlink" title="➢ Number/rsync loop_times(Number times)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code>/<code>rsync</code> loop_times(<code>Number</code> times)</h3><p>将当前rsync对象循环执行次数设置为<code>times</code>(<code>-1</code>表示执行无限次)并返回这个异步线程对象。<br>若当前rsync对象线程已开始执行，则会抛出异常。<br>若参数为空，则会返回当前rsync对象<code>loop_times</code>值。</p>
+<h3 id="➢-VOID-sleep-Number-duration"><a href="#➢-VOID-sleep-Number-duration" class="headerlink" title="➢ VOID sleep(Number duration)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> sleep(<code>Number</code> duration)</h3><p>睡眠，<code>duration</code>表示时长。</p>
+<h3 id="➢-VOID-stop"><a href="#➢-VOID-stop" class="headerlink" title="➢ VOID stop()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> stop()</h3><p>打断并停止线程执行。</p>
+<h3 id="➢-VOID-restart"><a href="#➢-VOID-restart" class="headerlink" title="➢ VOID restart()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> restart()</h3><p>重新执行。</p>
+<h3 id="rsync链式调用例子："><a href="#rsync链式调用例子：" class="headerlink" title="rsync链式调用例子："></a>rsync链式调用例子：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环执行，以下方法是等价的</span></span><br><span class="line">rsync.loop(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;...&#125;, <span class="number">10</span>, <span class="number">100</span>);</span><br><span class="line">rsync.flag(<span class="string">"loop_thread"</span>).interval(<span class="number">100</span>).loop_times(<span class="number">10</span>).run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;...&#125;);</span><br><span class="line"><span class="comment">//实例化对象中调用loop或corun会覆盖先前设置的属性。</span></span><br><span class="line">rsync.flag(<span class="string">"loop_thread"</span>).loop(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;...&#125;, <span class="number">10</span>, <span class="number">100</span>);</span><br><span class="line"><span class="keyword">var</span> r = rsync.flag(<span class="string">"loop_times"</span>);</span><br><span class="line">r.interval(<span class="number">100</span>);</span><br><span class="line">r.loop_times(<span class="number">10</span>);</span><br><span class="line">r.run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;...&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Mirai-Log"><a href="#Mirai-Log" class="headerlink" title="Mirai.Log"></a>Mirai.Log</h2><p>Log类向控制台输出日志，自动适配标准输出流和AutoJS控制台。</p>
+<h3 id="方法预览-6"><a href="#方法预览-6" class="headerlink" title="方法预览"></a>方法预览</h3><table>
 <thead>
 <tr>
 <th align="center">返回类型</th>
