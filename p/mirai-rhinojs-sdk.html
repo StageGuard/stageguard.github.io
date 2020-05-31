@@ -1,0 +1,909 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mirai RhinoJS SDK文档 | StageGuard</title><meta name="description" content="Mirai RhinoJS SDK文档"><meta name="author" content="StageGuard"><meta name="copyright" content="StageGuard"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Mirai RhinoJS SDK文档"><meta name="twitter:description" content="Mirai RhinoJS SDK文档"><meta name="twitter:image" content="https://stageguard.top/img/post.jpg"><meta property="og:type" content="website"><meta property="og:title" content="Mirai RhinoJS SDK文档"><meta property="og:url" content="https://stageguard.top/p/mirai-rhinojs-sdk.html"><meta property="og:site_name" content="StageGuard"><meta property="og:description" content="Mirai RhinoJS SDK文档"><meta property="og:image" content="https://stageguard.top/img/post.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      now = new Date();
+      hour = now.getHours();
+      isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://stageguard.top/p/mirai-rhinojs-sdk.html"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://stageguard.top","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: false,
+  isFontAwesomeV5: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: false
+}</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="StageGuard" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div class="not-index-bg" id="nav" style="background-image: url(/img/index.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">StageGuard</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div><div id="page_site-info"><h1 id="site_title">Mirai RhinoJS SDK文档</h1></div></div><main class="layout_page" id="content-inner"><div id="page"><div id="article-container"><h1 id="Mirai-RhinoJS-SDK文档"><a href="#Mirai-RhinoJS-SDK文档" class="headerlink" title="Mirai RhinoJS SDK文档"></a>Mirai RhinoJS SDK文档</h1><p><span style='color:#ff0000;'>所有类和类型方法皆为测试阶段，未来可能会有更改。</br>若按照文档的方法调用出现问题，或文档有错字或术语性错误，请在 <a href="https://github.com/StageGuard/mirai-rhinojs-sdk" target="_blank" rel="noopener">StageGuard/mirai-rhinojs-sdk</a> 开issue反馈。</br>ISSUE的标题前必须加上<code>[SDK文档]</code>或者<code>[SDK Documentation]</code>，否则不予受理/更改。</br>有关文档更新，请查看<a href="https://github.com/StageGuard/mirai-rhinojs-sdk/blob/master/DOCCHANGELOG.md" target="_blank" rel="noopener">文档更新日志</a></span></p>
+<blockquote>
+<p>由于<code>v1.6.0</code>版本的breaking changes，文档大幅度改动。</br>现在只提供对外使用的接口，内部实现的方法没有必要了解。</p>
+</blockquote>
+<p>不同版本的MiraiQQBot.js在方法上略有不同，在方法前会用<span style='color:#97ff2e;font-size:10px;'>[http]</span>和<span style='color:#ff855d;font-size:10px;'>[core]</span>标记来表示http版本和core版本独有方法。</p>
+<hr>
+<h2 id="类型预览"><a href="#类型预览" class="headerlink" title="类型预览"></a>类型预览</h2><ul>
+<li><a href="#Mirai">Mirai</a> - Mirai RhinoJS主类<ul>
+<li><a href="#Mirai-Bot">Bot</a> - Bot对象</li>
+<li><a href="#Mirai-MessageChain">MessageChain</a> - 消息链</li>
+<li><a href="#Mirai-MessageSender">MessageSender</a> - 消息发送者(群或好友)</li>
+<li><a href="#Mirai-GroupInfo">GroupInfo</a> - 群组信息</li>
+<li><a href="#Mirai-MessageType">MessageType</a> - 消息类型</li>
+<li><a href="#Mirai-MessageTypeConst">MessageTypeConst</a> - 消息类型常量</li>
+<li><a href="#Mirai-EventType-Const">EventType</a> - 事件类型</li>
+<li><a href="#Mirai-EventType-Const">EventTypeConst</a> - 事件类型常量</li>
+<li><a href="#Mirai-utils-http">utils.http</a> - 网络操作类</li>
+<li><a href="#Mirai-utils-file">utils.file</a> - 文件操作类</li>
+<li><a href="#Mirai-utils-rsync">utils.rsync</a> - Rhino中的异步执行</li>
+<li><a href="#Mirai-Log">Log</a> - 日志输出</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他内容"><a href="#其他内容" class="headerlink" title="其他内容"></a>其他内容</h2><ul>
+<li><a href="#聚合消息对象">聚合消息对象</a></li>
+<li><a href="#contains返回的临时对象">contains返回的临时对象</a></li>
+<li><a href="#contains正则表达式拓展">contains正则表达式拓展</a></li>
+<li><a href="#rsync调用方法">rsync调用方法</a></li>
+</ul>
+<hr>
+<h2 id="Mirai"><a href="#Mirai" class="headerlink" title="Mirai"></a>Mirai</h2><p>Mirai类是基类。</p>
+<h3 id="方法预览"><a href="#方法预览" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PlaceHolder</td>
+<td align="left">PlaceHolder</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> init(<code>Object</code> globalObject)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> registerClasses2Object(<code>Object</code> object)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> loadExternalObject(<code>Object</code> object, <code>String</code> filepath, <code>String</code> name)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> <span style='color:#97ff2e;font-size:10px;'>[http]</span>setAuthKey(<code>String</code> authKey)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> <span style='color:#97ff2e;font-size:10px;'>[http]</span>setSever(<code>String</code> server)</td>
+</tr>
+<tr>
+<td align="center"><code>Mirai.Bot</code></td>
+<td align="left"><code>static</code> getBot(<code>Number</code> qq)</td>
+</tr>
+<tr>
+<td align="center"><code>Mirai.Bot</code></td>
+<td align="left"><code>static</code> createNewBot(<code>Number</code> qq, <code>String</code> password)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><span style='color:#aaaaaa;'>VOID</span>表示无返回值。</p>
+</blockquote>
+<h3 id="详细方法"><a href="#详细方法" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-VOID-static-init-Object-globalObject"><a href="#➢-VOID-static-init-Object-globalObject" class="headerlink" title="➢ VOID static init(Object globalObject)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> init(<code>Object</code> globalObject)</h3><p>初始化Mirai库，做平台判断和依赖下载等工作。</p>
+<blockquote>
+<p>注：wrapper.js中已初始化，无需再次初始化。</p>
+</blockquote>
+<h3 id="➢-VOID-static-registerClasses2Object-Object-object"><a href="#➢-VOID-static-registerClasses2Object-Object-object" class="headerlink" title="➢ VOID static registerClasses2Object(Object object)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> registerClasses2Object(<code>Object</code> object)</h3><p>注册<code>MessageType</code>，<code>MessageTypeConst</code>，<code>EventTypeConst</code>，<code>Permission</code>和<code>Log</code>到<code>object</code>中，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M;</span><br><span class="line">Mirai.registerClasses2Object(M = &#123;&#125;);</span><br><span class="line"><span class="comment">//可以使用M.PLAIN代替Mirai.MessageTypeConst.PLAIN</span></span><br><span class="line">Mirai.registerClasses2Object(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">//可以使用PLAIN代替Mirai.MessageTypeConst.PLAIN</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="➢-VOID-static-loadExternalObject-Object-object-String-filepath-String-name"><a href="#➢-VOID-static-loadExternalObject-Object-object-String-filepath-String-name" class="headerlink" title="➢ VOID static loadExternalObject(Object object, String filepath, String name)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> loadExternalObject(<code>Object</code> object, <code>String</code> filepath, <code>String</code> name)</h3><p>加载路径为<code>filepath</code>的本地文件或网络文件，该文件应该在eval后返回一个对象，将这个对象命名为<code>name</code>并注册到<code>object</code>中。<br>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//外部文件ex.js</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> r = &#123;<span class="attr">info</span>: <span class="string">"i am ex."</span>&#125;;</span><br><span class="line">  <span class="keyword">return</span> r;</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line"><span class="comment">//加载这个文件并注册到全局对象</span></span><br><span class="line">Mirai.loadExternalObject(<span class="keyword">this</span>, <span class="string">"/path/to/ex.js"</span>, <span class="string">"EX"</span>);</span><br><span class="line">Lpg.v(EX.info); <span class="comment">//输出i am ex.</span></span><br><span class="line">Mirai.loadExternalObject(<span class="keyword">this</span>, <span class="string">"http://your.server/path/to/ex.js"</span>, <span class="string">"EX2"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="➢-http-VOID-static-setAuthKey-String-authKey"><a href="#➢-http-VOID-static-setAuthKey-String-authKey" class="headerlink" title="➢ [http] VOID static setAuthKey(String authKey)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#97ff2e;font-size:10px;'>[http]</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> setAuthKey(<code>String</code> authKey)</h3><p>设置连接http api服务器的验证密钥。</p>
+<h3 id="➢-http-VOID-static-setServer-String-server"><a href="#➢-http-VOID-static-setServer-String-server" class="headerlink" title="➢ [http] VOID static setServer(String server)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#97ff2e;font-size:10px;'>[http]</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> setServer(<code>String</code> server)</h3><p>设置连接http api服务器地址。</p>
+<h3 id="Mirai-Bot-static-getBot-Number-qq"><a href="#Mirai-Bot-static-getBot-Number-qq" class="headerlink" title="Mirai.Bot static getBot(Number qq);"></a><code>Mirai.Bot</code> <code>static</code> getBot(<code>Number</code> qq);</h3><p>获取并返回bot对象，若无则返回<code>null</code>。</p>
+<h3 id="Mirai-Bot-static-createNewBot-Number-qq-String-password"><a href="#Mirai-Bot-static-createNewBot-Number-qq-String-password" class="headerlink" title="Mirai.Bot static createNewBot(Number qq, String password);"></a><code>Mirai.Bot</code> <code>static</code> createNewBot(<code>Number</code> qq, <code>String</code> password);</h3><p>创建一个新的bot，将其添加到BotManager并返回bot对象。参数<code>qq</code>和<code>password</code>指定了bot的qq号和密码。</p>
+<blockquote>
+<p><span style='color:#97ff2e;font-size:10px;'>[http]</span>在http版本中不需要传入<code>password</code>。</p>
+</blockquote>
+<p>若未指定服务器地址和验证密钥，将抛出<code>Server host or authenticate key isnt set.</code>异常。<br>若验证密钥错误，将抛出<code>Authenticate key is invaild.</code>异常。</p>
+<hr>
+<h2 id="Mirai-Bot"><a href="#Mirai-Bot" class="headerlink" title="Mirai.Bot"></a>Mirai.Bot</h2><p>Bot是bot对象，提供消息处理功能。</p>
+<h3 id="方法预览-1"><a href="#方法预览-1" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PlaceHolder</td>
+<td align="left">PlaceHolder</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="left"><span style='color:#97ff2e;font-size:10px;'>[http]</span>getSessionKey()</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">subscribe(<code>Object</code> subscriber)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">destroy()</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">send(<span style='color:#a88bff;'>GroupOrSender</span> target, <span style='color:#a88bff;'>MessageObject</span>)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">sendFriendMessage(<span style='color:#a88bff;'>Sender</span> target, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">sendGroupMessage(<span style='color:#a88bff;'>Group</span> target, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">sendTempMessage(<span style='color:#a88bff;'>Sender</span> target, <span style='color:#a88bff;'>Group</span> from, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">recall(<code>Number</code> target)</td>
+</tr>
+<tr>
+<td align="center"><code>Array</code></td>
+<td align="left">getFriendList()</td>
+</tr>
+<tr>
+<td align="center"><code>Array</code></td>
+<td align="left">getGroupList()</td>
+</tr>
+<tr>
+<td align="center"><code>Array</code></td>
+<td align="left">getGroupMemberList(<span style='color:#a88bff;'>Group</span> group)</td>
+</tr>
+<tr>
+<td align="center"><code>Boolean</code></td>
+<td align="left">haveFriend(<span style='color:#a88bff;'>Sender</span> target)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">mute(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span>[, <code>Number</code> time])</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmute(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span> target)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">muteAll(<span style='color:#a88bff;'>Group</span> group)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmuteAll(<span style='color:#a88bff;'>Group</span> group)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">kick(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span> target)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">handleFriendRequest(<code>JSON</code> iArg, <code>Number</code> isAccept, <code>String</code> msg)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">handleMemberJoinRequest(<code>JSON</code> iArg, <code>Number</code> isAccept, <code>String</code> msg)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><span style='color:#a88bff;'>紫色参数</span>表示聚合类型，将会在方法详细中介绍。</p>
+</blockquote>
+<h3 id="详细方法-1"><a href="#详细方法-1" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-http-String-getSessionKey"><a href="#➢-http-String-getSessionKey" class="headerlink" title="➢ [http]String getSessionKey()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#97ff2e;font-size:10px;'>[http]</span><span style='color:#aaaaaa;'><code>String</code></span> getSessionKey()</h3><p>返回当前bot的sessionKey(由http api分配)。</p>
+<h3 id="➢-VOID-subscribe-Object-subscriber"><a href="#➢-VOID-subscribe-Object-subscriber" class="headerlink" title="➢ VOID subscribe(Object subscriber)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> subscribe(<code>Object</code> subscriber)</h3><p>订阅当前bot接受到的消息。<br><code>subscriber</code>是一个<code>JSON</code>对象，它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bot.subscribe(&#123;</span><br><span class="line">  <span class="comment">//订阅好友消息</span></span><br><span class="line">  friend: <span class="function">(<span class="params">sender, message</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  <span class="comment">//订阅群组消息</span></span><br><span class="line">  group: <span class="function">(<span class="params">group, sender, message</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  <span class="comment">//订阅临时消息(从群组来的群友)</span></span><br><span class="line">  temp: <span class="function">(<span class="params">group, sender, message</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  <span class="comment">//订阅各类其他事件(如新群友进群，撤回消息等)</span></span><br><span class="line">  event: <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  <span class="comment">//捕捉消息接收时的异常</span></span><br><span class="line">  error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在参数中，<code>sender</code>的数据类型为<code>MessageSender</code>，<code>group</code>的数据类型为<code>GroupInfo</code>，<code>message</code>的类型为<code>MessageChain</code>，<code>error</code>的数据类型为<code>Error</code>或<code>String</code>。<br>订阅什么类型消息是可选的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只订阅群组消息</span></span><br><span class="line">bot.subscribe(&#123;</span><br><span class="line">  group: <span class="function">(<span class="params">group, sender, message</span>) =&gt;</span> &#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//不订阅临时消息</span></span><br><span class="line">bot.subscribe(&#123;</span><br><span class="line">  friend: <span class="function">(<span class="params">sender, message</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  group: <span class="function">(<span class="params">group, sender, message</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  <span class="comment">//temp: (group, sender, message) =&gt; &#123;&#125;,  </span></span><br><span class="line">  event: <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;&#125;,  </span><br><span class="line">  error: <span class="function">(<span class="params">error</span>) =&gt;</span> &#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>若再次调用<code>subscribe()</code>，则会覆盖之前的订阅对象。</p>
+<h3 id="➢-VOID-destroy"><a href="#➢-VOID-destroy" class="headerlink" title="➢ VOID destroy()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> destroy()</h3><p>将这个bot从BotManager中移除并销毁当前bot对象。</p>
+<h3 id="➢-Number-send-GroupOrSender-target-MessageObject"><a href="#➢-Number-send-GroupOrSender-target-MessageObject" class="headerlink" title="➢ Number send(GroupOrSender target, MessageObject)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> send(<span style='color:#a88bff;'>GroupOrSender</span> target, <span style='color:#a88bff;'>MessageObject</span>)</h3><p>发送一条消息，<span style='color:#a88bff;'>GroupOrSender</span>表示<code>GroupInfo</code>或<code>MessageSender</code>，若为<code>GroupInfo</code>则表示发送群消息，<code>MessageSender</code>则表示发送好友消息，若无这个好友，但在同一个群，会尝试发送临时消息。<br>若发送成功则返回消息ID，否则返回0。</p>
+<h2 id="聚合消息对象"><a href="#聚合消息对象" class="headerlink" title="聚合消息对象"></a>聚合消息对象</h2><p><span style='color:#a88bff;'>MessageObject</span>是聚合类消息对象，它可以为以下格式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单消息对象</span></span><br><span class="line">Plain(<span class="string">"hello"</span>)</span><br><span class="line"><span class="comment">//纯文本，处理时转化成文本消息</span></span><br><span class="line"><span class="string">"hello"</span></span><br><span class="line"><span class="comment">//多消息对象(多参)</span></span><br><span class="line">At(xxx), Plain(<span class="string">"at你了！"</span>)</span><br><span class="line"><span class="comment">//多参中纯文本也会转化成文本消息</span></span><br><span class="line">At(xxx), <span class="string">"at你了！"</span></span><br><span class="line"><span class="comment">//多消息对象(操作符)</span></span><br><span class="line">At(xxx) + Plain(<span class="string">"at你了！"</span>)</span><br><span class="line"><span class="comment">//操作符中纯文本不能转化成文本消息</span></span><br><span class="line"><span class="comment">///以下写法将出错</span></span><br><span class="line">At(xxx) + <span class="string">"at你了！"</span></span><br></pre></td></tr></table></figure>
+<p>不是很懂？以下例子帮助你理解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">send(xxx, At(xxx), Plain(&quot;at你！&quot;));</span><br><span class="line">send(xxx, Plain(&quot;hello&quot;));</span><br><span class="line">send(xxx, &quot;hello&quot;);</span><br><span class="line">send(xxx, At(xxx), Plain(&quot;at你了！&quot;));</span><br><span class="line">send(xxx, At(xxx), &quot;at你了！&quot;);</span><br><span class="line">send(xxx, At(xxx) + Plain(&quot;at你了！&quot;));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以下所有<span style='color:#a88bff;'>MessageObject</span>的意义都与这里相同。</p>
+</blockquote>
+<h3 id="➢-Number-sendFriendMessage-Sender-target-MessageObject-Number-quoteId"><a href="#➢-Number-sendFriendMessage-Sender-target-MessageObject-Number-quoteId" class="headerlink" title="➢ Number sendFriendMessage(Sender target, [MessageObject][, Number quoteId])"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> sendFriendMessage(<span style='color:#a88bff;'>Sender</span> target, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</h3><p>发送好友消息，<span style='color:#a88bff;'>Sender</span>表示 <code>Number</code>类型的用户qq号 或 <code>MessageSender</code>类型的消息发送者对象，<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
+<p>注意这里的<span style='color:#a88bff;'>MessageObject</span>，它是被<code>[]</code>套起来的，换句话说这里传入的<span style='color:#a88bff;'>MessageObject</span>是单成员数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sendFriendMessage(xxx, [Plain(<span class="string">"hello"</span>)], quoteId);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以下所有<span style='color:#a88bff;'>Sender</span>的意义都与这里相同。</p>
+</blockquote>
+<h3 id="➢-Number-sendGroupMessage-Group-target-MessageObject-Number-quoteId"><a href="#➢-Number-sendGroupMessage-Group-target-MessageObject-Number-quoteId" class="headerlink" title="➢ Number sendGroupMessage(Group target, [MessageObject][, Number quoteId])"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> sendGroupMessage(<span style='color:#a88bff;'>Group</span> target, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</h3><p>发送群组消息，<span style='color:#a88bff;'>Group</span>表示 <code>Number</code>类型的群号 或 <code>GroupInfo</code>类型的群组对象，<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
+<p>这里也需要注意<span style='color:#a88bff;'>MessageObject</span>。</p>
+<blockquote>
+<p>以下所有<span style='color:#a88bff;'>Group</span>的意义都与这里相同。</p>
+</blockquote>
+<h3 id="➢-Number-sendTempMessage-Sender-target-Group-from-MessageObject-Number-quoteId"><a href="#➢-Number-sendTempMessage-Sender-target-Group-from-MessageObject-Number-quoteId" class="headerlink" title="➢ Number sendTempMessage(Sender target, Group from, [MessageObject][, Number quoteId])"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> sendTempMessage(<span style='color:#a88bff;'>Sender</span> target, <span style='color:#a88bff;'>Group</span> from, [<span style='color:#a88bff;'>MessageObject</span>][, <code>Number</code> quoteId])</h3><p>发送临时消息，<code>target</code>表示要发送对象，<code>from</code>表示群组来源，<code>quoteId</code>是可选项，表示引用回复的消息ID。<br>若发送成功则返回消息ID，否则返回0。</p>
+<p>同样需要注意<span style='color:#a88bff;'>MessageObject</span>。</p>
+<h3 id="➢-Number-recall-Number-target"><a href="#➢-Number-recall-Number-target" class="headerlink" title="➢ Number recall(Number target)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> recall(<code>Number</code> target)</h3><p>撤回一条消息，<code>target</code>指定了要撤回的消息的ID。</p>
+<h3 id="➢-Array-getFriendList"><a href="#➢-Array-getFriendList" class="headerlink" title="➢ Array getFriendList()"></a><span style='color:#ff972e;'>➢</span> <code>Array</code> getFriendList()</h3><p>获取当前bot的好友列表，它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">123456789</span>, <span class="comment">//QQ号</span></span><br><span class="line">    <span class="string">"nickname"</span>:<span class="string">""</span>, <span class="comment">//昵称</span></span><br><span class="line">    <span class="string">"remark"</span>:<span class="string">""</span> <span class="comment">//备注</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">987654321</span>,</span><br><span class="line">    <span class="string">"nickname"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"remark"</span>:<span class="string">""</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>若出现了任何错误，会返回一个空数组。</p>
+<h3 id="➢-Array-getGroupList"><a href="#➢-Array-getGroupList" class="headerlink" title="➢ Array getGroupList()"></a><span style='color:#ff972e;'>➢</span> <code>Array</code> getGroupList()</h3><p>获取当前bot的群组列表，它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">123456789</span>, <span class="comment">//群号</span></span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"群名1"</span>, <span class="comment">//群名称</span></span><br><span class="line">    <span class="string">"permission"</span>: <span class="string">"MEMBER"</span> <span class="comment">//bot在这个群的权限</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">987654321</span>,</span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"群名2"</span>,</span><br><span class="line">    <span class="string">"permission"</span>: <span class="string">"MEMBER"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>若出现了任何错误，会返回一个空数组。</p>
+<h3 id="➢-Array-getGroupMemberList-Group-group"><a href="#➢-Array-getGroupMemberList-Group-group" class="headerlink" title="➢ Array getGroupMemberList(Group group)"></a><span style='color:#ff972e;'>➢</span> <code>Array</code> getGroupMemberList(<span style='color:#a88bff;'>Group</span> group)</h3><p>获取一个群的群员列表数组，<code>group</code>指定了要查询的群组。它的格式是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">1234567890</span>, <span class="comment">//群友qq号</span></span><br><span class="line">    <span class="string">"memberName"</span>:<span class="string">""</span>, <span class="comment">//群友群名片</span></span><br><span class="line">    <span class="string">"permission"</span>:<span class="string">"MEMBER"</span> <span class="comment">//群友权限对应Permission.MEMBER/ADMIN/OWNER</span></span><br><span class="line">    <span class="comment">/*"group":&#123;</span></span><br><span class="line"><span class="comment">        "id":12345,</span></span><br><span class="line"><span class="comment">        "name":"群名1",</span></span><br><span class="line"><span class="comment">        "permission": "MEMBER"</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>:<span class="number">9876543210</span>,</span><br><span class="line">    <span class="string">"memberName"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"permission"</span>:<span class="string">"OWNER"</span></span><br><span class="line">    <span class="comment">/*"group":&#123;</span></span><br><span class="line"><span class="comment">        "id":54321,</span></span><br><span class="line"><span class="comment">        "name":"群名2",</span></span><br><span class="line"><span class="comment">        "permission": "MEMBER"</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>若出现了任何错误，会返回一个空数组。</p>
+<h3 id="➢-Boolean-haveFriend-Sender-target"><a href="#➢-Boolean-haveFriend-Sender-target" class="headerlink" title="➢ Boolean haveFriend(Sender target)"></a><span style='color:#ff972e;'>➢</span> <code>Boolean</code> haveFriend(<span style='color:#a88bff;'>Sender</span> target)</h3><p>判断bot是否有这个好友，<code>target</code>指定了查询的对象。</p>
+<h3 id="➢-VOID-mute-Group-group-Sender-Number-time"><a href="#➢-VOID-mute-Group-group-Sender-Number-time" class="headerlink" title="➢ VOID mute(Group group, Sender[, Number time])"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> mute(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span>[, <code>Number</code> time])</h3><p>禁言一个群员，<code>group</code>指定要操作的群，<code>target</code>指定要禁言的成员，<code>time</code>指定禁言的时间(秒)。<br>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-unmute-Group-group-Sender-target"><a href="#➢-VOID-unmute-Group-group-Sender-target" class="headerlink" title="➢ VOID unmute(Group group, Sender target)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmute(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span> target)</h3><p>解除禁言一个群员，<code>group</code>指定要操作的群，<code>target</code>指定要解除禁言的成员。</p>
+<p>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-muteAll-Group-group"><a href="#➢-VOID-muteAll-Group-group" class="headerlink" title="➢ VOID muteAll(Group group)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> muteAll(<span style='color:#a88bff;'>Group</span> group)</h3><p>全体禁言一个群组，<code>group</code>指定要操作的群。</p>
+<p>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-unmuteAll-Group-group"><a href="#➢-VOID-unmuteAll-Group-group" class="headerlink" title="➢ VOID unmuteAll(Group group)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmuteAll(<span style='color:#a88bff;'>Group</span> group)</h3><p>解除全体禁言一个群组，<code>group</code>指定要操作的群。</p>
+<p>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-kick-Group-group-Sender-target"><a href="#➢-VOID-kick-Group-group-Sender-target" class="headerlink" title="➢ VOID kick(Group group, Sender target)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> kick(<span style='color:#a88bff;'>Group</span> group, <span style='color:#a88bff;'>Sender</span> target)</h3><p>踢出群组的某个群员，<code>group</code>指定要操作的群，<code>target</code>指定要踢出的群员。</p>
+<p>注：需要bot有对应权限！</p>
+<h3 id="➢-VOID-handleFriendRequest-JSON-iArg-Number-isAccept-String-msg"><a href="#➢-VOID-handleFriendRequest-JSON-iArg-Number-isAccept-String-msg" class="headerlink" title="➢ VOID handleFriendRequest(JSON iArg, Number isAccept, String msg)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> handleFriendRequest(<code>JSON</code> iArg, <code>Number</code> isAccept, <code>String</code> msg)</h3><p>处理一个好友请求，<code>iArg</code>必须为新好友事件的<code>event.toIArg()</code>方法返回的JSON。<br><code>isAccept</code>表示要执行的操作，<code>0</code>为同意好友请求; <code>1</code>为拒绝好友请求; <code>2</code>为拒绝添加好友并添加黑名单，不再接收该用户的好友申请。<br><code>msg</code>是可选的，表示拒绝同意好友请求的理由。</p>
+<h3 id="➢-VOID-handleMemberJoinRequest-JSON-iArg-Number-isAccept-String-msg"><a href="#➢-VOID-handleMemberJoinRequest-JSON-iArg-Number-isAccept-String-msg" class="headerlink" title="➢ VOID handleMemberJoinRequest(JSON iArg, Number isAccept, String msg)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> handleMemberJoinRequest(<code>JSON</code> iArg, <code>Number</code> isAccept, <code>String</code> msg)</h3><p>处理一个好友请求，<code>iArg</code>必须为新成员入群事件的<code>event.toIArg()</code>方法返回的JSON。<br><code>isAccept</code>表示要执行的操作，<code>0</code>为同意入群请求; <code>1</code>为拒绝入群请求; <code>2</code>为忽略入群请求; <code>3</code>为拒绝入群并添加黑名单，不再接收该用户的入群申请; <code>4</code>为忽略入群并添加黑名单，不再接收该用户的入群申请。<br><code>msg</code>是可选的，表示拒绝入群请求的理由。<br>注：需要bot有对应权限！</p>
+<hr>
+<h2 id="Mirai-MessageChain"><a href="#Mirai-MessageChain" class="headerlink" title="Mirai.MessageChain"></a>Mirai.MessageChain</h2><p>MessageChain提供消息链构造方法。<br>(QQ的一个消息可能是由各种消息构成的，如”文字+图片”。Mirai对此的处理方式是：将这些复合消息转化成各种类型消息构成的消息链。)</p>
+<h3 id="方法预览-2"><a href="#方法预览-2" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PlaceHolder</td>
+<td align="left">PlaceHolder</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'><code>Number</code></span></td>
+<td align="left">length()</span></td>
+</tr>
+<tr>
+<td align="center"><code>MessageType.?</code></td>
+<td align="left">get(<code>MessageTypeConst.?</code> type)</td>
+</tr>
+<tr>
+<td align="center"><code>Boolean</code></td>
+<td align="left">contain(<code>RegExp</code> regex)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>TempObject</span></td>
+<td align="left">contain(<code>RegExp*</code> / <code>Array[RegExp*]</code> regex)</td>
+</tr>
+<tr>
+<td align="center"><code>self(MessageChain)</code></td>
+<td align="left">discard(<code>MessageTypeConst.?</code> type)</td>
+</tr>
+<tr>
+<td align="center"><code>self(MessageChain)</code></td>
+<td align="left">add(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>self(MessageChain)</code></td>
+<td align="left">addF(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="left">toString()</td>
+</tr>
+</tbody></table>
+<h3 id="详细方法-2"><a href="#详细方法-2" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-Number-length"><a href="#➢-Number-length" class="headerlink" title="➢ Number length()"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> length()</h3><p>返回消息链中消息对象的数目。</p>
+<h3 id="➢-MessageType-get-MessageTypeConst-type"><a href="#➢-MessageType-get-MessageTypeConst-type" class="headerlink" title="➢ MessageType.? get(MessageTypeConst.? type)"></a><span style='color:#ff972e;'>➢</span> <code>MessageType.?</code> get(<code>MessageTypeConst.?</code> type)</h3><p>返回消息链中第一个类型为<code>type</code>的消息。<br>若该链中不存在<code>type</code>类型的消息，则返回一个新的参数均为<code>null</code>的<code>type</code>类型的消息。</p>
+<h3 id="➢-Boolean-contain-RegExp-regex"><a href="#➢-Boolean-contain-RegExp-regex" class="headerlink" title="➢ Boolean contain(RegExp regex)"></a><span style='color:#ff972e;'>➢</span> <code>Boolean</code> contain(<code>RegExp</code> regex)</h3><p>判断消息链中的文本消息是否匹配<code>regex</code>正则表达式。</p>
+<h3 id="➢-TempObject-contain-RegExp-Array-RegExp-regex"><a href="#➢-TempObject-contain-RegExp-Array-RegExp-regex" class="headerlink" title="➢ TempObject contain(RegExp* / Array[RegExp*] regex)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>TempObject</span> contain(<code>RegExp*</code> / <code>Array[RegExp*]</code> regex)</h3><p>判断消息链中的文本消息是否匹配<code>regex</code>正则表达式，并返回一个临时对象，用于执行后续操作。<br>参数<code>regex</code>可以是一个正则表达式字符串或正则表达式对象，或一个包含多个正则表达式的数组，用于一次匹配多个正则表达式。</p>
+<p>详情请浏览：<a href="#contains返回的临时对象">contains返回的临时对象</a>和<a href="#contains正则表达式拓展">contains正则表达式拓展</a>。</p>
+<h3 id="➢-self-MessageChain-discard-MessageTypeConst-type"><a href="#➢-self-MessageChain-discard-MessageTypeConst-type" class="headerlink" title="➢ self(MessageChain) discard(MessageTypeConst.? type)"></a><span style='color:#ff972e;'>➢</span> <code>self(MessageChain)</code> discard(<code>MessageTypeConst.?</code> type)</h3><p>删除(丢弃)消息链中所有类型为<code>type</code>的消息，并返回自己(方便链式调用)。<br>若消息链无<code>type</code>类型的消息，则什么也不会做。</p>
+<h3 id="➢-self-MessageChain-add-MessageObject-messages"><a href="#➢-self-MessageChain-add-MessageObject-messages" class="headerlink" title="➢ self(MessageChain) add(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>self(MessageChain)</code> add(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>在消息链末端追加消息对象或消息链，并返回自己(方便链式调用)。</p>
+<h3 id="➢-self-MessageChain-addF-MessageObject-messages"><a href="#➢-self-MessageChain-addF-MessageObject-messages" class="headerlink" title="➢ self(MessageChain) addF(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>self(MessageChain)</code> addF(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>在消息链首端追加消息对象或消息链，并返回自己(方便链式调用)。</p>
+<h3 id="➢-String-toString"><a href="#➢-String-toString" class="headerlink" title="➢ String toString()"></a><span style='color:#ff972e;'>➢</span> <code>String</code> toString()</h3><p>返回消息链原始JSON信息字符串。</p>
+<hr>
+<h2 id="Mirai-MessageSender"><a href="#Mirai-MessageSender" class="headerlink" title="Mirai.MessageSender"></a>Mirai.MessageSender</h2><p>MessageSender消息发送者对象。</p>
+<blockquote>
+<p>MessageSender只从<code>Bot.subscribe</code>返回，实例化<code>MessageSender</code>是没有任何意义的。</p>
+</blockquote>
+<h3 id="构造函数与方法预览"><a href="#构造函数与方法预览" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Number</code></td>
+<td align="left">getId()</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="left">getName()</td>
+</tr>
+<tr>
+<td align="center"><code>Permission</code></td>
+<td align="left">getPermission()</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">getSourceId()</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">send(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">reply(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">at(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">mute(<code>Number</code> time)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmute()</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">kick(<code>String</code> msg)</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="left">toString()</td>
+</tr>
+</tbody></table>
+<h3 id="详细方法-3"><a href="#详细方法-3" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-Number-getId"><a href="#➢-Number-getId" class="headerlink" title="➢ Number getId()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>Number</code></span> getId()</h3><p>返回该用户QQ号。</p>
+<h3 id="➢-String-getName"><a href="#➢-String-getName" class="headerlink" title="➢ String getName()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>String</code></span> getName()</h3><p>返回该用户名称。</p>
+<h3 id="➢-Permission-getPermission"><a href="#➢-Permission-getPermission" class="headerlink" title="➢ Permission getPermission()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>Permission</code></span> getPermission()</h3><p>返回在群群的权限，若为subscribe()的friend返回的MessageSender，则为<code>null</code></p>
+<h3 id="➢-Number-getSourceId"><a href="#➢-Number-getSourceId" class="headerlink" title="➢ Number getSourceId()"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> getSourceId()</h3><p>MessageSender都是通过订阅的消息构造的，该方法返回这条消息的ID用于引用或撤回消息。</p>
+<h3 id="➢-Number-send-MessageObject-messages"><a href="#➢-Number-send-MessageObject-messages" class="headerlink" title="➢ Number send(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> send(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>给这个用户发送私人消息并返回消息ID，若无好友则发送临时消息。</p>
+<h3 id="➢-Number-reply-MessageObject-messages"><a href="#➢-Number-reply-MessageObject-messages" class="headerlink" title="➢ Number reply(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> reply(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>回复这个用户的消息并返回消息ID。</p>
+<h3 id="➢-Number-at-MessageObject-messages"><a href="#➢-Number-at-MessageObject-messages" class="headerlink" title="➢ Number at(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> at(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>at这个用户并发送消息并返回消息ID。</p>
+<h3 id="➢-VOID-mute-Number-time"><a href="#➢-VOID-mute-Number-time" class="headerlink" title="➢ VOID mute(Number time)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> mute(<code>Number</code> time)</h3><p>禁言这个用户，<code>time</code>指定了要禁言的时间(秒)，若为subscribe()的friend返回的MessageSender，则什么也不做。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-unmute"><a href="#➢-VOID-unmute" class="headerlink" title="➢ VOID unmute()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmute()</h3><p>解禁这个用户，若为subscribe()的friend返回的MessageSender，则什么也不做。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-kick-String-msg"><a href="#➢-VOID-kick-String-msg" class="headerlink" title="➢ VOID kick(String msg)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> kick(<code>String</code> msg)</h3><p>将这个用户踢出群组，<code>msg</code>为踢出原因，若为subscribe()的friend返回的MessageSender，则什么也不做。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-String-toString-1"><a href="#➢-String-toString-1" class="headerlink" title="➢ String toString()"></a><span style='color:#ff972e;'>➢</span> <code>String</code> toString()</h3><p>返回该用户信息。</p>
+<hr>
+<h2 id="Mirai-GroupInfo"><a href="#Mirai-GroupInfo" class="headerlink" title="Mirai.GroupInfo"></a>Mirai.GroupInfo</h2><p>GroupInfo为群组对象。</p>
+<blockquote>
+<p>GroupInfo只从<code>Bot.subscribe</code>返回，实例化<code>GroupInfo</code>是没有任何意义的。</p>
+</blockquote>
+<h3 id="构造函数与方法预览-1"><a href="#构造函数与方法预览-1" class="headerlink" title="构造函数与方法预览"></a>构造函数与方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Number</code></td>
+<td align="left">getId()</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="left">getName()</td>
+</tr>
+<tr>
+<td align="center"><code>Permission</code></td>
+<td align="left">getPermission()</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">send(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">reply(<span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="left">at(<span style='color:#a88bff;'>Sender</span> target, <span style='color:#a88bff;'>MessageObject</span> messages)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">mute(<span style='color:#a88bff;'>Sender</span> target, <code>Number</code> time)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmute(<span style='color:#a88bff;'>Sender</span> target)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">muteAll()</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">unmuteAll()</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">kick(<span style='color:#a88bff;'>Sender</span>, <code>String</code> msg)</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="left">toString()</td>
+</tr>
+</tbody></table>
+<h3 id="详细方法-4"><a href="#详细方法-4" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-Number-getId-1"><a href="#➢-Number-getId-1" class="headerlink" title="➢ Number getId()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>Number</code></span> getId()</h3><p>返回该QQ群的群号。</p>
+<h3 id="➢-String-getName-1"><a href="#➢-String-getName-1" class="headerlink" title="➢ String getName()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>String</code></span> getName()</h3><p>返回该QQ群的名称。</p>
+<h3 id="➢-Permission-getPermission-1"><a href="#➢-Permission-getPermission-1" class="headerlink" title="➢ Permission getPermission()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>Permission</code></span> getPermission()</h3><p>返回成员在该群的权限(一般为bot)。</p>
+<h3 id="➢-Number-send-MessageObject-messages-1"><a href="#➢-Number-send-MessageObject-messages-1" class="headerlink" title="➢ Number send(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> send(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>给这个群组发送消息并返回消息ID。</p>
+<h3 id="➢-Number-reply-MessageObject-messages-1"><a href="#➢-Number-reply-MessageObject-messages-1" class="headerlink" title="➢ Number reply(MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> reply(<span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>GroupInfo都是通过订阅的消息构造的，该方法回复这条消息的发送者并返回消息ID。</p>
+<h3 id="➢-Number-at-Sender-target-MessageObject-messages"><a href="#➢-Number-at-Sender-target-MessageObject-messages" class="headerlink" title="➢ Number at(Sender target, MessageObject messages)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code> at(<span style='color:#a88bff;'>Sender</span> target, <span style='color:#a88bff;'>MessageObject</span> messages)</h3><p>at用户并发送消息并返回消息ID。</p>
+<h3 id="➢-VOID-mute-Sender-target-Number-time"><a href="#➢-VOID-mute-Sender-target-Number-time" class="headerlink" title="➢ VOID mute(Sender target, Number time)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> mute(<span style='color:#a88bff;'>Sender</span> target, <code>Number</code> time)</h3><p>禁言这个用户，<code>target</code>指定了要禁言的群成员，<code>time</code>指定了要禁言的时间(秒)。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-unmute-Sender-target"><a href="#➢-VOID-unmute-Sender-target" class="headerlink" title="➢ VOID unmute(Sender target)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmute(<span style='color:#a88bff;'>Sender</span> target)</h3><p>解禁这个用户，<code>target</code>指定了要解禁的群成员。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-muteAll"><a href="#➢-VOID-muteAll" class="headerlink" title="➢ VOID muteAll()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> muteAll()</h3><p>全体禁言。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-unmuteAll"><a href="#➢-VOID-unmuteAll" class="headerlink" title="➢ VOID unmuteAll()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> unmuteAll()</h3><p>解除全体禁言。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-VOID-kick-Sender-target-String-msg"><a href="#➢-VOID-kick-Sender-target-String-msg" class="headerlink" title="➢ VOID kick(Sender target, String msg)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> kick(<span style='color:#a88bff;'>Sender</span> target, <code>String</code> msg)</h3><p>将这个用户踢出群组，<code>target</code>为踢出的群友，<code>msg</code>为踢出原因，若为subscribe()的friend返回的GroupInfo，则什么也不做。<br>注：需要bot有对应权限。</p>
+<h3 id="➢-String-toString-2"><a href="#➢-String-toString-2" class="headerlink" title="➢ String toString()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'><code>String</code></span> toString()</h3><p>返回该群信息。</p>
+<h2 id="Mirai-GroupInfo-Permission"><a href="#Mirai-GroupInfo-Permission" class="headerlink" title="Mirai.GroupInfo.Permission"></a>Mirai.GroupInfo.Permission</h2><p>该常量集用于表示群组成员权限</p>
+<h3 id="Permission-OWNER-群主"><a href="#Permission-OWNER-群主" class="headerlink" title="Permission.OWNER 群主"></a><code>Permission.OWNER</code> 群主</h3><h3 id="Permission-ADMIN-管理员"><a href="#Permission-ADMIN-管理员" class="headerlink" title="Permission.ADMIN 管理员"></a><code>Permission.ADMIN</code> 管理员</h3><h3 id="Permission-MEMBER-普通成员"><a href="#Permission-MEMBER-普通成员" class="headerlink" title="Permission.MEMBER 普通成员"></a><code>Permission.MEMBER</code> 普通成员</h3><hr>
+<h2 id="Mirai-MessageType"><a href="#Mirai-MessageType" class="headerlink" title="Mirai.MessageType"></a>Mirai.MessageType</h2><p>MessageType提供各种消息类型的方法，提供给sdk使用者的都是静态方法。</p>
+<h3 id="所有子类"><a href="#所有子类" class="headerlink" title="所有子类"></a>所有子类</h3><table>
+<thead>
+<tr>
+<th align="center">类名称</th>
+<th align="left">对应消息类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Source</code></td>
+<td align="left">源消息连首</td>
+</tr>
+<tr>
+<td align="center"><code>Quote</code></td>
+<td align="left">引用(回复)</td>
+</tr>
+<tr>
+<td align="center"><code>Plain</code></td>
+<td align="left">文字</td>
+</tr>
+<tr>
+<td align="center"><code>Image</code></td>
+<td align="left">图片</td>
+</tr>
+<tr>
+<td align="center"><code>FlashImage</code></td>
+<td align="left">闪照</td>
+</tr>
+<tr>
+<td align="center"><code>Face</code></td>
+<td align="left">QQ表情</td>
+</tr>
+<tr>
+<td align="center"><code>At</code></td>
+<td align="left">@某人</td>
+</tr>
+<tr>
+<td align="center"><code>AtAll</code></td>
+<td align="left">@全体成员</td>
+</tr>
+<tr>
+<td align="center"><code>Xml</code></td>
+<td align="left">XML消息</td>
+</tr>
+<tr>
+<td align="center"><code>Json2</code></td>
+<td align="left">JSON消息</td>
+</tr>
+<tr>
+<td align="center"><code>App</code></td>
+<td align="left">APP消息</td>
+</tr>
+<tr>
+<td align="center"><code>Poke</code></td>
+<td align="left">戳一戳</td>
+</tr>
+</tbody></table>
+<h3 id="详细方法-5"><a href="#详细方法-5" class="headerlink" title="详细方法"></a>详细方法</h3><blockquote>
+<p>不需要实例化消息类型</p>
+</blockquote>
+<h3 id="Source-Number-id-Number-time"><a href="#Source-Number-id-Number-time" class="headerlink" title="Source(Number id, Number time)"></a>Source(<code>Number</code> id, <code>Number</code> time)</h3><p>源消息链首，<code>id</code>为消息ID，<code>time</code>为UNIX时间。</p>
+<blockquote>
+<p>构建Source类型消息毫无意义，因为Source只作为群组消息ID的标记，而发送消息不需要消息ID(除了引用)。</p>
+</blockquote>
+<h3 id="Quote-Number-id-Number-senderId-Number-groupId-Mirai-MessageChain-origin"><a href="#Quote-Number-id-Number-senderId-Number-groupId-Mirai-MessageChain-origin" class="headerlink" title="Quote(Number id, Number senderId, Number groupId, Mirai.MessageChain origin)"></a>Quote(<code>Number</code> id, <code>Number</code> senderId, <code>Number</code> groupId, <code>Mirai.MessageChain</code> origin)</h3><p>引用消息，<code>id</code>为消息ID，<code>senderId</code>为引用原文发送者QQ号，<code>groupId</code>为该消息QQ群的群号，<code>origin</code>为引用原文消息链。</p>
+<blockquote>
+<p>构建Quote类型消息毫无意义，因为发送引用消息的方法是在Bot.sendGroupMessage的第三个参数传入要引用的消息ID或GroupInfo.reply或MessageSender.reply。</p>
+</blockquote>
+<h3 id="Plain-String-text"><a href="#Plain-String-text" class="headerlink" title="Plain(String text)"></a>Plain(<code>String</code> text)</h3><p>文字消息，<code>text</code>为文本内容。</p>
+<h3 id="Image-String-imageId-String-url-String-path"><a href="#Image-String-imageId-String-url-String-path" class="headerlink" title="Image(String imageId, String url, String path)"></a>Image(<code>String</code> imageId, <code>String</code> url, <code>String</code> path)</h3><p>图片消息，<code>imageId</code>为图片的UUID，<code>url</code>为图片的链接，<code>path</code>为图片本地链接。<br>三者可以任选一个参数，当同时有多个参数时，http api会按照<code>imageId</code>&gt;<code>url</code>&gt;<code>path</code>的优先级发送图片。<br>接收到的图片永远不可能会有<code>path</code>。</p>
+<h3 id="FlashImage-String-imageId-String-url-String-path"><a href="#FlashImage-String-imageId-String-url-String-path" class="headerlink" title="FlashImage(String imageId, String url, String path)"></a>FlashImage(<code>String</code> imageId, <code>String</code> url, <code>String</code> path)</h3><p>闪照消息，用法和<code>Image</code>完全相同。</p>
+<h3 id="Face-Number-faceId-String-name"><a href="#Face-Number-faceId-String-name" class="headerlink" title="Face(Number faceId, String name)"></a>Face(<code>Number</code> faceId, <code>String</code> name)</h3><p>QQ表情，<code>faceId</code>为表情编号(优先级高于后面的name)，<code>name</code>为表情名称。</p>
+<h3 id="At-Number-target-String-displayText"><a href="#At-Number-target-String-displayText" class="headerlink" title="At(Number target, String displayText)"></a>At(<code>Number</code> target, <code>String</code> displayText)</h3><p>@某人，<code>taeget</code>为被@的人的QQ号，<code>displayText</code>为@发送时显示的@文字。</p>
+<h3 id="AtAll"><a href="#AtAll" class="headerlink" title="AtAll()"></a>AtAll()</h3><p>@全体成员。</p>
+<h3 id="Xml-String-xml"><a href="#Xml-String-xml" class="headerlink" title="Xml(String xml)"></a>Xml(<code>String</code> xml)</h3><p>XML消息，<code>xml</code>为XML消息内容。</p>
+<h3 id="Json2-String-json"><a href="#Json2-String-json" class="headerlink" title="Json2(String json)"></a>Json2(<code>String</code> json)</h3><p>JSON消息，<code>json</code>为JSON消息内容。</p>
+<h3 id="App-String-app"><a href="#App-String-app" class="headerlink" title="App(String app)"></a>App(<code>String</code> app)</h3><p>APP消息，<code>app</code>为APP消息内容。</p>
+<h3 id="Poke-PokeType-name"><a href="#Poke-PokeType-name" class="headerlink" title="Poke(PokeType.? name)"></a>Poke(<code>PokeType.?</code> name)</h3><p>Poke(戳一戳)消息，<code>name</code>为Poke消息内容。</p>
+</br>
+所有消息类型的获取只需要对应参数前面加`get`并将参数首字母大写。
+像这样：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mirai.MessageType.Image.getImageId();</span><br><span class="line">Mirai.MessageType.App.getApp();</span><br><span class="line">Mirai.MessageType.At.getTarget();</span><br></pre></td></tr></table></figure>
+所有消息类型都有`toString()`方法，该方法返回原始JSON消息对象数据。 
+
+<h2 id="Mirai-MessageTypeConst"><a href="#Mirai-MessageTypeConst" class="headerlink" title="Mirai.MessageTypeConst"></a>Mirai.MessageTypeConst</h2><p>MessageTypeConst保存一些静态常量。</p>
+<h3 id="SOURCE-源消息链首"><a href="#SOURCE-源消息链首" class="headerlink" title="SOURCE 源消息链首"></a><code>SOURCE</code> 源消息链首</h3><h3 id="QUOTE-引用消息"><a href="#QUOTE-引用消息" class="headerlink" title="QUOTE 引用消息"></a><code>QUOTE</code> 引用消息</h3><h3 id="PLAIN-文字消息"><a href="#PLAIN-文字消息" class="headerlink" title="PLAIN 文字消息"></a><code>PLAIN</code> 文字消息</h3><h3 id="IMAGE-图片消息"><a href="#IMAGE-图片消息" class="headerlink" title="IMAGE 图片消息"></a><code>IMAGE</code> 图片消息</h3><h3 id="FLASHIMAGE-闪照消息"><a href="#FLASHIMAGE-闪照消息" class="headerlink" title="FLASHIMAGE 闪照消息"></a><code>FLASHIMAGE</code> 闪照消息</h3><h3 id="FACE-QQ表情"><a href="#FACE-QQ表情" class="headerlink" title="FACE QQ表情"></a><code>FACE</code> QQ表情</h3><h3 id="AT-某人"><a href="#AT-某人" class="headerlink" title="AT @某人"></a><code>AT</code> @某人</h3><h3 id="ATALL-全体成员"><a href="#ATALL-全体成员" class="headerlink" title="ATALL @全体成员"></a><code>ATALL</code> @全体成员</h3><h3 id="XML-XML消息"><a href="#XML-XML消息" class="headerlink" title="XML XML消息"></a><code>XML</code> XML消息</h3><h3 id="JSON2-JSON消息"><a href="#JSON2-JSON消息" class="headerlink" title="JSON2 JSON消息"></a><code>JSON2</code> JSON消息</h3><h3 id="APP-APP消息"><a href="#APP-APP消息" class="headerlink" title="APP APP消息"></a><code>APP</code> APP消息</h3><h3 id="POKE-戳一戳消息"><a href="#POKE-戳一戳消息" class="headerlink" title="POKE 戳一戳消息"></a><code>POKE</code> 戳一戳消息</h3><h3 id="PokeType"><a href="#PokeType" class="headerlink" title="PokeType"></a>PokeType</h3><h3 id="PokeType-POKE-戳一戳"><a href="#PokeType-POKE-戳一戳" class="headerlink" title="PokeType.POKE 戳一戳"></a><code>PokeType.POKE</code> 戳一戳</h3><h3 id="PokeType-SHOWLOVE-比心"><a href="#PokeType-SHOWLOVE-比心" class="headerlink" title="PokeType.SHOWLOVE 比心"></a><code>PokeType.SHOWLOVE</code> 比心</h3><h3 id="PokeType-LIKE-点赞"><a href="#PokeType-LIKE-点赞" class="headerlink" title="PokeType.LIKE 点赞"></a><code>PokeType.LIKE</code> 点赞</h3><h3 id="PokeType-HEARTBROKEN-心碎"><a href="#PokeType-HEARTBROKEN-心碎" class="headerlink" title="PokeType.HEARTBROKEN 心碎"></a><code>PokeType.HEARTBROKEN</code> 心碎</h3><h3 id="PokeType-SIXSIXSIX-666"><a href="#PokeType-SIXSIXSIX-666" class="headerlink" title="PokeType.SIXSIXSIX 666"></a><code>PokeType.SIXSIXSIX</code> 666</h3><h3 id="PokeType-FANGDAZHAO-放大招"><a href="#PokeType-FANGDAZHAO-放大招" class="headerlink" title="PokeType.FANGDAZHAO 放大招"></a><code>PokeType.FANGDAZHAO</code> 放大招</h3><hr>
+<h2 id="Mirai-EventType-Const"><a href="#Mirai-EventType-Const" class="headerlink" title="Mirai.EventType(Const)"></a>Mirai.EventType(Const)</h2><p>EventType为<code>Bot.subscribe</code>中的其他事件event的参数中的<code>event</code>的类型基类</p>
+<blockquote>
+<p>注：<code>EventType.?</code>只作为返回参数，构造它们是没有任何意义的。</p>
+</blockquote>
+<h3 id="所有事件类型"><a href="#所有事件类型" class="headerlink" title="所有事件类型"></a>所有事件类型</h3><p>在<code>Bot.subscribe</code>中的<code>event</code>中，我们可以通过判断<code>event.type</code>来确定接受到的事件类型。<br>下面是所有事件类型常量(<code>EventTypeConst.?</code>):<br>它们后面对应着event中有的属性</p>
+<h3 id="➢BOT-ONLINE-bot上线"><a href="#➢BOT-ONLINE-bot上线" class="headerlink" title="➢BOT_ONLINE: bot上线"></a><span style='color:#ff972e;'>➢</span><code>BOT_ONLINE</code>: bot上线</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢BOT-OFFLINE-bot下线"><a href="#➢BOT-OFFLINE-bot下线" class="headerlink" title="➢BOT_OFFLINE: bot下线"></a><span style='color:#ff972e;'>➢</span><code>BOT_OFFLINE</code>: bot下线</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢BOT-OFFLINE-FORCE-bot被挤下线"><a href="#➢BOT-OFFLINE-FORCE-bot被挤下线" class="headerlink" title="➢BOT_OFFLINE_FORCE: bot被挤下线"></a><span style='color:#ff972e;'>➢</span><code>BOT_OFFLINE_FORCE</code>: bot被挤下线</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢BOT-OFFLINE-DROPPED-bot异常下线"><a href="#➢BOT-OFFLINE-DROPPED-bot异常下线" class="headerlink" title="➢BOT_OFFLINE_DROPPED: bot异常下线"></a><span style='color:#ff972e;'>➢</span><code>BOT_OFFLINE_DROPPED</code>: bot异常下线</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢BOT-RELOGIN-bot重新登录"><a href="#➢BOT-RELOGIN-bot重新登录" class="headerlink" title="➢BOT_RELOGIN: bot重新登录"></a><span style='color:#ff972e;'>➢</span><code>BOT_RELOGIN</code>: bot重新登录</h3><p><code>Number</code> id: bot的qq号</p>
+<h3 id="➢GROUP-RECALL-群组撤回消息"><a href="#➢GROUP-RECALL-群组撤回消息" class="headerlink" title="➢GROUP_RECALL: 群组撤回消息"></a><span style='color:#ff972e;'>➢</span><code>GROUP_RECALL</code>: 群组撤回消息</h3><p><code>Number</code> senderId: 撤回者QQ号<br><code>Number</code> messageId: 撤回的消息的id<br><code>Number</code> time: 撤回时间<br><code>GroupInfo</code> group: 事件发生所在的群组<br><code>MessageSender</code> operator: 撤回者信息</p>
+<h3 id="➢FRIEND-RECALL-好友撤回消息"><a href="#➢FRIEND-RECALL-好友撤回消息" class="headerlink" title="➢FRIEND_RECALL: 好友撤回消息"></a><span style='color:#ff972e;'>➢</span><code>FRIEND_RECALL</code>: 好友撤回消息</h3><p><code>Number</code> senderId: 撤回者QQ号<br><code>Number</code> messageId: 撤回的消息的id<br><code>Number</code> time: 撤回时间</p>
+<h3 id="➢BOT-GROUP-PERMISSION-CHANGE-bot在群的权限被改变"><a href="#➢BOT-GROUP-PERMISSION-CHANGE-bot在群的权限被改变" class="headerlink" title="➢BOT_GROUP_PERMISSION_CHANGE: bot在群的权限被改变"></a><span style='color:#ff972e;'>➢</span><code>BOT_GROUP_PERMISSION_CHANGE</code>: bot在群的权限被改变</h3><p><code>Permission</code> before: 改前权限<br><code>Permission</code> after: 改后权限<br><code>GroupInfo</code> group: 事件发生所在群组</p>
+<h3 id="➢BOT-MUTE-bot被禁言"><a href="#➢BOT-MUTE-bot被禁言" class="headerlink" title="➢BOT_MUTE: bot被禁言"></a><span style='color:#ff972e;'>➢</span><code>BOT_MUTE</code>: bot被禁言</h3><p><code>Number</code> duration: 禁言时长<br><code>MessageSender</code> operator: 禁言者<br>(群组信息可以在<code>event.getOperator().group</code>找到)</p>
+<h3 id="➢BOT-UNMUTE-bot被解除禁言"><a href="#➢BOT-UNMUTE-bot被解除禁言" class="headerlink" title="➢BOT_UNMUTE: bot被解除禁言"></a><span style='color:#ff972e;'>➢</span><code>BOT_UNMUTE</code>: bot被解除禁言</h3><p><code>MessageSender</code> operator: 禁言者<br>(群组信息可以在<code>event.getOperator().group</code>找到)</p>
+<h3 id="➢BOT-JOIN-GROUP-bot新加入群组"><a href="#➢BOT-JOIN-GROUP-bot新加入群组" class="headerlink" title="➢BOT_JOIN_GROUP: bot新加入群组"></a><span style='color:#ff972e;'>➢</span><code>BOT_JOIN_GROUP</code>: bot新加入群组</h3><p><code>GroupInfo</code> group: 加入的群组</p>
+<h3 id="➢GROUP-NAME-CHANGE-群名称改变"><a href="#➢GROUP-NAME-CHANGE-群名称改变" class="headerlink" title="➢GROUP_NAME_CHANGE: 群名称改变"></a><span style='color:#ff972e;'>➢</span><code>GROUP_NAME_CHANGE</code>: 群名称改变</h3><p><code>String</code> before: 改之前名称<br><code>String</code> after: 改之后名称<br><code>GroupInfo</code> group: 事件发生所在群组</p>
+<h3 id="➢GROUP-ENTRANCE-ANN-CHANGE-入群公告改变"><a href="#➢GROUP-ENTRANCE-ANN-CHANGE-入群公告改变" class="headerlink" title="➢GROUP_ENTRANCE_ANN_CHANGE: 入群公告改变"></a><span style='color:#ff972e;'>➢</span><code>GROUP_ENTRANCE_ANN_CHANGE</code>: 入群公告改变</h3><p><code>String</code> before: 改之前入群公告<br><code>String</code> after: 改之后入群公告<br><code>GroupInfo</code> group: 事件发生所在群组<br><code>MessageSender</code> operator: 操作者</p>
+<h3 id="➢GROUP-MUTE-ALL-群全体禁言事件"><a href="#➢GROUP-MUTE-ALL-群全体禁言事件" class="headerlink" title="➢GROUP_MUTE_ALL: 群全体禁言事件"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MUTE_ALL</code>: 群全体禁言事件</h3><p><code>Boolean</code> before: 之前是否禁言<br><code>Boolean</code> after: 之后是否禁言<br><code>GroupInfo</code> group: 事件发生所在群组<br><code>MessageSender</code> operator: 操作者</p>
+<h3 id="➢GROUP-ALLOW-ANONYMOUS-CHAT-匿名聊天"><a href="#➢GROUP-ALLOW-ANONYMOUS-CHAT-匿名聊天" class="headerlink" title="➢GROUP_ALLOW_ANONYMOUS_CHAT: 匿名聊天"></a><span style='color:#ff972e;'>➢</span><code>GROUP_ALLOW_ANONYMOUS_CHAT</code>: 匿名聊天</h3><p>未写</p>
+<h3 id="➢GROUP-ALLOW-CONFESS-TALK-坦白说"><a href="#➢GROUP-ALLOW-CONFESS-TALK-坦白说" class="headerlink" title="➢GROUP_ALLOW_CONFESS_TALK: 坦白说"></a><span style='color:#ff972e;'>➢</span><code>GROUP_ALLOW_CONFESS_TALK</code>: 坦白说</h3><p>未写</p>
+<h3 id="➢GROUP-ALLOW-MEMBER-INVITE-允许成员邀请其他人入群"><a href="#➢GROUP-ALLOW-MEMBER-INVITE-允许成员邀请其他人入群" class="headerlink" title="➢GROUP_ALLOW_MEMBER_INVITE: 允许成员邀请其他人入群"></a><span style='color:#ff972e;'>➢</span><code>GROUP_ALLOW_MEMBER_INVITE</code>: 允许成员邀请其他人入群</h3><p>未写</p>
+<h3 id="➢GROUP-MEMBER-JOIN-新人入群"><a href="#➢GROUP-MEMBER-JOIN-新人入群" class="headerlink" title="➢GROUP_MEMBER_JOIN: 新人入群"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_JOIN</code>: 新人入群</h3><p><code>MessageSender</code> member: 入群人信息<br>(群组信息可以在<code>event.getMember().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-KICK-群员被踢"><a href="#➢GROUP-MEMBER-KICK-群员被踢" class="headerlink" title="➢GROUP_MEMBER_KICK: 群员被踢"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_KICK</code>: 群员被踢</h3><p><code>MessageSender</code> target: 被踢人信息<br><code>MessageSender</code> operator: 操作者<br>(群组信息可以在<code>event.getOperator/Target().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-QUIT-群员退群"><a href="#➢GROUP-MEMBER-QUIT-群员退群" class="headerlink" title="➢GROUP_MEMBER_QUIT: 群员退群"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_QUIT</code>: 群员退群</h3><p><code>MessageSender</code> member: 退群人信息<br>(群组信息可以在<code>event.getMember().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-NAME-CHANGE-群成员昵称改变"><a href="#➢GROUP-MEMBER-NAME-CHANGE-群成员昵称改变" class="headerlink" title="➢GROUP_MEMBER_NAME_CHANGE: 群成员昵称改变"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_NAME_CHANGE</code>: 群成员昵称改变</h3><p><code>String</code> before: 改之前昵称<br><code>String</code> after: 改之后昵称<br><code>MessageSender</code> target: 被改昵称的人<br><code>MessageSender</code> operator: 操作者(自己或者管理员)<br>(群组信息可以在<code>event.getOperator/Target().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-FAME-CHANHE-群特殊头衔改变"><a href="#➢GROUP-MEMBER-FAME-CHANHE-群特殊头衔改变" class="headerlink" title="➢GROUP_MEMBER_FAME_CHANHE: 群特殊头衔改变"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_FAME_CHANHE</code>: 群特殊头衔改变</h3><p><code>String</code> before: 改之前头衔(空或有)<br><code>String</code> after: 改之后头衔<br><code>MessageSender</code> target: 被改特殊头衔的人<br>(群组信息可以在<code>event.getTarget().group</code>找到)</p>
+<h3 id="➢GROUP-MEMBER-PERMISSION-CHANGE-群成员权限改变-不能是bot"><a href="#➢GROUP-MEMBER-PERMISSION-CHANGE-群成员权限改变-不能是bot" class="headerlink" title="➢GROUP_MEMBER_PERMISSION_CHANGE: 群成员权限改变(不能是bot)"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_PERMISSION_CHANGE</code>: 群成员权限改变(不能是bot)</h3><p><code>Permission</code> before: 改之前权限<br><code>Permission</code> after: 改之后权限<br><code>MessageSender</code> target: 被改权限的人</p>
+<h3 id="➢GROUP-MEMBER-MUTE-群员被禁言"><a href="#➢GROUP-MEMBER-MUTE-群员被禁言" class="headerlink" title="➢GROUP_MEMBER_MUTE: 群员被禁言"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_MUTE</code>: 群员被禁言</h3><p><code>Number</code> duration: 禁言时长<br><code>MessageSender</code> target: 被禁言的人<br><code>MessageSender</code> operator: 操作者(自己或者管理员)</p>
+<h3 id="➢GROUP-MEMBER-UNMUTE-群员被解除禁言"><a href="#➢GROUP-MEMBER-UNMUTE-群员被解除禁言" class="headerlink" title="➢GROUP_MEMBER_UNMUTE: 群员被解除禁言"></a><span style='color:#ff972e;'>➢</span><code>GROUP_MEMBER_UNMUTE</code>: 群员被解除禁言</h3><p><code>MessageSender</code> target: 被解除禁言的人<br><code>MessageSender</code> operator: 操作者(自己或者管理员)</p>
+<h3 id="➢NEW-FRIEND-REQUEST-新好友请求事件"><a href="#➢NEW-FRIEND-REQUEST-新好友请求事件" class="headerlink" title="➢NEW_FRIEND_REQUEST: 新好友请求事件"></a><span style='color:#ff972e;'>➢</span><code>NEW_FRIEND_REQUEST</code>: 新好友请求事件</h3><p><code>Number</code> eventId: 事件ID，用于标识事件<br><code>Number</code> fromId: 新好友QQ号<br><code>Number</code> groupId: 新好友来自的群(<code>0</code>为不是通过群加的好友)<br><code>String</code> nickname: 新好友昵称<br>特殊方法:<br><code>event.accept()</code> 同意好友请求。<br><code>event.reject()</code> 拒绝好友请求。<br><code>event.block()</code> 拒绝并拉黑，不再接收请求。<br><code>event.toIArg()</code>用于获取要传入<code>Bot.handleFriendRequest</code>的一个参数。<br>(下面有例子)</p>
+<h3 id="➢NEW-MEMBER-JOIN-REQUEST-新成员入群请求事件"><a href="#➢NEW-MEMBER-JOIN-REQUEST-新成员入群请求事件" class="headerlink" title="➢NEW_MEMBER_JOIN_REQUEST: 新成员入群请求事件"></a><span style='color:#ff972e;'>➢</span><code>NEW_MEMBER_JOIN_REQUEST</code>: 新成员入群请求事件</h3><p><code>Number</code> eventId: 事件ID，用于标识事件<br><code>Number</code> fromId: 加群人QQ号<br><code>Number</code> groupId: 加群群号<br><code>String</code> groupName: 加群群名称<br><code>String</code> nickname: 加群人昵称<br>特殊方法:<br><code>event.accept()</code> 同意加群请求。<br><code>event.reject()</code> 拒绝加群请求。<br><code>event.ignore()</code> 忽略加群请求。<br><code>event.ignoreAndBlock()</code> 忽略加群请求并不再接收请求。<br><code>event.rejectAndBlock()</code> 拒绝加群请求并不再接收请求。<br><code>event.toIArg()</code>用于获取要传入<code>Bot.handleMemberJoinRequest</code>的一个参数。</p>
+<p>所有的属性都可以通过调用<code>event.getXxx()</code>(get+属性首字母大写)方法来过得。<br></br>下面通过一个例子展示用法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">event: <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//群组改名提示</span></span><br><span class="line">  <span class="keyword">if</span>(event.type == GROUP_NAME_CHANGE)&#123;</span><br><span class="line">    bot.sendGroupMessage(</span><br><span class="line">      event.group.id, <span class="comment">//这是群qq号</span></span><br><span class="line">      [Plain(<span class="string">"Administrator changed the group mame \""</span> + event.getBefore() + <span class="string">"\" to \""</span> + event.getAfter() + <span class="string">"\""</span>)]</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//自动同意新好友请求</span></span><br><span class="line">  <span class="keyword">if</span>(event.type == NEW_FRIEND_REQUEST)&#123;</span><br><span class="line">    <span class="comment">//以下两个方法是等价的</span></span><br><span class="line">    bot.handleFriendRequest(event.toIArg(), <span class="number">0</span>);</span><br><span class="line">    event.accept();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Mirai-utils-file"><a href="#Mirai-utils-file" class="headerlink" title="Mirai.utils.file"></a>Mirai.utils.file</h2><p>file类提供简单的文件读取和写入方法。</p>
+<h3 id="方法预览-3"><a href="#方法预览-3" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> create(<code>String</code> path)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> remove(<code>String</code> path)</td>
+</tr>
+<tr>
+<td align="center"><code>?</code></td>
+<td align="left"><code>static</code> read(<code>String</code> path, <code>?</code> mode)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> writeString(<code>String</code> path, <code>String</code> string, <code>Boolean</code> isCover)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> writeStream(<code>String</code> path, <code>java.io.InputStream</code> inputStream, <code>Boolean</code> isCover, <code>Boolean</code> isInputStreamClose)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> appendString(<code>String</code> path, <code>String</code> appendString)</td>
+</tr>
+</tbody></table>
+<h3 id="详细方法-6"><a href="#详细方法-6" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-VOID-static-create-String-path"><a href="#➢-VOID-static-create-String-path" class="headerlink" title="➢ VOID static create(String path)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> create(<code>String</code> path)</h3><p>在<code>path</code>创建一个文件或目录。</p>
+<h3 id="➢-VOID-static-remove-String-path"><a href="#➢-VOID-static-remove-String-path" class="headerlink" title="➢ VOID static remove(String path)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> remove(<code>String</code> path)</h3><p>删除在<code>path</code>的一个文件或目录。</p>
+<h3 id="➢-static-read-String-path-mode"><a href="#➢-static-read-String-path-mode" class="headerlink" title="➢ ? static read(String path, ? mode)"></a><span style='color:#ff972e;'>➢</span> <code>?</code> <code>static</code> read(<code>String</code> path, <code>?</code> mode)</h3><p>读取在<code>path</code>的文件。<br>如果<code>mode</code>为<code>Mirai.utils.file.STRING</code>，则返回文件内容。<br>如果<code>mode</code>为<code>Mirai.utils.file.STREAM</code>，则返回文件输入流。</p>
+<h3 id="➢-VOID-static-writeString-String-path-String-string-Boolean-isCover"><a href="#➢-VOID-static-writeString-String-path-String-string-Boolean-isCover" class="headerlink" title="➢ VOID static writeString(String path, String string, Boolean isCover)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> writeString(<code>String</code> path, <code>String</code> string, <code>Boolean</code> isCover)</h3><p>写入字符串到<code>path</code>的文件。<br><code>isCover</code>设定是否在文件已存在的情况下覆盖文件内容。</p>
+<h3 id="➢-VOID-static-writeStream-String-path-java-io-InputStream-inputStream-Boolean-isCover-Boolean-isInputStreamClose"><a href="#➢-VOID-static-writeStream-String-path-java-io-InputStream-inputStream-Boolean-isCover-Boolean-isInputStreamClose" class="headerlink" title="➢ VOID static writeStream(String path, java.io.InputStream inputStream, Boolean isCover, Boolean isInputStreamClose)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> writeStream(<code>String</code> path, <code>java.io.InputStream</code> inputStream, <code>Boolean</code> isCover, <code>Boolean</code> isInputStreamClose)</h3><p>写入字符串到<code>path</code>的文件。<br><code>isCover</code>设定是否在文件已存在的情况下覆盖文件内容。<br><code>isInputStreamClose</code>设定是否在写入完成后关闭并回收输入流。</p>
+<h3 id="➢-VOID-static-appendString-String-path-String-appendString"><a href="#➢-VOID-static-appendString-String-path-String-appendString" class="headerlink" title="➢ VOID static appendString(String path, String appendString)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> <code>static</code> appendString(<code>String</code> path, <code>String</code> appendString)</h3><p>追加字符串到<code>path</code>的文件。</p>
+<hr>
+<h2 id="Mirai-utils-http"><a href="#Mirai-utils-http" class="headerlink" title="Mirai.utils.http"></a>Mirai.utils.http</h2><p>http类提供简单HTTP POST/GET方法。</p>
+<h3 id="方法预览-4"><a href="#方法预览-4" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[<code>Number</code>, <code>java.io.InputStream</code>]</td>
+<td align="left"><code>static</code> getInputStream(<code>String</code> url[, <code>Array</code> headers])</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="left"><code>static</code> get(<code>String</code> url[, <code>Array</code> headers, <code>Boolean</code> isLineBreak])</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="left"><code>static</code> post(<code>String</code> url, <code>String</code> params[, <code>Array</code> headers])</td>
+</tr>
+</tbody></table>
+<h3 id="详细方法-7"><a href="#详细方法-7" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-Number-java-io-InputStream-static-getInputStream-String-url-Array-headers"><a href="#➢-Number-java-io-InputStream-static-getInputStream-String-url-Array-headers" class="headerlink" title="➢ [Number, java.io.InputStream] static getInputStream(String url[, Array headers])"></a><span style='color:#ff972e;'>➢</span> [<code>Number</code>, <code>java.io.InputStream</code>] <code>static</code> getInputStream(<code>String</code> url[, <code>Array</code> headers])</h3><p>读取远程服务器资源并返回输入流，常用于获取图片，音乐等非文字信息。<br><code>headers</code>是可选的，指定了请求头，它应该是这样的格式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [<span class="string">"Content-Type"</span>, <span class="string">"blablabla"</span>],</span><br><span class="line">  [<span class="string">"Connection"</span>, <span class="string">"Keep-Alive"</span>],</span><br><span class="line">  [<span class="string">"..."</span>, <span class="string">"..."</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>返回的Array中，第一个元素为输入流大小(文件大小)，第二个元素为输入流。</p>
+<h3 id="➢-String-static-get-String-url-Array-headers-Boolean-isLineBreak"><a href="#➢-String-static-get-String-url-Array-headers-Boolean-isLineBreak" class="headerlink" title="➢ String static get(String url[, Array headers, Boolean isLineBreak]) |"></a><span style='color:#ff972e;'>➢</span> <code>String</code> <code>static</code> get(<code>String</code> url[, <code>Array</code> headers, <code>Boolean</code> isLineBreak]) |</h3><p>读取远程服务器资源并返回字符串。<br><code>isLineBreak</code>指定是否有换行符，若为<code>false</code>则读取后的字符串都在一行l。</p>
+<h3 id="➢-String-static-post-String-url-String-params-Array-headers"><a href="#➢-String-static-post-String-url-String-params-Array-headers" class="headerlink" title="➢ String static post(String url, String params[, Array headers])"></a><span style='color:#ff972e;'>➢</span> <code>String</code> <code>static</code> post(<code>String</code> url, <code>String</code> params[, <code>Array</code> headers])</h3><p>向远程服务器发送请求。</p>
+<hr>
+<h2 id="Mirai-utils-rsync"><a href="#Mirai-utils-rsync" class="headerlink" title="Mirai.utils.rsync"></a>Mirai.utils.rsync</h2><p>rsync类提供在rhino中异步执行的方法。</p>
+<h3 id="方法预览-5"><a href="#方法预览-5" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PlaceHolder</td>
+<td align="left">PlaceHolder</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> run(<code>Object</code> func)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> loop(<code>Object</code> func, <code>Number</code> times, <code>Number</code>, interval)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> corun(<code>Object</code> func, <code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> flag(<code>String</code> name)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> interval(<code>Number</code> interval)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> co_count(<code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>rsync</code></td>
+<td align="left"><code>static</code> loop_times(<code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>self(rsync)</code></td>
+<td align="left">run(<code>Object</code> func)</td>
+</tr>
+<tr>
+<td align="center"><code>self(rsync)</code></td>
+<td align="left">loop(<code>Object</code> func, <code>Number</code> times, <code>Number</code>, interval)</td>
+</tr>
+<tr>
+<td align="center"><code>self(rsync)</code></td>
+<td align="left">corun(<code>Object</code> func, <code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>String</code>/<code>self(rsync)</code></td>
+<td align="left">flag(<code>String</code> name)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code>/<code>self(rsync)</code></td>
+<td align="left">interval(<code>Number</code> interval)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code>/<code>self(rsync)</code></td>
+<td align="left">co_count(<code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code>/<code>self(rsync)</code></td>
+<td align="left">loop_times(<code>Number</code> count)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">sleep(<code>Number</code> duration)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">stop()</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left">restart()</td>
+</tr>
+</tbody></table>
+<h3 id="详细方法-8"><a href="#详细方法-8" class="headerlink" title="详细方法"></a>详细方法</h3><h3 id="➢-rsync-static-run-Object-func"><a href="#➢-rsync-static-run-Object-func" class="headerlink" title="➢ rsync static run(Object func)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> run(<code>Object</code> func)</h3><p>创建执行单程异步线程，并返回这个异步线程对象。</p>
+<h2 id="rsync调用方法"><a href="#rsync调用方法" class="headerlink" title="rsync调用方法"></a>rsync调用方法</h2><p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsync.run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;</span><br><span class="line">  Log.i(<span class="string">"in rsync thread."</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in rsync thread.</span><br></pre></td></tr></table></figure>
+
+<p><code>func</code>中的参数<code>s</code>表示自身rsync对象，可以对当前异步线程进行sleep()或stop()等操作。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rsync.run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;</span><br><span class="line">  Log.i(<span class="string">"in rsync thread."</span>);</span><br><span class="line">  s.stop();</span><br><span class="line">  Log.i(<span class="string">"print me."</span>);<span class="comment">//这条将不会被打印</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in rsync thread.</span><br></pre></td></tr></table></figure>
+
+<p>stop()是可以将sleep()打断的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = rsync.run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;</span><br><span class="line">  Log.i(<span class="string">"in rsync thread."</span>);</span><br><span class="line">  s.sleep(<span class="number">3000</span>);</span><br><span class="line">  Log.i(<span class="string">"print me."</span>);<span class="comment">//这条将不会被打印</span></span><br><span class="line">&#125;);</span><br><span class="line">java.lang.Thread.sleep(<span class="number">1500</span>);</span><br><span class="line">r.stop();</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in rsync thread.</span><br></pre></td></tr></table></figure>
+
+<h3 id="➢-rsync-static-loop-Object-func-Number-times-Number-interval"><a href="#➢-rsync-static-loop-Object-func-Number-times-Number-interval" class="headerlink" title="➢ rsync static loop(Object func, Number times, Number, interval)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> loop(<code>Object</code> func, <code>Number</code> times, <code>Number</code>, interval)</h3><p>创建执行循环异步线程并返回这个异步线程对象。<br><code>times</code>表示循环执行的次数，<code>-1</code>表示无限次(默认就是执行无限次)，直到调用stop()。<br><code>interval</code>表示每次上一次执行完毕到下一次执行的中间间隔(毫秒)。</p>
+<p>它的本质是创建一个rsync对象，将标记循环执行次数的属性<code>loop_times</code>和执行间隔属性<code>interval</code>设置为参数<code>times</code>和<code>interval</code>。</p>
+<h3 id="➢-rsync-static-corun-Object-func-Number-count"><a href="#➢-rsync-static-corun-Object-func-Number-count" class="headerlink" title="➢ rsync static corun(Object func, Number count)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> corun(<code>Object</code> func, <code>Number</code> count)</h3><p>创建同时执行<code>count</code>个单程异步线程并返回这个异步线程对象。<br><code>count</code>表示创建同时执行线程的个数，若设置为为1，个则最终效果和rsync.run()相同。</p>
+<p>它的本质是创建一个rsync对象，将标记同时执行线程个数的属性<code>co_count</code>设置为参数<code>count</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsync.corun(<span class="function">(<span class="params">s, i</span>) =&gt;</span> &#123;</span><br><span class="line">  Log.i(<span class="string">"我是第"</span> + i + <span class="string">"个线程"</span>)。</span><br><span class="line">&#125;, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<p>将同时输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我是第0个线程</span><br><span class="line">我是第1个线程</span><br><span class="line">我是第2个线程</span><br><span class="line">我是第3个线程</span><br><span class="line">我是第4个线程</span><br></pre></td></tr></table></figure>
+
+<h3 id="➢-rsync-static-flag-String-name"><a href="#➢-rsync-static-flag-String-name" class="headerlink" title="➢ rsync static flag(String name)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> flag(<code>String</code> name)</h3><p>创建一个新的异步线程，将线程组名称设置为<code>name</code>并返回这个异步线程对象。</p>
+<h3 id="➢-rsync-static-interval-Number-interval"><a href="#➢-rsync-static-interval-Number-interval" class="headerlink" title="➢ rsync static interval(Number interval)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> interval(<code>Number</code> interval)</h3><p>创建一个新的异步线程，将上一次执行完毕到下一次执行的中间间隔设置为<code>interval</code>并返回这个异步线程对象。<br>当<code>loop_times</code>为1(默认)时异步线程不会执行第二次，所以interval属性不会起作用。</p>
+<h3 id="➢-rsync-static-co-count-Number-count"><a href="#➢-rsync-static-co-count-Number-count" class="headerlink" title="➢ rsync static co_count(Number count)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> co_count(<code>Number</code> count)</h3><p>创建一个新的异步线程，将同时异步执行线程的个数设置为<code>count</code>并返回这个异步线程对象。</p>
+<h3 id="➢-rsync-static-loop-times-Number-times"><a href="#➢-rsync-static-loop-times-Number-times" class="headerlink" title="➢ rsync static loop_times(Number times)"></a><span style='color:#ff972e;'>➢</span> <code>rsync</code> <code>static</code> loop_times(<code>Number</code> times)</h3><p>创建一个新的异步线程，将循环执行次数设置为<code>interval</code>(<code>-1</code>表示执行无限次)并返回这个异步线程对象。</p>
+<h3 id="➢-self-rsync-run-Object-func"><a href="#➢-self-rsync-run-Object-func" class="headerlink" title="➢ self(rsync) run(Object func)"></a><span style='color:#ff972e;'>➢</span> <code>self(rsync)</code> run(<code>Object</code> func)</h3><p>开始执行异步线程。<br>若<code>func</code>为<code>null</code>，则什么也不会执行。<br>若当前rsync对象线程已开始执行，则会抛出异常。</p>
+<h3 id="➢-self-rsync-loop-Object-func-Number-times-Number-interval"><a href="#➢-self-rsync-loop-Object-func-Number-times-Number-interval" class="headerlink" title="➢ self(rsync) loop(Object func, Number times, Number, interval)"></a><span style='color:#ff972e;'>➢</span> <code>self(rsync)</code> loop(<code>Object</code> func, <code>Number</code> times, <code>Number</code>, interval)</h3><p>同上方静态方法，若当前rsync对象线程已开始执行，则会抛出异常。<br>它的本质是将当前rsync对象线程标记循环执行次数的属性<code>loop_times</code>和执行间隔属性<code>interval</code>设置为参数<code>times</code>和<code>interval</code>。</p>
+<h3 id="➢-self-rsync-corun-Object-func-Number-count"><a href="#➢-self-rsync-corun-Object-func-Number-count" class="headerlink" title="➢ self(rsync) corun(Object func, Number count)"></a><span style='color:#ff972e;'>➢</span> <code>self(rsync)</code> corun(<code>Object</code> func, <code>Number</code> count)</h3><p>同上方静态方法，若当前rsync对象线程已开始执行，则会抛出异常。<br>它的本质是将当前rsync对象标记同时执行线程个数的属性<code>co_count</code>设置为参数<code>count</code>。</p>
+<h3 id="➢-String-self-rsync-flag-String-name"><a href="#➢-String-self-rsync-flag-String-name" class="headerlink" title="➢ String/self(rsync) flag(String name)"></a><span style='color:#ff972e;'>➢</span> <code>String</code>/<code>self(rsync)</code> flag(<code>String</code> name)</h3><p>将当前rsync对象线程组名称设置为<code>name</code>并返回这个异步线程对象。<br>若当前rsync对象线程已开始执行，则会抛出异常。<br>若参数为空，则会返回当前rsync对象<code>flag</code>值。</p>
+<h3 id="➢-Number-self-rsync-interval-Number-interval"><a href="#➢-Number-self-rsync-interval-Number-interval" class="headerlink" title="➢ Number/self(rsync) interval(Number interval)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code>/<code>self(rsync)</code> interval(<code>Number</code> interval)</h3><p>将当前rsync对象上一次执行完毕到下一次执行的中间间隔设置为<code>interval</code>并返回这个异步线程对象。<br>当<code>loop_times</code>为1(默认)时异步线程不会执行第二次，所以interval属性不会起作用。<br>若当前rsync对象线程已开始执行，则会抛出异常。<br>若参数为空，则会返回当前rsync对象<code>interval</code>值。</p>
+<h3 id="➢-Number-self-rsync-co-count-Number-count"><a href="#➢-Number-self-rsync-co-count-Number-count" class="headerlink" title="➢ Number/self(rsync) co_count(Number count)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code>/<code>self(rsync)</code> co_count(<code>Number</code> count)</h3><p>将当前rsync对象同时异步执行线程的个数设置为<code>count</code>并返回这个异步线程对象。<br>若当前rsync对象线程已开始执行，则会抛出异常。<br>若参数为空，则会返回当前rsync对象<code>co_count</code>值。</p>
+<h3 id="➢-Number-self-rsync-loop-times-Number-times"><a href="#➢-Number-self-rsync-loop-times-Number-times" class="headerlink" title="➢ Number/self(rsync) loop_times(Number times)"></a><span style='color:#ff972e;'>➢</span> <code>Number</code>/<code>self(rsync)</code> loop_times(<code>Number</code> times)</h3><p>将当前rsync对象循环执行次数设置为<code>times</code>(<code>-1</code>表示执行无限次)并返回这个异步线程对象。<br>若当前rsync对象线程已开始执行，则会抛出异常。<br>若参数为空，则会返回当前rsync对象<code>loop_times</code>值。</p>
+<h3 id="➢-VOID-sleep-Number-duration"><a href="#➢-VOID-sleep-Number-duration" class="headerlink" title="➢ VOID sleep(Number duration)"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> sleep(<code>Number</code> duration)</h3><p>睡眠，<code>duration</code>表示时长。</p>
+<h3 id="➢-VOID-stop"><a href="#➢-VOID-stop" class="headerlink" title="➢ VOID stop()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> stop()</h3><p>打断并停止线程执行。</p>
+<h3 id="➢-VOID-restart"><a href="#➢-VOID-restart" class="headerlink" title="➢ VOID restart()"></a><span style='color:#ff972e;'>➢</span> <span style='color:#aaaaaa;'>VOID</span> restart()</h3><p>重新执行。</p>
+<h3 id="rsync链式调用例子："><a href="#rsync链式调用例子：" class="headerlink" title="rsync链式调用例子："></a>rsync链式调用例子：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环执行，以下方法是等价的</span></span><br><span class="line">rsync.loop(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;...&#125;, <span class="number">10</span>, <span class="number">100</span>);</span><br><span class="line">rsync.flag(<span class="string">"loop_thread"</span>).interval(<span class="number">100</span>).loop_times(<span class="number">10</span>).run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;...&#125;);</span><br><span class="line"><span class="comment">//实例化对象中调用loop或corun会覆盖静态方法设置的属性。</span></span><br><span class="line">rsync.flag(<span class="string">"loop_thread"</span>).loop(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;...&#125;, <span class="number">10</span>, <span class="number">100</span>);</span><br><span class="line"><span class="keyword">var</span> r = rsync.flag(<span class="string">"loop_times"</span>);</span><br><span class="line">r.interval(<span class="number">100</span>);</span><br><span class="line">r.loop_times(<span class="number">10</span>);</span><br><span class="line">r.run(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;...&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Mirai-Log"><a href="#Mirai-Log" class="headerlink" title="Mirai.Log"></a>Mirai.Log</h2><p>Log类向控制台输出日志，自动适配标准输出流和AutoJS控制台。</p>
+<h3 id="方法预览-6"><a href="#方法预览-6" class="headerlink" title="方法预览"></a>方法预览</h3><table>
+<thead>
+<tr>
+<th align="center">返回类型</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> v(<code>Object</code> object)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> i(<code>Object</code> object)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> w(<code>Object</code> object)</td>
+</tr>
+<tr>
+<td align="center"><span style='color:#aaaaaa;'>VOID</span></td>
+<td align="left"><code>static</code> e(<code>Object</code> object)</td>
+</tr>
+</tbody></table>
+<p>他们分别对应着verbose，info，warning和error消息，这里只是颜色不同而已。</p>
+<hr>
+<h2 id="其他内容-1"><a href="#其他内容-1" class="headerlink" title="其他内容"></a>其他内容</h2><h2 id="contains返回的临时对象"><a href="#contains返回的临时对象" class="headerlink" title="contains返回的临时对象"></a>contains返回的临时对象</h2><p><code>MessageChain.contains</code>会返回一个临时对象用于执行<code>.then(Sync)</code>/<code>.or(Sync)</code>后续操作</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msg.contains(<span class="string">"打招呼"</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> sender.at(<span class="string">"你好呀！"</span>));</span><br></pre></td></tr></table></figure>
+
+<p>当消息内容满足正则表达式(组)匹配，则会将该临时对象中的<code>flag</code>标为<code>true</code>，表示包含满足匹配的消息</p>
+<blockquote>
+<p>这里的<code>then</code>并不是Promise中的<code>then</code>，此then非彼then…</p>
+</blockquote>
+<p>看一下详细方法：</p>
+<h3 id="➢-self-TempObject-then-Object-func"><a href="#➢-self-TempObject-then-Object-func" class="headerlink" title="➢ self(TempObject) then(Object func)"></a><span style='color:#ff972e;'>➢</span> <code>self(TempObject)</code> then(<code>Object</code> func)</h3><h3 id="➢-self-TempObject-thenSync-Object-func"><a href="#➢-self-TempObject-thenSync-Object-func" class="headerlink" title="➢ self(TempObject) thenSync(Object func)"></a><span style='color:#ff972e;'>➢</span> <code>self(TempObject)</code> thenSync(<code>Object</code> func)</h3><h3 id="➢-self-TempObject-or-Object-func"><a href="#➢-self-TempObject-or-Object-func" class="headerlink" title="➢ self(TempObject) or(Object func)"></a><span style='color:#ff972e;'>➢</span> <code>self(TempObject)</code> or(<code>Object</code> func)</h3><h3 id="➢-self-TempObject-orSync-Object-func"><a href="#➢-self-TempObject-orSync-Object-func" class="headerlink" title="➢ self(TempObject) orSync(Object func)"></a><span style='color:#ff972e;'>➢</span> <code>self(TempObject)</code> orSync(<code>Object</code> func)</h3><p>若<code>flag</code>被标为<code>true</code>，则<code>then(Sync)</code>可以被执行，否则执行<code>or(Sync)</code>。<br>为了防止消息处理阻塞消息监听线程，你可以调用<code>xxxSync</code>来异步执行。<br><code>func</code>表示一个函数，为执行的内容，这个函数应该有两个(三个)形参：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.then(<span class="function">(<span class="params">i, v</span>) =&gt;</span> &#123;&#125;);</span><br><span class="line">.thenSync(<span class="function">(<span class="params">i, v, r</span>) =&gt;</span> &#123;&#125;);</span><br><span class="line">.then(<span class="function">(<span class="params">i, v</span>) =&gt;</span> &#123;&#125;);</span><br><span class="line">.thenSync(<span class="function">(<span class="params">i, v, r</span>) =&gt;</span> &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<p><code>i</code>表示满足contains表达式中的第几个表达式。<br>当contains的参数为<code>RegExp</code>时，这个值是<code>0</code>，当为<code>Array[RegExp]</code>时，返回满足的表达式的元素序号。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">msg.contains([</span><br><span class="line">  <span class="string">"舔我"</span>, </span><br><span class="line">  <span class="string">"骂我"</span>, </span><br><span class="line">  <span class="string">"给爷爬"</span></span><br><span class="line">]).thenSync(<span class="function">(<span class="params">i</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span>(i) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: sender.at(<span class="string">"你太帅了！"</span>);<span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: sender.at(<span class="string">"wdnmd！"</span>);<span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: sender.at(<span class="string">"我爬了..."</span>);<span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>v</code>表示匹配结果，请看<a href="#contains正则表达式拓展">contains正则表达式拓展</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msg.contains([</span><br><span class="line">  <span class="string">"听过&#123;s&lt;sp&gt;:song&#125;吗"</span>,</span><br><span class="line">  <span class="string">"(搜|点)歌&#123;s&lt;sp&gt;:song&#125;"</span></span><br><span class="line">]).then(<span class="function">(<span class="params">i, k</span>) =&gt;</span> music.search(k.song));</span><br></pre></td></tr></table></figure>
+
+<p><code>r</code>表示调用<code>xxxSync</code>后执行的异步线程对象，也就是一个<code>rsync</code>对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msg.contains(<span class="string">"..."</span>).thenSync(<span class="function">(<span class="params">i, k, r</span>) =&gt;</span> Log.i(r));</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RsyncThreadGroup-unnamed@xxxxx-x</span><br></pre></td></tr></table></figure>
+
+<p>上述四个方法都返回自身，可以链式调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">msg.contains([</span><br><span class="line">  <span class="string">"听过&#123;s&lt;sp&gt;:song&#125;吗"</span>,</span><br><span class="line">  <span class="string">"(搜|点)歌&#123;s&lt;sp&gt;:song&#125;"</span></span><br><span class="line">])</span><br><span class="line">  .thenSync(<span class="function">(<span class="params">i, k, r</span>) =&gt;</span> sender.at(music.search(k.song)))</span><br><span class="line">  .or(<span class="function">(<span class="params">i, k</span>) =&gt;</span> sender.at(<span class="string">"未匹配到！"</span>));</span><br><span class="line">  <span class="comment">//TempObject临时对象里也有contains方法</span></span><br><span class="line">  .contains(<span class="string">"\\.\\.\\."</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> sender.at(<span class="string">"怎么了怎么了为什么打三个点？"</span>));</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="contains正则表达式拓展"><a href="#contains正则表达式拓展" class="headerlink" title="contains正则表达式拓展"></a>contains正则表达式拓展</h2><p>此处基于常规正则表达式添加了简便子匹配结果提取方法，简化exec()获得子匹配内容的过程。</p>
+<p>它的格式是这样的：</p>
+<p><code>${[type[&lt;properties...&gt;]:]name}</code></p>
+<p>其中<code>[...]</code>表示为可选项。</p>
+<p>例如：<br><code>${content}</code> : 隐式定义匹配字符串，不包含空格和换行符，相当于<code>${s:content}</code><br><code>${s:content}</code> : 显式指定匹配字符串，不包含空格和换行符<br><code>${s&lt;sp&gt;:content}</code> : 匹配字符串，包含空格(space)，相当于<code>([^\n]+)</code><br><code>${s&lt;lb&gt;:content}</code> : 匹配字符串，包含换行符(break line)，相当于<code>([^ ]+)</code><br><code>${s&lt;lb, sp&gt;:content}</code> : 匹配字符串，包含所有字符，相当于<code>([\s\S]+)</code><br><code>${s&lt;len=5&gt;:content}</code> : 匹配字符串，限制匹配长度，相当于<code>([^ \n]{5})</code></p>
+<p>正如你所见，未指定type则默认为匹配字符串(s)，properties可以同事指定多个属性，中间用逗号隔开。<br>某些属性需要设置属性值，如类型<code>s</code>中的<code>len</code>属性，表示匹配字符的个数。</p>
+<h3 id="它有什么用？"><a href="#它有什么用？" class="headerlink" title="它有什么用？"></a>它有什么用？</h3><p>所有匹配结果都将以JSON格式封装至contains返回的临时对象中的<code>.then(Sync)</code>/<code>.or(Sync)</code>的第二个参数中，你可以更方便地得到匹配结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">msg</span><br><span class="line">  .contains(<span class="string">"$&#123;n:lv&#125;(\\+|加上|加)$&#123;n:rv&#125;(=|等于)(几|\\?)"</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">i, k</span>) =&gt;</span> &#123;</span><br><span class="line">    sender.at(k.lv + k.rv);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>所有用户定义的子匹配表达式<code>(...)</code>都会被转为非捕获组子匹配表达式<code>(?:...)</code></p>
+</blockquote>
+<p>拓展匹配格式是无视正则表达式规则的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msg.contains(<span class="regexp">/$&#123;s:name&#125;/</span>).then(...);</span><br></pre></td></tr></table></figure>
+<p>将匹配连续不包含空格和换行的字符，而$不表示表达式的开始标识符</p>
+<h3 id="类型支持："><a href="#类型支持：" class="headerlink" title="类型支持："></a>类型支持：</h3><h3 id="n-匹配数字"><a href="#n-匹配数字" class="headerlink" title="n: 匹配数字"></a><code>n</code>: 匹配数字</h3><p>属性：</p>
+<ul>
+<li><code>bit=value</code> 指定匹配数字的位数为<code>value</code>位</li>
+</ul>
+<h3 id="s-匹配字符，不包括空格符和换行符"><a href="#s-匹配字符，不包括空格符和换行符" class="headerlink" title="s: 匹配字符，不包括空格符和换行符"></a><code>s</code>: 匹配字符，不包括空格符和换行符</h3><p>属性：</p>
+<ul>
+<li><code>sp</code> 匹配空格</li>
+<li><code>lb</code> 匹配换行符</li>
+<li><code>len=value</code> 指定匹配字符的长度为<code>value</code></li>
+</ul>
+</div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">StageGuard</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">6</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">11</div></a></div></div><div class="card-info-bookmark is-center"><a class="bookmark button--primary button--animated" id="bookmark-it" href="javascript:;" title="加入书签" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入书签</span></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/StageGuard" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:beamiscool@qq.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="https://twitter.com/realstageguard" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside-recent-item"> <div class="aside-recent-post"><a href="/2020/04/01/run-qqbot-on-termux-android/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/StageGuard/stageguard.github.io/img/run-qqbot-android/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="0202年能在安卓手机上玩QQ机器人吗" alt="0202年能在安卓手机上玩QQ机器人吗"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/04/01/run-qqbot-on-termux-android/" title="0202年能在安卓手机上玩QQ机器人吗">0202年能在安卓手机上玩QQ机器人吗</div><time class="aside-post_meta post-meta__date">2020-04-01</time></div></a></div><div class="aside-recent-post"><a href="/2020/03/03/sky_installation_tutorial/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/StageGuard/stageguard.github.io/img/sky-installation/banner.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="《Sky光·遇》(Android版) 安装教程" alt="《Sky光·遇》(Android版) 安装教程"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/03/03/sky_installation_tutorial/" title="《Sky光·遇》(Android版) 安装教程">《Sky光·遇》(Android版) 安装教程</div><time class="aside-post_meta post-meta__date">2020-03-03</time></div></a></div><div class="aside-recent-post"><a href="/2019/10/27/analyze-163-music-key/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="/img/post.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="解析从网易云音乐下载的歌曲的注释(comment)" alt="解析从网易云音乐下载的歌曲的注释(comment)"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/10/27/analyze-163-music-key/" title="解析从网易云音乐下载的歌曲的注释(comment)">解析从网易云音乐下载的歌曲的注释(comment)</div><time class="aside-post_meta post-meta__date">2019-10-27</time></div></a></div><div class="aside-recent-post"><a href="/2019/08/29/terrariape-multiplayer-via-frp/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/StageGuard/stageguard.github.io/img/trfrppe-img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="不需要root/μpn进行TerrariaPE多人联机" alt="不需要root/μpn进行TerrariaPE多人联机"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/08/29/terrariape-multiplayer-via-frp/" title="不需要root/μpn进行TerrariaPE多人联机">不需要root/μpn进行TerrariaPE多人联机</div><time class="aside-post_meta post-meta__date">2019-08-29</time></div></a></div><div class="aside-recent-post"><a href="/2019/08/15/run-docker-on-qemu-alpine/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/StageGuard/stageguard.github.io/img/run-docker-img/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="Android运行Docker！(Termux + QEMU + linux_alpine, qemu网络映射)" alt="Android运行Docker！(Termux + QEMU + linux_alpine, qemu网络映射)"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/08/15/run-docker-on-qemu-alpine/" title="Android运行Docker！(Termux + QEMU + linux_alpine, qemu网络映射)">Android运行Docker！(Termux + QEMU + linux_alpine, qemu网络映射)</div><time class="aside-post_meta post-meta__date">2019-08-15</time></div></a></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fa fa-tags" aria-hidden="true"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/alpine/" style="font-size: 16px; color: #999">alpine</a> <a href="/tags/docker/" style="font-size: 16px; color: #999">docker</a> <a href="/tags/frp/" style="font-size: 24px; color: #99a9bf">frp</a> <a href="/tags/git/" style="font-size: 16px; color: #999">git</a> <a href="/tags/gogs/" style="font-size: 16px; color: #999">gogs</a> <a href="/tags/netease/" style="font-size: 16px; color: #999">netease</a> <a href="/tags/qemu/" style="font-size: 16px; color: #999">qemu</a> <a href="/tags/qqbot/" style="font-size: 16px; color: #999">qqbot</a> <a href="/tags/sky/" style="font-size: 16px; color: #999">sky</a> <a href="/tags/termux/" style="font-size: 16px; color: #999">termux</a> <a href="/tags/terraria/" style="font-size: 16px; color: #999">terraria</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fa fa-archive" aria-hidden="true"></i><span>归档</span></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/"><span class="archive-list-date">2020年04月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/"><span class="archive-list-date">2020年03月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/"><span class="archive-list-date">2019年10月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/"><span class="archive-list-date">2019年08月</span><span class="archive-list-count">2</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/"><span class="archive-list-date">2019年07月</span><span class="archive-list-count">1</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">6</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" start_date="7/15/2019 00:00:00">     </div></div><div class="webinfo-item"><div class="webinfo-site-wordcount-name">本站总字数 :</div><div class="webinfo-site-wordcount">7k</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By StageGuard</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script><script>if (document.getElementsByClassName('mermaid').length) {
+  loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',function () {
+    mermaid.initialize({
+      theme: 'default',
+  })
+})
+}</script></body></html>
